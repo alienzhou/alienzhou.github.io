@@ -1,0 +1,504 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  在react-router4中进行代码拆分（基于webpack） - AlienZHOU's blog
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="AlienZHOU's blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">AlienZHOU's blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; AlienZHOU's blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>PWA</label></li>
+
+          
+            <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+          
+            <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+          
+            <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+          
+            <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React</label></li>
+
+          
+            <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React</span></li>
+                        
+                          <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>在react-router4中进行代码拆分（基于webpack）</h1>
+
+<h2 id="toc_0">前言</h2>
+
+<p>随着前端项目的不断扩大，一个原本简单的网页应用所引用的js文件可能变得越来越庞大。尤其在近期流行的单页面应用中，越来越依赖一些打包工具（例如webpack），通过这些打包工具将需要处理、相互依赖的模块直接打包成一个单独的bundle文件，在页面第一次载入时，就会将所有的js全部载入。但是，往往有许多的场景，我们并不需要在一次性将单页应用的全部依赖都载下来。例如：我们现在有一个带有权限的&quot;订单后台管理&quot;单页应用，普通管理员只能进入&quot;订单管理&quot;部分，而超级用户则可以进行&quot;系统管理&quot;；或者，我们有一个庞大的单页应用，用户在第一次打开页面时，需要等待较长时间加载无关资源。这些时候，我们就可以考虑进行一定的代码拆分（<em>code splitting</em>）。</p>
+
+<h2 id="toc_1">实现方式</h2>
+
+<h3 id="toc_2">简单的按需加载</h3>
+
+<p>代码拆分的核心目的，就是实现资源的按需加载。考虑这么一个场景，在我们的网站中，右下角有一个类似聊天框的组件，当我们点击圆形按钮时，页面展示聊天组件。 </p>
+
+<pre><code>btn.addEventListener(&#39;click&#39;, function(e) {
+    // 在这里加载chat组件相关资源 chat.js
+});
+</code></pre>
+
+<p>从这个例子中我们可以看出，通过将加载chat.js的操作绑定在btn点击事件上，可以实现点击聊天按钮后聊天组件的按需加载。而要动态加载js资源的方式也非常简单（方式类似熟悉的jsonp）。通过动态在页面中添加<code>&lt;scrpt&gt;</code>标签，并将<code>src</code>属性指向该资源即可。</p>
+
+<pre><code>btn.addEventListener(&#39;click&#39;, function(e) {
+    // 在这里加载chat组件相关资源 chat.js
+    var ele = document.createElement(&#39;script&#39;);
+    ele.setAttribute(&#39;src&#39;,&#39;/static/chat.js&#39;);
+    document.getElementsByTagName(&#39;head&#39;)[0].appendChild(ele);
+});
+</code></pre>
+
+<p>代码拆分就是为了要实现按需加载所做的工作。想象一下，我们使用打包工具，将所有的js全部打包到了bundle.js这个文件，这种情况下是没有办法做到上面所述的按需加载的，因此，我们需要讲按需加载的代码在打包的过程中拆分出来，这就是代码拆分。那么，对于这些资源，我们需要手动拆分么？当然不是，还是要借助打包工具。下面就来介绍webpack中的代码拆分。</p>
+
+<h3 id="toc_3">代码拆分</h3>
+
+<p>这里回到应用场景，介绍如何在webpack中进行代码拆分。在webpack有多种方式来实现构建是的代码拆分。</p>
+
+<h4 id="toc_4">1. import()</h4>
+
+<p>这里的import不同于模块引入时的import，可以理解为一个动态加载的模块的函数(<em>function-like</em>)，传入其中的参数就是相应的模块。例如对于原有的模块引入<code>import react from &#39;react&#39;</code>可以写为<code>import(&#39;react&#39;)</code>。但是需要注意的是，<code>import()</code>会返回一个<code>Promise</code>对象。因此，可以通过如下方式使用：</p>
+
+<pre><code>btn.addEventListener(&#39;click&#39;, e =&gt; {
+    // 在这里加载chat组件相关资源 chat.js
+    import(&#39;/components/chart&#39;).then(mod =&gt; {
+        someOperate(mod);
+    });
+});
+</code></pre>
+
+<p>可以看到，使用方式非常简单，和平时我们使用的<code>Promise</code>并没有区别。当然，也可以再加入一些异常处理：</p>
+
+<pre><code>btn.addEventListener(&#39;click&#39;, e =&gt; {
+    import(&#39;/components/chart&#39;).then(mod =&gt; {
+        someOperate(mod);
+    }).catch(err ＝&gt; {
+        console.log(&#39;failed&#39;);
+    });
+});
+</code></pre>
+
+<p>当然，由于<code>import()</code>会返回一个<code>Promise</code>对象，因此要注意一些兼容性问题。解决这个问题也不困难，可以使用一些<code>Promise</code>的polyfill来实现兼容。可以看到，动态<code>import()</code>的方式不论在语意上还是语法使用上都是比较清晰简洁的。</p>
+
+<h4 id="toc_5">2. require.ensure()</h4>
+
+<p>在webpack 2的官网上写了这么一句话：</p>
+
+<blockquote>
+<p><em>require.ensure()</em> is specific to webpack and superseded by <em>import()</em>.</p>
+</blockquote>
+
+<p>所以，在webpack 2里面应该是不建议使用<code>require.ensure()</code>这个方法的。但是目前该方法仍然有效，所以可以简单介绍一下。包括在webpack 1中也是可以使用。下面是<code>require.ensure()</code>的语法：</p>
+
+<pre><code>require.ensure(dependencies: String[], callback: function(require), errorCallback: function(error), chunkName: String)
+</code></pre>
+
+<p><code>require.ensure()</code>接受三个参数：</p>
+
+<ul>
+<li>第一个参数<code>dependencies</code>是一个数组，代表了当前<code>require</code>进来的模块的一些依赖；</li>
+<li>第二个参数<code>callback</code>就是一个回调函数。其中需要注意的是，这个回调函数有一个参数<code>require</code>，通过这个<code>require</code>就可以在回调函数内动态引入其他模块。值得注意的是，虽然这个<code>require</code>是回调函数的参数，理论上可以换其他名称，但是实际上是不能换的，否则webpack就无法静态分析的时候处理它；</li>
+<li>第三个参数<code>errorCallback</code>比较好理解，就是处理error的回调；</li>
+<li>第四个参数<code>chunkName</code>则是指定打包的chunk名称。</li>
+</ul>
+
+<p>因此，<code>require.ensure()</code>具体的用法如下：</p>
+
+<pre><code>btn.addEventListener(&#39;click&#39;, e =&gt; {
+    require.ensure([], require =&gt; {
+        let chat = require(&#39;/components/chart&#39;);
+        someOperate(chat);
+    }, error =&gt; {
+        console.log(&#39;failed&#39;);
+    }, &#39;mychat&#39;);
+});
+</code></pre>
+
+<h4 id="toc_6">3. Bundle Loader</h4>
+
+<p>除了使用上述两种方法，还可以使用webpack的一些组件。例如使用<a href="https://github.com/webpack-contrib/bundle-loader">Bundle Loader</a>：</p>
+
+<pre><code>npm i --save bundle-loader
+</code></pre>
+
+<p>使用<code>require(&quot;bundle-loader!./file.js&quot;)</code>来进行相应chunk的加载。该方法会返回一个<code>function</code>，这个<code>function</code>接受一个回调函数作为参数。</p>
+
+<pre><code>let chatChunk = require(&quot;bundle-loader?lazy!./components/chat&quot;);
+chatChunk(function(file) {
+    someOperate(file);
+});
+</code></pre>
+
+<p>和其他loader类似，Bundle Loader也需要在webpack的配置文件中进行相应配置。Bundle-Loader的<a href="https://github.com/webpack-contrib/bundle-loader/blob/master/index.js">代码</a>也很简短，如果阅读一下可以发现，其实际上也是使用<code>require.ensure()</code>来实现的，通过给Bundle-Loader返回的函数中传入相应的模块处理回调函数即可在<code>require.ensure()</code>的中处理，代码最后也列出了相应的输出格式：</p>
+
+<pre><code>/*
+Output format:
+    var cbs = [],
+        data;
+    module.exports = function(cb) {
+        if(cbs) cbs.push(cb);
+            else cb(data);
+    }
+    require.ensure([], function(require) {
+        data = require(&quot;xxx&quot;);
+        var callbacks = cbs;
+        cbs = null;
+        for(var i = 0, l = callbacks.length; i &lt; l; i++) {
+            callbacks[i](data);
+        }
+    });
+*/
+</code></pre>
+
+<h2 id="toc_7">react-router v4 中的代码拆分</h2>
+
+<p>最后，回到实际的工作中，基于webpack，在react-router4中实现代码拆分。react-router 4相较于react-router 3有了较大的变动。其中，在代码拆分方面，react-router 4的使用方式也与react-router 3有了较大的差别。<br/>
+在react-router 3中，可以使用<code>Route</code>组件中<code>getComponent</code>这个API来进行代码拆分。<code>getComponent</code>是异步的，只有在路由匹配时才会调用。但是，在<code>react-router 4</code>中并没有找到这个API，那么如何来进行代码拆分呢？<br/>
+在<a href="https://reacttraining.com/react-router/web/guides/code-splitting">react-router 4</a>官网上有一个代码拆分的例子。其中，应用了Bundle Loader来进行按需加载与动态引入</p>
+
+<pre><code>import loadSomething from &#39;bundle-loader?lazy!./Something&#39;
+</code></pre>
+
+<p>然而，在项目中使用类似的方式后，出现了这样的警告：</p>
+
+<blockquote>
+<p>Unexpected &#39;!&#39; in &#39;bundle-loader?lazy!./component/chat&#39;. Do not use import syntax to configure webpack loaders  <strong><em>import/no-webpack-loader-syntax</em></strong><br/>
+Search for the <strong><em>keywords</em></strong> to learn more about each error.</p>
+</blockquote>
+
+<p>在webpack 2中已经不能使用import这样的方式来引入loader了（<a href="https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md">no-webpack-loader-syntax</a>）</p>
+
+<blockquote>
+<p>Webpack allows specifying the loaders to use in the import source string using a special syntax like this:</p>
+</blockquote>
+
+<pre><code>var moduleWithOneLoader = require(&quot;my-loader!./my-awesome-module&quot;);
+</code></pre>
+
+<blockquote>
+<p>This syntax is non-standard, so it couples the code to Webpack. The recommended way to specify Webpack loader configuration is in a <strong>Webpack configuration file</strong>.</p>
+</blockquote>
+
+<p>我的应用使用了create-react-app作为脚手架，屏蔽了webpack的一些配置。当然，也可以通过运行<code>npm run eject</code>使其暴露webpack等配置文件。然而，是否可以用其他方法呢？当然。<br/>
+这里就可以使用之前说到的两种方式来处理：<code>import()</code>或<code>require.ensure()</code>。<br/>
+和官方实例类似，我们首先需要一个异步加载的包装组件Bundle。Bundle的主要功能就是接收一个组件异步加载的方法，并返回相应的react组件：</p>
+
+<pre><code>export default class Bundle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mod: null
+        };
+    }
+
+    componentWillMount() {
+        this.load(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.load !== this.props.load) {
+            this.load(nextProps)
+        }
+    }
+
+    load(props) {
+        this.setState({
+            mod: null
+        });
+        props.load((mod) =&gt; {
+            this.setState({
+                mod: mod.default ? mod.default : mod
+            });
+        });
+    }
+
+    render() {
+        return this.state.mod ? this.props.children(this.state.mod) : null;
+    }
+}
+</code></pre>
+
+<p>在原有的例子中，通过Bundle Loader来引入模块：</p>
+
+<pre><code>import loadSomething from &#39;bundle-loader?lazy!./About&#39;
+
+const About = (props) =&gt; (
+    &lt;Bundle load={loadAbout}&gt;
+        {(About) =&gt; &lt;About {...props}/&gt;}
+    &lt;/Bundle&gt;
+)
+</code></pre>
+
+<p>由于不再使用Bundle Loader，我们可以使用<code>import()</code>对该段代码进行改写：</p>
+
+<pre><code>const Chat = (props) =&gt; (
+    &lt;Bundle load={() =&gt; import(&#39;./component/chat&#39;)}&gt;
+        {(Chat) =&gt; &lt;Chat {...props}/&gt;}
+    &lt;/Bundle&gt;
+);
+</code></pre>
+
+<p>需要注意的是，由于<code>import()</code>会返回一个<code>Promise</code>对象，因此<code>Bundle</code>组件中的代码也需要相应进行调整</p>
+
+<pre><code>export default class Bundle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mod: null
+        };
+    }
+
+    componentWillMount() {
+        this.load(this.props)
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.load !== this.props.load) {
+            this.load(nextProps)
+        }
+    }
+
+    load(props) {
+        this.setState({
+            mod: null
+        });
+        //注意这里，使用Promise对象; mod.default导出默认
+        props.load().then((mod) =&gt; {
+            this.setState({
+                mod: mod.default ? mod.default : mod
+            });
+        });
+    }
+
+    render() {
+        return this.state.mod ? this.props.children(this.state.mod) : null;
+    }
+}
+</code></pre>
+
+<p>路由部分没有变化</p>
+
+<pre><code>&lt;Route path=&quot;/chat&quot; component={Chat}/&gt;
+</code></pre>
+
+<p>这时候，执行<code>npm run start</code>，可以看到在载入最初的页面时加载的资源如下</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-c7d1c77bcbade8ee?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这里写图片描述"/></p>
+
+<p>而当点击触发到/chat路径时，可以看到</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-edac2f3e0b68de1b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这里写图片描述"/></p>
+
+<p>动态加载了<code>2.chunk.js</code>这个js文件，如果打开这个文件查看，就可以发现这个就是我们刚才动态<code>import()</code>进来的模块。<br/>
+当然，除了使用<code>import()</code>仍然可以使用<code>require.ensure()</code>来进行模块的异步加载。相关示例代码如下：</p>
+
+<pre><code>const Chat = (props) =&gt; (
+    &lt;Bundle load={(cb) =&gt; {
+        require.ensure([], require =&gt; {
+            cb(require(&#39;./component/chat&#39;));
+        });
+    }}&gt;
+    {(Chat) =&gt; &lt;Chat {...props}/&gt;}
+  &lt;/Bundle&gt;
+);
+</code></pre>
+
+<pre><code>export default class Bundle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            mod: null
+        };
+    }
+
+    load = props =&gt; {
+        this.setState({
+            mod: null
+        });
+        props.load(mod =&gt; {
+            this.setState({
+                mod: mod ? mod : null
+            });
+        });
+    }
+
+    componentWillMount() {
+        this.load(this.props);
+    }
+
+    render() {
+        return this.state.mod ? this.props.children(this.state.mod) : null
+    }
+}
+</code></pre>
+
+<p>此外，如果是直接使用webpack config的话，也可以进行如下配置</p>
+
+<pre><code>output: {
+    // The build folder.
+    path: paths.appBuild,
+    // There will be one main bundle, and one file per asynchronous chunk.
+    filename: &#39;static/js/[name].[chunkhash:8].js&#39;,
+    chunkFilename: &#39;static/js/[name].[chunkhash:8].chunk.js&#39;,
+  },
+</code></pre>
+
+<h2 id="toc_8">结束</h2>
+
+<p>代码拆分在单页应用中非常常见，对于提高单页应用的性能与体验具有一定的帮助。我们通过将第一次访问应用时，并不需要的模块拆分出来，通过<code>scipt</code>标签动态加载的原理，可以实现有效的代码拆分。在实际项目中，使用webpack中的<code>import()</code>、<code>require.ensure()</code>或者一些<code>loader</code>（例如Bundle Loader）来做代码拆分与组件按需加载。</p>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15235140795593.html"  title="Previous Post: 【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”">&laquo; 【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15235187668595.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
