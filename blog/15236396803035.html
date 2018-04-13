@@ -1,0 +1,616 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS - AlienZHOU's blog
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="AlienZHOU's blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">AlienZHOU's blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; AlienZHOU's blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>PWA</label></li>
+
+          
+            <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+          
+            <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+          
+            <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+          
+            <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React</label></li>
+
+          
+            <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+          
+            <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>CSS</label></li>
+
+          
+            <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+          
+            <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+          
+            <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Server</label></li>
+
+          
+            <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Automation</label></li>
+
+          
+            <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>FE else</label></li>
+
+          
+            <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+          
+            <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+          
+            <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React</span></li>
+                        
+                          <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+                        
+                          <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>CSS</span></li>
+                        
+                          <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+                        
+                          <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+                        
+                          <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Server</span></li>
+                        
+                          <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Automation</span></li>
+                        
+                          <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>FE else</span></li>
+                        
+                          <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+                        
+                          <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+                        
+                          <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</h1>
+
+<p>CSS是一门15分钟就能入门，但是却需要很长很长的时间才能掌握好的语言。它有着它自身的一些复杂性与局限性。其中非常重要的一点就是，本身不具备模块化的能力。</p>
+
+<h2 id="toc_0">面临的问题</h2>
+
+<p>CSS中虽然有<code>@import</code>功能。然而，我们都知道，这里的<code>@import</code>仅仅是表示引入相应的CSS文件，但其模块化核心问题并未解决——CSS文件中的任何一个选择器都会作用在整个文档范围里。</p>
+
+<p>因此，其实我们面临的最大问题就是——所有的选择器都是在一个全局作用域内的。一旦引入一个新的CSS文件，就有着与预期不符的样式表现的风险（因为一些不可预测的选择器）。</p>
+
+<p>而如今的前端项目规模越来越大，已经不是过去随便几个css、js文件就可以搞定的时代。与此同时的，对于一个大型的应用，前端开发团队往往也不再是一两个人。随着项目与团队规模的扩大，甚至是项目过程中人员的变动，如何更好进行代码开发的管理已经成为了一个重要问题。</p>
+
+<p>回想一下，有多少次：<br/>
+- 我们讨论着如何对class进行有效的命名，以避免协作开发时的冲突；<br/>
+- 我们面对一段别人写的css、html代码，想要去修改，然后疯狂查找、猜测每个类都是什么作用，哪些是可以去掉的，哪些是可以修改的——到最后我们选择重新添加一个新的class；<br/>
+- 我们准备重构代码时，重构也就成了重写<br/>
+- ……</p>
+
+<p>写一段CSS往往并不是困难所在，难得确实团队的合作与后续的维护。</p>
+
+<blockquote>
+<p>What we want is to be able to write code that is as transparent and self-documenting as possible. </p>
+</blockquote>
+
+<p>本系列文章会简要介绍一些CSS模块化进程中出现的一些方案。包括本篇要讲的BEM方法。</p>
+
+<blockquote>
+<p>想要了解更多CSS模块化方案还可以阅读【CSS模块化】(1) webpack之Local Scope</p>
+</blockquote>
+
+<h2 id="toc_1">BEM命名方法论</h2>
+
+<p>BEM其实是一种命名的规范。或者说是一种class书写方式的方法论（methodology）。BEM的意思就是块（block）、元素（element）、修饰符（modifier）,是由<a href="http://yandex.ru/">Yandex</a>团队提出的一种前端命名方法论。在具体CSS类选择器上的表现就像下面这样</p>
+
+<pre><code class="language-css">.block {}
+.block__element {}
+.block--modifier {}
+.block__element--modifier {}
+</code></pre>
+
+<p>其中，block表示的是独立的分块或组件；element表示每个block中更细粒度的元素；modifier则通常会用来表示该block或者element不同的类型和状态。</p>
+
+<p>举个例子，例如我们有一个列表</p>
+
+<pre><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;item&quot;&gt;learn html&lt;/li&gt;
+  &lt;li class=&quot;item underline&quot;&gt;learn css&lt;/li&gt;
+  &lt;li class=&quot;item&quot;&gt;learn js&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>列表容器的class为<code>.list</code>，列表内每条记录的class为<code>.item</code>，其中，还为第二个条记录添加了一个下划线<code>.underline</code>。简单的css如下</p>
+
+<pre><code class="language-css">.list {
+  margin: 15px;
+  padding: 0;
+}
+.list .item {
+  margin: 10px 0;
+  border-left: 3px solid #333;
+  font-size: 15px;
+  color: #333;
+  list-style: none;
+}
+.list .underline {
+  color: #111;
+  text-decoration: underline;
+}
+</code></pre>
+
+<p>这样的命名方式，我们在阅读html时并不能迅速了解：<code>.item</code>是只能在<code>.list</code>中使用么，它是仅仅定义在这个组件内的一部分么？<code>.underline</code>是一个通用样式么，我想修改列表的中underline的记录为红色，这会影响到项目其他地方么？</p>
+
+<p>这时候，我们就可以使用BEM方式来命名我们的class</p>
+
+<pre><code class="language-css">.list {
+  margin: 15px;
+  padding: 0;
+}
+.list__item {
+  margin: 10px 0;
+  border-left: 3px solid #333;
+  font-size: 15px;
+  color: #333;
+  list-style: none;
+}
+.list__item--underline {
+  color: #111;
+  text-decoration: underline;
+}
+</code></pre>
+
+<pre><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;learn html&lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--underline&quot;&gt;learn css&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;learn js&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>这段代码的一大优势就是增加了它的自解释性：一定程度上，它的class名本身就是一个简易的文档。</p>
+
+<p>这里还需要避免一个误区，BEM命名规范里，我们的CSS并不会关心HTML中dom元素的层级结构。它的核心着眼点还是我们定义的块（block）、元素（element）、修饰符（modifier）这三部分。因为关注点不同，所以一个block内的所有element，在CSS中并不会考虑层级，因此也就没有<code>.list__item__avatar</code>这种写法</p>
+
+<pre><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    ![](avatar.png)
+    learn html
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--underline&quot;&gt;learn css&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;learn js&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>而是把这个<code>img</code>也看作block中的元素<code>.list__avatar</code></p>
+
+<pre><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    ![](avatar.png)
+    learn html
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--underline&quot;&gt;learn css&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;learn js&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>从这个例子看一看出，CSS部分并不关心dom层级结构，而是在block下面有哪些element，这些element又有哪些modifier。</p>
+
+<p>基于这个思想，我们可以知道，如果一个block里面含有其他block并不会违反BEM的原则。例如上面这个列表的例子，其中头像avatar原本只是一个简单的element，现在如果变成了一个很复杂的组件——包括图片、姓名和标签，那么可能会有这么一个block</p>
+
+<pre><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__avatar&quot;&gt;
+      &lt;img class=&quot;list__head list__head--female&quot; /&gt;
+      &lt;span class=&quot;list__name&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;list__tag&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    learn html
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--underline&quot;&gt;learn css&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;learn js&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>我们可以为avatar创建一个新的block</p>
+
+<pre><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;avatar&quot;&gt;
+      &lt;img class=&quot;avatar__head avatar__head--female&quot; /&gt;
+      &lt;span class=&quot;avatar__name&quot;&gt;&lt;/span&gt;
+      &lt;span class=&quot;avatar__tag&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    learn html
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--underline&quot;&gt;learn css&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;learn js&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+
+<p>那么你可能会有疑问，什么时候需要在将一个elment重新抽象为新的block呢？仅仅当我们的dom元素变得很多的时候么？</p>
+
+<p>其实，BEM中的block一定程度上可以理解为一个“独立的块”。独立就意味着，把这一部分放到其他部分也可以正常展示与使用，它不会依赖其父元素或兄弟元素。而在另一个维度上面来说，也就是视觉设计的维度，当UI设计师给出UI稿后，其中的一些设计元素或组件会重复出现，这些部分也是可以考虑的。所以理解UI设计稿并不是指简单的还原，其中的设计原则与规范也值得揣摩。</p>
+
+<p>从上面的简单介绍可以看出，BEM有着一些优点</p>
+
+<ul>
+<li>class的单一职责原则、开闭原则</li>
+<li>模块化思想，一般来说遵循这个方法的组件可以迁移环境</li>
+<li>一定程度上，避免命名的污染</li>
+<li>自解释性。可以直观看出各个class之间的依赖关系以及它们的作用范围（<code>.list__item</code>和<code>.list__item--underline</code>都是依赖于<code>.list</code>的，因此它们不能脱离于<code>.list</code>存在）</li>
+</ul>
+
+<p>当然，BEM仅仅是一种命名规范或建议。在没有约束的情况下，你随时都可以违反。所以我们可以借助类似BEM-constructor的工具，既帮我们进行一定的约束，同时也省去一些繁琐的重复工作。在介绍BEM-constructor之前，我们还需要简单了解一下BEM-constructor中命名空间（namespaces）的基本概念。</p>
+
+<h2 id="toc_2">约定项目的命名空间（namespaces）</h2>
+
+<p>命名空间（namespaces）也是一种关于CSS中class命名方式的规范。在BEM的基础上，建立命名空间主要是为了进一步帮助我们：<br/>
+- 让代码能够自解释<br/>
+- 在一个全局的context中安全地加入一个新的class<br/>
+- 确保一个修改不会产生额外的副作用<br/>
+- 在后期维护时能够迅速定位问题</p>
+
+<p>命名空间分为以下几种。</p>
+
+<h3 id="toc_3">Object: o-</h3>
+
+<p>当你使用面向对象的CSS（Object-Oriented CSS）时，<code>o-</code>这个namespace将会非常有用。</p>
+
+<ul>
+<li>对象是一个抽象的概念。</li>
+<li>尽量避免修改它们的样式。</li>
+<li>如果要使用<code>o-</code>时请慎重考虑。</li>
+</ul>
+
+<h3 id="toc_4">Component: c-</h3>
+
+<p><code>c-</code>应该是一个更为常见的namespace，表示Components（组件）。</p>
+
+<pre><code class="language-css">.c-list {}
+.c-avatar {}
+</code></pre>
+
+<p>从命名中我们就能知道：这是一个list组件；或者这是一个avatar组件。</p>
+
+<ul>
+<li>Components应该是一组具体的UI。<code>c-</code>代表一个具体的组件。</li>
+<li>修改它们非常安全，只会对组件产生影响。</li>
+</ul>
+
+<h3 id="toc_5">Utility: u-</h3>
+
+<p>Utilities符合单一职责原则，实现一个具体的功能或效果。其概念有些类似JavaScript中的通用工具方法。例如一个清除浮动的Utility，或者一个文字居中的Utility。</p>
+
+<pre><code class="language-css">.u-clearfix {}
+.u-textCenter {}
+</code></pre>
+
+<p>由于Utilities作为一组工具集，在样式上具有更强的“话语权”，所以<code>!important</code>在Utilities中会更为常见。当我们看到下面这段HTML，我们会更加确信，这个大号的字体是<code>.u-largeFont</code>这个样式引起的。</p>
+
+<pre><code>&lt;h1 class=&quot;title u-largeFont&quot;&gt;namespace&lt;/h1&gt;
+</code></pre>
+
+<ul>
+<li>Utilities中的样式一般具有更高的权重.</li>
+<li>不要滥用<code>u-</code>前缀，只用在一些通用的工具方法上.</li>
+</ul>
+
+<h3 id="toc_6">Theme: t-</h3>
+
+<p>当我们使用Stateful Themes这种定义主题的方式时（后续有机会会介绍一些“自定义主题”的方式），往往我们会在最外层容器元素中加入一个代表不同主题的class。这里就会用到<code>t-</code>。</p>
+
+<ul>
+<li>主题<code>t-</code>是一个高层级的命名空间。</li>
+<li>一定程度上它和下面的Scope一样，也为其内部的规则提供了一个作用空间。</li>
+<li>可以很明显地标识当前UI的总体状态（主题）。</li>
+</ul>
+
+<h3 id="toc_7">Scope: s-</h3>
+
+<p><code>s-</code>可能不是这么好理解，因为CSS中并没有Scope这个概念（或者说只有一个全局的Scope）。而<code>s-</code>正是希望通过命名的方式来建立一个新的Scope。</p>
+
+<p>但是请勿滥用它，只有在你确实需要创建一个新的“作用域”的时候再使用它。例如一个简单场景：CMS。如果你接触过CMS你就会知道，它一定有一个生成或编辑内容的功能。而通常的，我们会将这部分编辑的内容输出到页面中，并在外部赋予一个新的Scope，用以隔离该部分与外部整个站点的样式。</p>
+
+<pre><code>&lt;nav class=&quot;c-nav-primary&quot;&gt;
+  ...
+&lt;/nav&gt;
+
+&lt;section class=&quot;s-cms-content&quot;&gt;
+  &lt;h1&gt;...&lt;/h1&gt;
+  &lt;p&gt;...&lt;/p&gt;
+  &lt;ul&gt;
+    ...
+  &lt;/ul&gt;
+  &lt;p&gt;...&lt;/p&gt;
+&lt;/section&gt;
+
+&lt;ul class=&quot;c-share-links&quot;&gt;
+  ...
+&lt;/ul&gt;
+</code></pre>
+
+<pre><code class="language-css">.s-cms-content {
+  font: 16px/1.5 serif; /* [1] */
+  h1, h2, h3, h4, h5, h6 {
+    font: bold 100%/1.5 sans-serif; /* [2] */
+  }
+  a {
+    text-decoration: underline; /* [3] */
+  }
+}
+</code></pre>
+
+<p><code>section</code>部分就是展示CMS中的content（内容）。</p>
+
+<ul>
+<li>首先，用到Scopes的场景确实非常的少，因此你准备使用时一定要仔细考虑</li>
+<li>它的实现是要依赖于嵌套方式的（SASS/LESS中），也可以说是CSS后代选择器</li>
+</ul>
+
+<p>慎用，需要万分小心。</p>
+
+<h2 id="toc_8">在SASS中使用BEM-constructor</h2>
+
+<p>BEM-constructor是基于SASS的一个工具。使用BEM-constructor可以帮助规范并快速地创建符合BEM与namespace规范的class。BEM-constructor的语法非常简单。</p>
+
+<pre><code>npm install sass-bem-constructor --save-dev
+</code></pre>
+
+<p>首先在SASS引入<code>@import &#39;bem-constructor&#39;;</code>，然后使用<code>@include block($name, $type) { ... }</code>创建block，其中<code>$name</code>是block的名字，<code>$type</code>是namespace的类型（<code>&#39;object&#39;</code>, <code>&#39;component&#39;</code>和<code>&#39;utility&#39;</code>）。类似得，使用<code>element($name...)</code>和<code>modifier($name...)</code>可以快速生成block中的其他部分。</p>
+
+<p>将最初的例子进行改写</p>
+
+<pre><code class="language-css">@import &#39;sass-bem-constructor/dist/_sass-bem-constructor.scss&#39;;
+
+@include block(&#39;list&#39;, &#39;component&#39;) {
+    margin: 15px;
+    padding: 0;
+    @include element(&#39;item&#39;) {
+        margin: 10px 0;
+        border-left: 3px solid #333;
+        font-size: 15px;
+        color: #333;
+        list-style: none;
+        @include modifier(&#39;underline&#39;) {
+            color: #111;
+            text-decoration: underline;
+        }
+    }
+}
+</code></pre>
+
+<p>生成的内容如下</p>
+
+<pre><code class="language-css">.c-list {
+  margin: 15px;
+  padding: 0; }
+  .c-list__item {
+    margin: 10px 0;
+    border-left: 3px solid #333;
+    font-size: 15px;
+    color: #333;
+    list-style: none; }
+    .c-list__item--underline {
+      color: #111;
+      text-decoration: underline; }
+</code></pre>
+
+<p>BEM-constructor支持我们之前提到的各种命名空间。例如<code>theme($themes...)</code>，<code>scope($name)</code>等等。语法格式基本类似。</p>
+
+<p>此外，如果不想使用namespace，也可以手动关闭</p>
+
+<pre><code class="language-css">$bem-use-namespaces: false; // defaults to true
+</code></pre>
+
+<p>同时也支持更改命名空间的前缀名</p>
+
+<pre><code class="language-css">$bem-block-namespaces: (
+    &#39;object&#39;: &#39;obj&#39;,     // defaults to &#39;o&#39;
+    &#39;component&#39;: &#39;comp&#39;, // defaults to &#39;c&#39;
+    &#39;utility&#39;: &#39;helper&#39;, // defaults to &#39;u&#39;
+);
+</code></pre>
+
+<p>当然，如果你不喜欢BEM中的<code>__</code>，<code>--</code>的连接线，也可以自定义</p>
+
+<pre><code class="language-css">$bem-element-separator: &#39;-&#39;; // Defaults to &#39;__&#39;
+$bem-modifier-separator: &#39;-_-_&#39;; // Defaults to &#39;--&#39;
+</code></pre>
+
+<h2 id="toc_9">最后</h2>
+
+<p>BEM或者namespace是一种命名规范，或者说是一种使用建议。他的目的是帮助我们写出更易维护与协作的代码，更多的是在代码规范的层面上帮助我们解决CSS模块化中的问题。然而，也不得不承认，它距离我们梦想中的CSS模块化还有这很长的距离。但是无论如何，其中蕴含的一些组件化与CSS结构组织方式的想法也是值得我们去思考的。</p>
+
+<blockquote>
+<p>想了解CSS模块化相关内容，可以看看<br/>
+- <a href="http://www.jianshu.com/p/a5f3b41d5d44">【CSS模块化】(1) webpack之Local Scope</a><br/>
+- <a href="http://www.jianshu.com/p/a5f3b41d5d44">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></p>
+</blockquote>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15236403350295.html"  title="Previous Post: JavaScript异步编程__“回调地狱”的一些解决方案">&laquo; JavaScript异步编程__“回调地狱”的一些解决方案</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15236405992551.html" 
+	        title="Next Post: js控制input框内光标位置（setSelectionRange详解）">js控制input框内光标位置（setSelectionRange详解） &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15236396803035.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>

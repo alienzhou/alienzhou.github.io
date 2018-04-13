@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  AlienZHOU's blog
+  【MongoDB高可用】复制集Replica Set使用简介 - AlienZHOU's blog
   
   </title>
  <meta name="description" content="">
@@ -181,178 +181,190 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- 
+ <div class="markdown-body">
+<h1>【MongoDB高可用】复制集Replica Set使用简介</h1>
 
+<h2 id="toc_0">MongoDB高可用</h2>
 
-	
-		<div class="markdown-body">
-		<h1>【PWA学习与实践】(4) 解决FireBase login验证失败问题</h1>
+<p>对于MongoDB，可以支持使用单机模式提供服务，但是在实际的生产环境中，单机模式将面临很大的风险，一旦这个数据库服务出现问题，就会导致线上的服务出现错误甚至崩溃。因此，在实际生产环境下，需要对MongoDB做相应的主备处理，提高数据库服务的可用性。</p>
 
-		<p>本文是《PWA学习与实践》系列的第四篇。是我在测试其他demo时遇到的一个问题，算是一篇TroubleShooting。</p>
+<p>对于提高可用性，一些博文里提到了使用<a href="https://docs.mongodb.com/manual/core/master-slave/">主从模式（master-slaver）</a>。</p>
 
-<p><img src="media/15235166926023/15235167217543.jpg" alt=""/></p>
+<blockquote>
+<p>WARNING:<br/>
+Deprecated since version 3.2: MongoDB 3.2 deprecates the use of master-slave replication for components of sharded clusters.</p>
+</blockquote>
 
-<p>PWA作为今年最火热的技术概念之一，对提升Web应用的安全、性能和体验有着很大的意义，非常值得我们去了解与学习。</p>
+<p>主从模式是高可用的一种方案。<strong>然而从上面这段警告中可以知道，在高版本的MongoDB（3.2以上）中，官方已经不推荐使用主从模式，取而代之的，是使用复制集（Replica Set）的方式做主备处理。</strong></p>
 
-<p>本系列文章《PWA学习与实践》会逐步拆解PWA背后的各项技术，通过实例代码来讲解这些技术的应用方式。也正是因为PWA中技术点众多、知识细碎，因此我在学习过程中，进行了整理，并产出了《PWA学习与实践》系列文章，希望能带大家全面了解PWA中的各项技术。对PWA感兴趣的朋友欢迎关注。</p>
+<blockquote>
+<p>IMPORTANT:<br/>
+Replica sets replace master-slave replication for most use cases. If possible, use replica sets rather than master-slave replication for all new production deployments. This documentation remains to support legacy deployments and for archival purposes only.</p>
+</blockquote>
 
-<h2 id="toc_0">引言</h2>
+<p>因此，本文将介绍如何将已有的单机MongoDB数据库拓展为主备模式的复制集，以提高可用性。</p>
 
-<p>在前一篇文章《让你的WebApp离线可用》中，我们使用Service Worker来做缓存与离线支持。是有一个重要的问题：<strong>Service Worker必须要在HTTPS协议下才能运行（或者localhost）</strong>。当然，对于一些只有前端资源（不涉及后端服务）的demo，我们完全可以将这些前端（静态资源）托管在一个HTTPS服务下，使得Service Worker可以使用。我选择了google的<a href="https://firebase.google.com/">FireBase</a>来托管demo（其实github page也是个不错的选择）。</p>
+<h2 id="toc_1">复制集 Replica Set</h2>
 
-<p>使用FireBase非常简单，只需要<code>firebase login</code> --&gt;<code>firebase init</code>--&gt;<code>firebase deploy</code>即可。但是在<code>firebase login</code>的过程中，遇到了一些问题。这篇文章主要总结了我在<code>firebase login</code>遇到的问题及解决方式：<br/>
-1. 无法获取authorization code<br/>
-2. <code>Authentication Error: Your credentials are no longer valid.</code></p>
+<p>在复制集中，有且只有一个主节点(primary)，可以包含一个或多个从节点(secondary)，主从节点直接会通过心跳检测来确定节点是否健康或存活。所有的读写操作都是在主节点上进行的，如果要实现读写分离，需要进行相应的处理，这个最后会说。从节点会根据oplog（也就是操作日志）来复制主节点的数据。</p>
 
-<p>有需要的朋友可以继续看。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-c7ddd05244104156.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MongoDB复制集"/></p>
 
-<p>首先，如果你对firebase完全不了解，下面会有一段非常简短的介绍。</p>
+<p>除了主从节点外，MongoDB的复制集中还存在着一种叫仲裁者(Arbiter)的角色。一个仲裁者节点是比较轻量级的，因为它不会去复制主库的数据，因此也就不会成为主节点；但是，它的作用是在投票选举阶段——当主节点故障时，仲裁者可以进行投票。一般来说，不建议一个复制集中包含超过一个仲裁者。</p>
 
-<h2 id="toc_1">什么是FireBase</h2>
+<p>当主节点突然故障后，MongoDB有自己的机制，会自动切换，通过选举，在从节点中选出一个节点作为新的主节点。</p>
 
-<p>前段时间学习PWA，在跟着官方教程完成demo后，想要在手机上测试一下效果。然而，遇到的一个问题就是：PWA需要HTTPS协议（或者使用localhost）。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-b6c6fbf9d5b79189.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MongoDB复制集故障处理"/></p>
 
-<p>这就需要我们有一个HTTPS的服务，并在其上面部署我们本地写好的demo。而官方demo的最后，推荐使用firebase来托管你的代码。</p>
+<h2 id="toc_2">如何使用复制集</h2>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f75977a?w=700&amp;h=394&amp;f=png&amp;s=66460" alt="FireBase的各种功能与服务"/></p>
+<p>首先，需要在MongoDB实例的启动参数中加入replSet，指定复制集的名称。</p>
 
-<p>在FireBase的众多使用场景中，Develop -&gt; Hosting（托管）就是我需要用到的了。然而，在执行<code>firebase login</code>（账号登录）过程中，却遇到了一些问题。</p>
+<pre><code class="language-bash">mongod --port 8017 --dbpath /home/work/data/db1 --replSet rstest
+</code></pre>
 
-<h2 id="toc_2">问题一：在浏览器登录账号后，无反应（无法获取authorization code）</h2>
+<p>对于已有的单机实例，也可以加入该参数并进行重启。此外，我们还需要另外启动两个MongoDB实例作为从节点，注意replSet参数指定的名称需要相同。</p>
 
-<p>最开始，我在CLI中输入<code>firebase login</code>，选择<code>y</code>后，CLI会需要一个authorization code；而浏览器会打开并提示你进行登录。</p>
+<pre><code class="language-bash">mongod --port 8016 --dbpath /home/work/data/db2 --replSet rstest
+mongod --port 8015 --dbpath /home/work/data/db2 --replSet rstest
+</code></pre>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f8a3d0a?w=1171&amp;h=158&amp;f=png&amp;s=26957" alt=""/></p>
+<p>然后，需要通过mongo命令连接MongoDB服务，进入主节点进行初始化。</p>
 
-<p>这里我用google账户进行授权登录。然而，在授权之后，却迟迟没有响应（无法得到authorization code）。这时候，我发现浏览器显示，似乎是在等待<code>localhost</code>进行响应。</p>
+<pre><code class="language-bash">mongo 127.0.0.1:8017
+</code></pre>
 
-<p>解决这个问题的方法就是：在登录时，使用<code>firebase login --no-localhost</code>进行登录。</p>
+<pre><code class="language-javascript">rs.initiate({
+  _id:&quot;rstest&quot;, // replSet指定的名称
+  members:[{
+    _id:0,
+    host:&quot;127.0.0.1:8017&quot; // 主节点ip与端口
+  }]
+})
+</code></pre>
 
-<p>重新使用<code>firebase login --no-localhost</code>登录。这里我选择了google账号进行登录，重复上面的过程：</p>
+<p>需要注意的是，如果是将已有单机拓展为复制集，要在连接原单机的实例并在其中运行使其作为主节点。</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f8a3d0a?w=1171&amp;h=158&amp;f=png&amp;s=26957" alt=""/></p>
+<p>最后，再将其他两个从节点加入到该复制集中。</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f994938?w=508&amp;h=563&amp;f=png&amp;s=28870" alt=""/></p>
+<pre><code class="language-javascript">rs.add(&quot;127.0.0.1:8016&quot;)
+rs.add(&quot;127.0.0.1:8015&quot;)
+</code></pre>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f6cd205?w=484&amp;h=685&amp;f=png&amp;s=83614" alt=""/></p>
+<p>通过<code>rs.status()</code>查看效果，可以看到<code>rstest</code>这个复制集中已经有了三个节点，<code>stateStr</code>指明了节点的类型，<code>health</code>为1表明该节点是健康的。</p>
 
-<p>这次，你就会在浏览器中获得一串authorization code值：</p>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f8759e8?w=1240&amp;h=178&amp;f=png&amp;s=16044" alt="authorization code"/></p>
-
-<p>将它粘贴到CLI中即可。【问题一】解决！</p>
-
-<h2 id="toc_3">问题二：Error: Authentication Error: Your credentials are no longer valid.</h2>
-
-<p>然而，在CLI中输入authorization code之后，在等待了较长时间的验证后，CLI中报出了如下错误：</p>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f96d4ed?w=1240&amp;h=165&amp;f=png&amp;s=76650" alt=""/></p>
-
-<p>这是怎么回事呢？通过查阅一些资料发现，这很可能是你在电脑上使用“翻墙”工具所导致的。firebase-tool依赖的npm包（faye-websocket）中，未开启代理的相关设置，因此无法进行验证。</p>
-
-<p>解决这个问题的方法有两种：</p>
-
-<h3 id="toc_4">方法一：在路由器上设置代理，而非本机</h3>
-
-<p>有些文章指出，通过在路由器上设置代理，而非在本机开启代理，可以避免这个问题。不过由于一些原因，暂时还没有尝试这种方式，不过通过一些反馈来看，应该是一个有效的方法。</p>
-
-<h3 id="toc_5">方法二：(hack) 修改代码与相关环境变量</h3>
-
-<p>该方法较第一种方法来看，会稍微“硬”那么一些。具体的操作方式如下：</p>
-
-<ol>
-<li>设置环境变量<code>http_proxy</code>，我本机的代理使用的是1087端口。<code>export http_proxy=http://localhost:1087</code> </li>
-<li>修改faye-websocket，开启代理配置。faye-websocket是firebase依赖的一个WebSocket库，需要为其client.js添加如下配置：</li>
-</ol>
-
-<pre><code class="language-javascript">var Client = function(_url, protocols, options) {
-    options = options || {};
-    // 添加proxy配置
-    options.proxy = {
-        origin:  &#39;http://localhost:1087&#39;,
-    };
-    …
+<pre><code class="language-javascript">{
+    &quot;set&quot; : &quot;rstest&quot;,
+    &quot;date&quot; : ISODate(&quot;2017-10-31T13:04:16.704Z&quot;),
+    &quot;myState&quot; : 1,
+    &quot;members&quot; : [
+        {
+            &quot;_id&quot; : 0,
+            &quot;name&quot; : &quot;127.0.0.1:8017&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 1,
+            &quot;stateStr&quot; : &quot;PRIMARY&quot;, // 节点的类型，主节点
+            &quot;uptime&quot; : 1508,
+            &quot;optime&quot; : Timestamp(1509455043, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2017-10-31T13:04:03Z&quot;),
+            &quot;electionTime&quot; : Timestamp(1509454568, 2),
+            &quot;electionDate&quot; : ISODate(&quot;2017-10-31T12:56:08Z&quot;),
+            &quot;configVersion&quot; : 3,
+            &quot;self&quot; : true
+        },
+        {
+            &quot;_id&quot; : 1,
+            &quot;name&quot; : &quot;127.0.0.1:8016&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 25,
+            &quot;optime&quot; : Timestamp(1509455043, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2017-10-31T13:04:03Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2017-10-31T13:04:15.657Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2017-10-31T13:04:15.108Z&quot;),
+            &quot;pingMs&quot; : 0,
+            &quot;syncingTo&quot; : &quot;127.0.0.1:8017&quot;,
+            &quot;configVersion&quot; : 3
+        },
+        {
+            &quot;_id&quot; : 2,
+            &quot;name&quot; : &quot;127.0.0.1:8015&quot;,
+            &quot;health&quot; : 1,
+            &quot;state&quot; : 2,
+            &quot;stateStr&quot; : &quot;SECONDARY&quot;,
+            &quot;uptime&quot; : 13,
+            &quot;optime&quot; : Timestamp(1509455043, 1),
+            &quot;optimeDate&quot; : ISODate(&quot;2017-10-31T13:04:03Z&quot;),
+            &quot;lastHeartbeat&quot; : ISODate(&quot;2017-10-31T13:04:15.657Z&quot;),
+            &quot;lastHeartbeatRecv&quot; : ISODate(&quot;2017-10-31T13:04:15.661Z&quot;),
+            &quot;pingMs&quot; : 0,
+            &quot;configVersion&quot; : 3
+        }
+    ],
+    &quot;ok&quot; : 1
 }
 </code></pre>
 
-<p>如果你是全局安装的firebase-tools，你可以通过如下方法找到client.js</p>
+<h2 id="toc_3">连接复制集</h2>
 
-<pre><code>NODE_PATH=`npm prefix -g`
-// client.js的位置
-$NODE_PATH/lib/node_modules/firebase-tools/node_modules/firebase/node_modules/faye-websocket/lib/faye/websocket/client.js
+<p>由于复制集中的切换机制，在主节点故障的情况下，集群内其他从节点会通过投票方式产生新的主节点，因此，不能像单机情况下那样，直接连接主节点；否则在MongoDB自动切换主节点时，数据库访问就会出问题。因此连接复制集需要特定的连接方式。</p>
+
+<p>在MongoDB的连接字符串(connection url)中可以进行指定。</p>
+
+<pre><code>mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]
 </code></pre>
 
-<ol>
-<li><p>设置环境变量NODE_TLS_REJECT_UNAUTHORIZED。<code>export NODE_TLS_REJECT_UNAUTHORIZED=0</code></p></li>
-<li><p>重新登录，<code>firebase login --no-localhost</code>，重复之前的操作。你会发现，登录成功！</p></li>
-</ol>
+<p>其中可以指定多个host:port，用英文逗号连接，并在最后的option中支持replicaSet参数，用于指定连接的复制集。例如：</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd0b8f77b15?w=1177&amp;h=219&amp;f=png&amp;s=44679" alt="image.png"/></p>
+<pre><code>mongodb://127.0.0.1:8017,127.0.0.1:8016,127.0.0.1:8015/books?replicaSet=rstest
+</code></pre>
 
-<p>【问题二】解决！</p>
+<p>这样就可以连接上复制集中的books这个数据库。</p>
 
-<p>p.s. 针对这个问题，github上也有一个issue：<a href="https://github.com/firebase/firebase-tools/issues/155">Unable to deploy behind a proxy</a>。</p>
+<h2 id="toc_4">总结</h2>
 
-<p>此外，如果你使用了代理，推荐使用全局代理的方式，使你的CLI也使用代理。</p>
-
-<h2 id="toc_6">写在最后</h2>
-
-<p>最后，还是回到我开发PWA时的需求。文章最开始提到了，我是为了在移动端测试PWA demo的效果，所以使用FireBase来托管资源。当然，除了FireBase，还有下面两个办法：</p>
-
-<ol>
-<li><p>使用github page。由于github全站都是运行在HTTPS下，因此在github page上托管的静态站点可以使用Service Worker；</p></li>
-<li><p>使用localhost/127.0.0.1。了解PWA的话，你会知道除了HTTPS之外，也可以使用localhost（这一设计是为了方便本机调试）。</p></li>
-</ol>
-
-<p>本文是《PWA学习与实践》系列中的第四篇。这篇文章并没有探讨PWA中实际的技术，而是记录了我在开发、调试P过程与遇到的问题。可能有朋友也会遇到类似问题，因此记录下来和大家分享。</p>
-
-<p>在下一篇文章中，我们还是会回到PWA背后的技术，来了解一下，<strong>如何使用Push API来实现后端服务向客户端进行消息推送</strong>。</p>
+<p>MongoDB复制集的故障机制切换是它自身来保障，在部署好上面一系列的服务后，我们可以测试一下当主节点故障时，集群中的节点状态与服务可用性。通过kill主节点MongoDB进程，使用<code>rs.status()</code>可以发现，其中一个从节点已经升级为了主节点（这部分在从节点的日志中也有体现）。此外，数据查询依然可以进行，不会因为主节点的宕机而导致数据服务不可用。</p>
 
 
-		</div>
-	
+</div>
 
- 
-	
+<br /><br />
+<hr />
 
- 
-	
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15236398426783.html"  title="Previous Post: 【CSS模块化】(3) 使用💅styled-components来优化react组件开发">&laquo; 【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15236401468681.html" 
+	        title="Next Post: Gulp.js实践详解__基于Gulp的多页面应用实践指南">Gulp.js实践详解__基于Gulp的多页面应用实践指南 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
 
- 
-	
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
 
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
- 
-	
-
-  
-  
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15236400113573.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
 </div></div>
 
 

@@ -1,0 +1,969 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Automation - AlienZHOU's blog
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="AlienZHOU's blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">AlienZHOU's blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; AlienZHOU's blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>PWA</label></li>
+
+          
+            <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+          
+            <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+          
+            <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+          
+            <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React</label></li>
+
+          
+            <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+          
+            <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>CSS</label></li>
+
+          
+            <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+          
+            <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+          
+            <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Server</label></li>
+
+          
+            <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Automation</label></li>
+
+          
+            <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>FE else</label></li>
+
+          
+            <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+          
+            <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+          
+            <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React</span></li>
+                        
+                          <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+                        
+                          <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>CSS</span></li>
+                        
+                          <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+                        
+                          <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+                        
+                          <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Server</span></li>
+                        
+                          <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Automation</span></li>
+                        
+                          <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>FE else</span></li>
+                        
+                          <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+                        
+                          <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+                        
+                          <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ 
+
+
+	
+		<div class="markdown-body">
+		<h1>Gulp.js实践详解__基于Gulp的多页面应用实践指南</h1>
+
+		<p><img src="http://upload-images.jianshu.io/upload_images/6476654-d582b5c044741c44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""/></p>
+
+<h2 id="toc_0">1. 什么是多页应用</h2>
+
+<p>相信很多人都知道单页面应用SPA（single page web application），那么与其相对的就是多页面应用，或者说是这种更为传统的站点——通过后端路由控制，访问不同url会由服务器吐出不同的页面与页面资源。由于SEO等一些因素，这种多页面的应用（或者说是站点更合适）如今仍然是一种非常重要的形式。</p>
+
+<p>由于近期的项目形态就是这样的，而在项目中最后选择使用了gulp作为自动化工具，但是网上的各类相关博文都比较零碎，不够系统；同时在实际应用中尤其是多页面站点中遇到的一些问题也没有特别好的实践，因此，将项目中遇到的问题和解决方案整理了一下。</p>
+
+<p>同时，借着项目中碰到的问题，也读了gulp及其一些相关库的源码，之后也会考虑写一些短文来进行交流。</p>
+
+<h2 id="toc_1">2. 什么是Gulp</h2>
+
+<p>相信大家对Gulp应该不会太陌生，用一句Gulp官方的话来说：</p>
+
+<blockquote>
+<p>Gulp就是基于流的前端自动化构建工具</p>
+</blockquote>
+
+<p>如果你完全不了解gulp，建议可以先简单浏览一下<a href="https://gulpjs.com/">gulp的官网</a></p>
+
+<blockquote>
+<p>gulp是前端开发过程中对代码进行构建的工具，是自动化项目的构建利器；它不仅能对网站资源进行优化，而且在开发过程中很多重复的任务能够使用正确的工具自动完成；使用它，我们不仅可以很愉快的编写代码，而且大大提高我们的工作效率。</p>
+</blockquote>
+
+<p>开发者可以在文件读取与输出中进行相应的操作与处理，从而使输出的文件满足生产要求，实现自动化。其核心部分主要有两块：vinyl与vinyl-fs组成的基于文件的一种objectMode流及其相关操作，以及orchestrator这个任务以来与控制系统（但是gulp4.0好像已经舍弃了它）。当然，本文不会来介绍这两部分的原理或者实现（这部分内容会放在之后的文章里），而是聚焦于其实际的项目应用。</p>
+
+<h2 id="toc_2">3. 在多页应用开发中，我们要解决什么问题</h2>
+
+<p>首先，在项目开发中，我们肯定会遇到各种依赖关系的管理。然而如果不用一些前端的依赖管理框架，浏览器是无法原生支持各种模块化规范的，而自动化工具的一大目标就是实现它们（或者说让你开发起来感觉像是实现了）。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-c78145e9df14fa47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="项目开发时的各种依赖关系"/></p>
+
+<p>上图就是我们需要面对的繁杂的依赖关系。不像单页（SPA）应用中所有的JavaScript模块都会打包为一个文件（当然可能会有一些代码拆分之类的工作，但其本质上还是将整个站点的路由等页面控制的逻辑前置到了浏览器端）；与之对应的，多页面应用则可以说是一种更为传统，通过后端路由来进行页面的跳转。</p>
+
+<p>因此与单页应用最大的不同就在于，其打包出的文件决不能是一个单一的文件（一个JavaScript文件和一个CSS文件）。页面可能会包含一些公共部分，但每个页面至少需要对应一个独立的JavaScript与一个独立的CSS文件。因此，在各种复杂的处理后，对于多页面应用，我们需要做的就是显现下图的效果。</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-071fe32a56dc9b70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"/></p>
+
+<p>其次，在管理模块化依赖之外，我们可能需要预处理一些文件。例如：将less文件编译为css文件，通过babel来使我们的es6代码能运行在不支持es6的浏览器等等。</p>
+
+<p>此外，类似在单页应用中遇到的问题，我们在多页面的情况下也会要处理。例如替换HTML中的环境变量，处理CSS中的雪碧图，甚至规避一些代码检查等等。</p>
+
+<p>最终，我们要将这些处理后的内容发布到运行目录中，实现自动化流程。</p>
+
+<h2 id="toc_3">4. 如何用Gulp来解决这些问题（workflow）</h2>
+
+<p>如果细细梳理上一节所谈及的各项目标与工作，可以发现，这是一个紧密相接的工作流程（workflow），这一节会详细讲解各个工作流程。</p>
+
+<h3 id="toc_4">4.1. JS部分</h3>
+
+<p>首先，我们来看一下JavaScript部分的工作流程：</p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-a512d598d147d565.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="JavaScript部分处理流程"/></p>
+
+<h4 id="toc_5">4.1.1. 模块化打包</h4>
+
+<p>项目使用browserify来实现CommonJS。如果用过browserify，应该不会对下面这段代码感到陌生：</p>
+
+<pre><code class="language-javascript">browserify({
+  entries: $your_entry_arr,
+  cache: {},
+  packageCache: {},
+  plugin: $your_plugin_arr
+});
+</code></pre>
+
+<p>通过设置一个（或一些）入口文件，可以将入口文件打包为一个文件。但是，在多页面应用中，最重要的有点就是，各个页面会有自己的JavaScript脚本文件。在项目开发时，在每个HTML页面中引入一个该页面特有的JavaScript脚本。例如页面list.html中通过<code>&lt;script src=&quot;../js/list.js&quot;&gt;&lt;/script&gt;</code>引入脚本。而该脚本使用CommonJS规范进行模块化。</p>
+
+<pre><code class="language-javascript">// ../js/list.js
+const button = require(&#39;./common/button&#39;);
+// 一些button的操作
+button.render(&#39;#button&#39;);
+// ……
+</code></pre>
+
+<p>因此，需要针对不同的页面，打包出多份的JavaScript文件。首先使用<code>node-glob</code>获取每个页面的入口文件，其中<code>SRC_JS_PATH</code>为JavaScript源码的路径</p>
+
+<pre><code class="language-javascript">/**
+ * 获取js入口文件路径组
+ * @return {Array} 文件路径数组
+ */
+const getEntryJsFiles = () =&gt; (
+    glob.sync(`${SRC_JS_PATH}/**/*.js`, {
+        ignore: [`${SRC_JS_PATH}/*.dist.js`, `${SRC_JS_PATH}/*.mod.js`]
+    })
+);
+</code></pre>
+
+<p>然后，对每个入口文件创建其对应的bundle对象并返回，以便于在每个bundle对象上进行后续的js任务处理</p>
+
+<pre><code class="language-javascript">let files = getEntryJsFiles();
+
+// 遍历所有入口文件，生成browserify对象
+bundleTasks = files.map(ele =&gt; ({
+  bundle: browserify({
+  entries: [ele],
+  cache: {},
+  packageCache: {},
+  plugin: [watchify]
+  }),
+  filename: ele
+}));
+</code></pre>
+
+<p>这样，我们就得到了一个<code>bundleTasks</code>，里面保存了所有页面对应的各自的入口文件的bundle对象与文件名。下面我们就会对每个bundle对象都应用上面流程图中的工序进行处理。我们先保留这个<code>bundleTasks</code>数组，来讲讲其他的工作流程。</p>
+
+<h4 id="toc_6">4.1.2. 路径修正</h4>
+
+<p>由于使用<code>node-glob</code>进行匹配，所以匹配到的路径不单单包含文件名，可能还会包含某些目录名。例如，可能想要匹配<code>list.js</code>，但是由于工作路径等原因，实际输出的路径名为<code>./page/list.js</code>。那么不进行处理会有什么问题呢？</p>
+
+<p>如果直接使用<code>gulp.dest</code>进行输出，默认会带上匹配出来的路径里面的所有片段，也就是说，我们可能只希望在dist目录下生成一个list.js文件，但实际上会生成一个page目录，目录里包含list.js文件。这就不符合我们的需求了。因此，使用<code>gulp-rename</code>进行路径调整（当然，<code>gulp-rename</code>也可以重命名文件）。</p>
+
+<p>在这里，还要推荐一个gulp工具：<code>gulp-load-plugins</code>。它可以自动帮我们加载<code>gulp-</code>开头的各类gulp插件。因此，可以很方面得进行路径调整。</p>
+
+<pre><code class="language-javascript">.pipe(plugins.rename({
+  dirname: &#39;&#39;
+}))
+</code></pre>
+
+<p>我们需要将该步处理置于打包操作之后。这里有一个需要注意的地方，由于bundle的stream是一个普通模式的stream，而gulp（vinyl）的stream则是一个objectMode的stream，因此需要一些转化与处理。这里就用到了<code>vinyl-source-stream</code>与<code>vinyl-buffer</code>两个库：</p>
+
+<pre><code class="language-javascript">const source = require(&#39;vinyl-source-stream&#39;);
+const buffer = require(&#39;vinyl-buffer&#39;);
+const plugins = require(&#39;gulp-load-plugins&#39;)();
+
+bundle
+  .pipe(source(filename))
+  .pipe(buffer())
+  .pipe(plugins.rename({ // 修正路径名称
+    dirname: &#39;&#39;
+  }))
+</code></pre>
+
+<h4 id="toc_7">4.1.3. 转码</h4>
+
+<p>虽然部分浏览器对于es6语法已经有了较好的原生支持，但是为了能更好得保证es6代码在浏览器端的正常运行，还是推荐使用babel这样的工具来使得生产环境下的代码具有很好的浏览器兼容性（转为es5）。而在gulp中只需使用<code>gulp-babel</code>插件就可以很方便地实现，只需简单几行代码：</p>
+
+<pre><code class="language-javascript">.pipe(plugins.babel({
+  presets: [&#39;env&#39;]
+}))
+</code></pre>
+
+<p>我们将该步操作置于第二步中的pipe之后。</p>
+
+<pre><code class="language-javascript">const source = require(&#39;vinyl-source-stream&#39;);
+const buffer = require(&#39;vinyl-buffer&#39;);
+const plugins = require(&#39;gulp-load-plugins&#39;)();
+
+bundle
+  .pipe(source(filename))
+  .pipe(buffer())
+  .pipe(plugins.rename({
+    dirname: &#39;&#39;
+  }))
+  .pipe(plugins.babel({ // babel
+    presets: [&#39;env&#39;]
+  }))
+</code></pre>
+
+<h4 id="toc_8">4.1.4. 禁用代码检查</h4>
+
+<p>由于项目的一些特殊原因，需要将开发时的源码和发布的生产环境代码一同上传到线上代码库，同时需要通过jslint的一些代码检查。但是发布后的代码很多时候是不符合代码规范的，因此，需要通过添加一些注释来取消对部分发布后代码的检查。</p>
+
+<p>这个插件也非常简单，通过判断文件类型，为文件头部加入特定的注释文本即可：</p>
+
+<pre><code class="language-javascript">const through = require(&#39;through2&#39;);
+const gutil = require(&#39;gulp-util&#39;);
+const path = require(&#39;path&#39;);
+const DIS_LINTER = {
+    html: &#39;&lt;!-- htmlcs-disable --&gt;&#39;,
+    css: &#39;/* csshint-disable */&#39;,
+    js: &#39;/*eslint-disable */&#39;
+};
+
+const dislint = preText =&gt; {
+  let js = new Buffer(`${DIS_LINTER[&#39;js&#39;]}\n`);
+  let css = new Buffer(`${DIS_LINTER[&#39;css&#39;]}\n`);
+  let html = new Buffer(`${DIS_LINTER[&#39;html&#39;]}\n`);
+  let buf = {
+    html,
+    css,
+    js
+  };
+
+  return through.obj((chunk, enc, cb) =&gt; {
+    let ext = &#39;&#39;;
+    try {
+      ext = path.extname(chunk.path);
+    }
+    catch (err) {
+      console.log(err);
+    }
+    ext = ext.length &gt; 0 ? ext.slice(1) : &#39;js&#39;;
+
+    // gutil.log(gutil.colors.magenta(&#39;[Disable Linter]&#39;), chunk.path);
+    let preBuf = preText &amp;&amp; preText.length &gt; 0 ? new Buffer(preText) : buf[ext];
+    if (chunk.isNull()) {
+      cb(null, chunk);
+    }
+    if (chunk.isBuffer()) {
+      chunk.contents = Buffer.concat([preBuf, chunk.contents]);
+    }
+    if (chunk.isStream()) {
+      let stream = through();
+      stream.write(preBuf);
+      chunk.contents = chunk.contents.pipe(stream);
+    }
+    cb(null, chunk);
+  });
+};
+
+module.exports = dislint;
+</code></pre>
+
+<p>使用该插件：</p>
+
+<pre><code class="language-javascript">const source = require(&#39;vinyl-source-stream&#39;);
+const buffer = require(&#39;vinyl-buffer&#39;);
+const plugins = require(&#39;gulp-load-plugins&#39;)();
+const dislint = require(&#39;./dislint&#39;);
+
+bundle
+  .pipe(source(filename))
+  .pipe(buffer())
+  .pipe(plugins.rename({
+    dirname: &#39;&#39;
+  }))
+  .pipe(plugins.babel({
+    presets: [&#39;env&#39;]
+  }))
+  .pipe(dislint()) // 取消代码检查
+</code></pre>
+
+<h4 id="toc_9">4.1.5. 添加md5戳并输出</h4>
+
+<p>为了防止用户浏览器缓存影响资源更新，可以通过添加md5戳的方式，来改变文件名称。这里用到了<code>gulp-md5Plus</code>这个插件。</p>
+
+<p>此外，在开发阶段，我们可以通过禁用浏览器缓存保证获取最新的资源，因此，在开发阶段可以禁用生成md5的功能。要根据不同的环境进行不同的操作，可以使用环境变量进行执行。<code>gulp-util</code>提供了这一功能。<code>gulp-util</code>是gulp可以看做是一个gulp的常用功能工具箱，里面包含了log、类型判断等一系列功能。</p>
+
+<p>这里，我们会在非生产环境下，使用<code>gutil.noop()</code>作为一个不进行任务处理的stream导出；而在生产环境下使用<code>gulp-md5Plus</code>来实现md5。最后，将处理后的文件输出到指定的发布目录：</p>
+
+<pre><code class="language-javascript">const source = require(&#39;vinyl-source-stream&#39;);
+const buffer = require(&#39;vinyl-buffer&#39;);
+const plugins = require(&#39;gulp-load-plugins&#39;)();
+const dislint = require(&#39;./dislint&#39;);
+const gutil = require(&#39;gulp-util&#39;);
+
+bundle
+  .pipe(source(filename))
+  .pipe(buffer())
+  .pipe(plugins.rename({
+    dirname: &#39;&#39;
+  }))
+  .pipe(plugins.babel({
+    presets: [&#39;env&#39;]
+  }))
+  .pipe(dislint())
+  .pipe(gutil.env.env === &#39;production&#39; ? plugins.md5Plus(5, `${DIST_HTML_PATH}/**/*.html`) : gutil.noop())  // md5
+  .pipe(gulp.dest(DIST_JS_PATH)) // 发布文件
+</code></pre>
+
+<h4 id="toc_10">4.1.6. 错误处理</h4>
+
+<p>由于gulp是基于stream的操作，因此使用try…catch…语法显然是无法处理抛出的异常；取而代之就需要监听stream上的error事件。但是，在代码里，我们总不能在每个<code>.pipe()</code>后加上<code>.on(&#39;error&#39;, function(){}})</code>这样的代码吧，那也太臃肿了。</p>
+
+<p>为了解决这个问题，就可以使用<code>gulp-plumber</code>插件。只需要在stream的最前面加上它，就可以了。</p>
+
+<pre><code class="language-javascript">bundle
+  .pipe(plugins.plumber(err =&gt; {
+    log(red(`[${err.plugin}]`), red(err.message));
+  }))
+  .pipe(source(filename))
+  .pipe(buffer())
+  .pipe(plugins.rename({
+    dirname: &#39;&#39;
+  }))
+  .pipe(plugins.babel({
+    presets: [&#39;env&#39;]
+  }))
+  .pipe(dislint())
+  .pipe(gutil.env.env === &#39;production&#39; ? plugins.md5Plus(5, `${DIST_HTML_PATH}/**/*.html`) : gutil.noop())  // md5
+  .pipe(gulp.dest(DIST_JS_PATH)) // 发布文件
+</code></pre>
+
+<h4 id="toc_11">4.1.7. 封装任务</h4>
+
+<p>可以看到，上面的一系列任务是每个入口js文件都会经历的，因此，我们将“路径修正--&gt;转码--&gt;禁用代码检查--&gt;md5--&gt;输出”这个流程封装为一个叫做jsTask的任务，并应用在每个bundle上。</p>
+
+<pre><code class="language-javascript">/**
+ * js任务流，具体包括：
+ * 模块打包 --&gt; 路径修正(重命名) --&gt; babel --&gt; 取消代码检查 --&gt; md5(production状态) --&gt; 产出
+ * @param {Object} bundle 各入口文件的browserify对象
+ * @param {string} filename 入口文件名
+ * @return {stream} stream 对象
+ */
+const jsTask = ({bundle, filename}) =&gt; (
+    bundle.bundle((err, buf) =&gt; {
+        if (err) {
+            // 浏览器提示
+            browserSync.notify(`[Browserify Error] ${err.message}`, 10000);
+            log(red(&#39;[Browserify Error]&#39;), red(err.message));
+        }
+    })
+    .pipe(plugins.plumber(err =&gt; {
+        log(red(`[${err.plugin}]`), red(err.message));
+    }))
+    .pipe(source(filename))
+    .pipe(buffer())
+    .pipe(plugins.rename({
+        dirname: &#39;&#39;
+    }))
+    .pipe(plugins.babel({
+        presets: [&#39;env&#39;]
+    }))
+    .pipe(dislint())
+    .pipe(gutil.env.env === &#39;production&#39; ? plugins.md5Plus(5, `${DIST_HTML_PATH}/**/*.html`) : gutil.noop())
+    .pipe(gulp.dest(DIST_JS_PATH))
+);
+</code></pre>
+
+<p><code>jsTask</code>会包装并返回整个js任务的流。基于以上代码，我们可以定义一个<code>dist:js</code>任务来发布js代码：</p>
+
+<pre><code class="language-javascript">/**
+ * 获取js入口文件路径组
+ * @return {Array} 文件路径数组
+ */
+const getEntryJsFiles = () =&gt; (
+  glob.sync(`${SRC_JS_PATH}/**/*.js`, {
+    ignore: [`${SRC_JS_PATH}/*.dist.js`, `${SRC_JS_PATH}/*.mod.js`]
+  })
+);
+
+// [发布]js代码，其中会进行js相关工作流程
+gulp.task(&#39;dist:js&#39;, cb =&gt; {
+  let files = getEntryJsFiles();
+
+  // 遍历所有入口文件，生成browserify对象
+  bundleTasks = files.map(ele =&gt; ({
+    bundle: browserify({
+      entries: [ele],
+      cache: {},
+      packageCache: {},
+      plugin: [watchify]
+    }),
+    filename: ele
+  }));
+
+  // 映射与合并js流
+  let streams = bundleTasks.map(jsTask);
+  return es.merge(streams);
+});
+
+// [删除]发布目录下的js文件
+gulp.task(&#39;del:js&#39;, () =&gt; del.sync([`${DIST_JS_PATH}/*`]));
+</code></pre>
+
+<h4 id="toc_12">4.1.8. 自动刷新浏览器</h4>
+
+<p>前端开发需要频繁修改并希望能看到浏览器中展现的情况，因此，解放你的F5显然很有必要。在项目里，可以使用<code>browserSync</code>来做到这一点。</p>
+
+<p><code>browserSync</code>可以在代码更新时自动刷新浏览器，同时还可以向浏览器推送消息进行展示。使用<code>browserSync</code>，可以建立相应的gulp任务，在第一次执行gulp时启动browserSync，并创建reload:browser任务，这样在需要的时候就能方便得触发浏览器刷新。</p>
+
+<pre><code class="language-javascript">const browserSync = require(&#39;browser-sync&#39;).create();
+
+// [启动]browserSync
+gulp.task(&#39;start:browserSync&#39;, () =&gt; browserSync.init({
+  proxy: &#39;192.168.11.23&#39;,
+  notify: true
+}));
+
+// 刷新浏览器
+gulp.task(&#39;reload:browser&#39;, cb =&gt; {
+  browserSync.reload();
+  cb();
+});
+</code></pre>
+
+<h4 id="toc_13">4.1.9. 增量发布</h4>
+
+<p>上面介绍了对于一个js入口文件的整套工作流。然而在实际开发中，我们在修改了某一个文件之后，并不需要将所有的代码全量再发布一遍，如果能每次只增量得发布与修改相关的js代码，会在开发体验与效率上有较大的提升。</p>
+
+<p>同时，结合<code>browserSync</code>可以让你的开发效率极大获得提升。为此，我们需要<code>watchify</code>来进行文件监听，并将其作为<code>browserify</code>的插件，实现文件的增量打包编译。通过监听每个bundle的update事件，可以在文件更新时重新打包并处理发布，最后到stream触发end事件（处理完成）时刷新浏览器。</p>
+
+<pre><code class="language-javascript">/**
+ * 监听各个browserify对象的update事件
+ * 在模块更新时按需打包
+ * @param {Object} bundle 各入口文件的browserify对象
+ * @param {string} filename 入口文件名
+ */
+const addBundleTaskListeners = ({bundle, filename}) =&gt; {
+  bundle.on(&#39;update&#39;, () =&gt; {
+    log(blue(&#39;[Browserify Update]&#39;), filename);
+    let sm = jsTask({bundle, filename});
+    // 打包完成后刷新浏览器（错误不刷新，保留notify）
+    sm.on(&#39;end&#39;, () =&gt; runSequence(&#39;reload:browser&#39;));
+  });
+};
+
+// [监听]为所有入口文件对应的browserify对象添加update监听
+gulp.task(&#39;watch:js&#39;, () =&gt; {
+  bundleTasks.forEach(item =&gt; {
+    addBundleTaskListeners(item);
+  });
+});
+</code></pre>
+
+<h3 id="toc_14">4.2. HTML部分</h3>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-826361fea7518d59.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HTML部分处理流程"/></p>
+
+<p>HTML部分主要包括两个工作：文件内变量的替换与文件路径的修正。</p>
+
+<h4 id="toc_15">4.2.1. 替换文件内变量</h4>
+
+<p>在开发中，经常会有类似这样的需求：<br/>
+- 在开发环境下，我们会引用一些开发机上的静态资源；然而在生产环境中，则需要替换成线上的CDN地址。<br/>
+- 协同开发下，不同的开发人员可能会使用不同的资源路径。<br/>
+- 为每个HTML设置title内容，其中一部分为统一文字，例如：我的主页——贡献列表、我的主页——个人设置…尤其在开发中，“我的主页”可能突然要被换成“个人中心”之类的…<br/>
+- HTML中其他不常更改但可能需要各处统一的部分…</p>
+
+<p>上面这些需求我们当然可以通过手工替换的方式开解决，它们本身并无太多技术含量，但很浪费开发人员的精力，并且还可能因为粗心大意产生错误或遗漏。因此如果能在gulp中自动替换这些变量，必然会节省很多麻烦。</p>
+
+<p>参考一些其他工具或脚手架里的功能，我们的目标效果是：在项目根目录下定义这些变量（例如在.env或.env.local文件中）</p>
+
+<pre><code>$ONE_CDN$=http://cp01-test.XXXX.com
+$ONE_TITLE$=我的主页
+</code></pre>
+
+<p>然后在HTML中直接使用</p>
+
+<pre><code class="language-xml">&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;$ONE_TITLE$——贡献列表&lt;/title&gt;
+    &lt;link rel=&quot;shortcut icon&quot; href=&quot;/img/icon.png&quot; /&gt;
+
+    &lt;script src=&quot;$ONE_CDN$/vendors/bower_components/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;$ONE_CDN$/vendors/bower_components/bootstrap/dist/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;$ONE_CDN$/js/app.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;$ONE_CDN$/vendors/bower_components/animate.css/animate.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;$ONE_CDN$/vendors/bower_components/bootstrap/dist/js/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    ……
+&lt;/head&gt;
+</code></pre>
+
+<p>下面，就要需要一个方法能够读取出.env和.env.local文件中的所有变量（默认先使用.env.local，可以理解为.env.local会覆盖.env中的同名变量）</p>
+
+<pre><code class="language-javascript">/**
+ * trim
+ * @param {string} str 待处理字符串
+ * @return {string} 处理后的字符串
+ */
+const trim = str =&gt; str.replace(/(^\s*)|(\s*$)/g, &#39;&#39;);
+
+/**
+ * 获取文件中的环境变量
+ * @return {Object} 环境变量map
+ */
+const getEnv = () =&gt; {
+    let prepare = [&#39;.env.local&#39;, &#39;.env&#39;];
+    let env = {};
+
+    /**
+     * 检查.env中变量名是否合法
+     * 全部使用大写字母，用_连接，第一个单词为ONE，首尾使用$
+     * @param {string} key 待检查的变量名
+     * @return {boolean} 检查结果，合法true，非法false
+     */
+    function envCheck(key) {
+        return /^\$ONE(_[A-Z]+)+\$$/.test(key);
+    }
+
+    /**
+     * 读取文件中的变量
+     * @param {string} filename 配置文件
+     * @return {Object} 配置变量
+     */
+    function readEnvFile(filename) {
+        let env = {};
+        try {
+            let filepath = path.resolve(&#39;.&#39;, filename);
+            if (fs.existsSync(filepath) &amp;&amp; fs.statSync(filepath).isFile()) {
+                fs.readFileSync(filepath, &#39;utf-8&#39;)
+                    .split(/\r?\n/)
+                    .filter(ele =&gt; ele !== &#39;&#39;)
+                    .forEach(ele =&gt; {
+                        let pairs = ele.split(&#39;=&#39;);
+                        let key = trim(pairs[0]);
+                        let value = trim(pairs[1]);
+                        if (envCheck(key)) {
+                            env[key] = value;
+                        }
+                        else {
+                            log(red(&#39;[env]&#39;), `无效的变量名: ${key}`, &#39;tip: 全部使用大写字母，用_连接，第一个单词为ONE，首尾使用$&#39;);
+                        }
+                    });
+            }
+        }
+        catch (err) {
+            log(red(&#39;[env]&#39;), &#39;读取env变量出错&#39;, err);
+        }
+        finally {
+            return env;
+        }
+    }
+
+    let envArr = [{}];
+    // 优先寻找本地配置.env.local
+    while (prepare.length) {
+        // 生产环境下优先使用.env
+        let filename = gutil.env.env === &#39;production&#39; ? prepare.shift() : prepare.pop();
+        envArr.push(readEnvFile(filename));
+    }
+
+    return Object.assign.apply(null, envArr);
+};
+</code></pre>
+
+<p><code>getEnv()</code>方法可以读取所有定义的环境变量，并保存为一个键值对形式的对象，键名是变量名，值则是变量的值</p>
+
+<pre><code class="language-javascript">// getEnv()
+{
+  &#39;ONE_CDN&#39;: &#39;http://cp01-test.XXXX.com&#39;,
+  &#39;ONE_TITLE&#39;: &#39;我的主页&#39;
+}
+</code></pre>
+
+<p>由于要替换文件内容，我们可以使用<code>event-stream</code>库来进行stream的操作。使用其中的<code>.replace()</code>方法来替换文件内容，代码片段如下：</p>
+
+<pre><code class="language-javascript">const es = require(&#39;event-stream&#39;);
+
+let pipe = fs.createReadStream(sourceFile);
+
+// 添加管道，替换.env中的环境变量
+for (let k in envMap) {
+  pipe = pipe.pipe(es.replace(k, envMap[k]));
+}
+</code></pre>
+
+<h4 id="toc_16">4.4.2. 修正文件路径</h4>
+
+<p>类似JavaScript中的文件路径修正操作，在HTML中同样使用<code>gulp-rename</code>来实现，路径修正部分代码片段如下：</p>
+
+<pre><code class="language-javascript">// 路径格式化正则
+let reg = new RegExp(`^${path.relative(&#39;.&#39;, SRC_HTML_PATH)}`);
+
+return (
+  pipe.pipe(source(sourceFile))
+    .pipe(dislint())
+    .pipe(plugins.rename(p =&gt; {
+      // 格式化目标路径
+      p.dirname = p.dirname.replace(reg, &#39;&#39;);
+    }))
+    .pipe(gulp.dest(DIST_HTML_PATH))
+);
+</code></pre>
+
+<h4 id="toc_17">4.2.3. 封装任务</h4>
+
+<p>将变量替换与文件路径修正两部分代码封装为一个任务函数<code>htmlTask</code></p>
+
+<pre><code class="language-javascript">/**
+ * html发布任务
+ * @param {string} sourceFile 需要发布的目标html文件
+ * @return {stream} 文件流
+ */
+const htmlTask = sourceFile =&gt; {
+  let pipe = fs.createReadStream(sourceFile);
+
+  // 添加管道，替换.env中的环境变量
+  for (let k in envMap) {
+    pipe = pipe.pipe(es.replace(k, envMap[k]));
+  }
+
+  // 路径格式化正则
+  let reg = new RegExp(`^${path.relative(&#39;.&#39;, SRC_HTML_PATH)}`);
+
+  return (
+    pipe.pipe(source(sourceFile))
+      .pipe(dislint())
+      .pipe(plugins.rename(p =&gt; {
+        // 格式化目标路径
+        p.dirname = p.dirname.replace(reg, &#39;&#39;);
+      }))
+      .pipe(gulp.dest(DIST_HTML_PATH))
+  );
+};
+</code></pre>
+
+<p>在此基础上，创建一个gulp任务用于HTML文件的发布</p>
+
+<pre><code class="language-javascript">// [发布]html页面
+gulp.task(&#39;dist:html&#39;, () =&gt; {
+  let files = glob.sync(`${SRC_HTML_PATH}/**/*.html`);
+  let streams = files.map(htmlTask);
+  return es.merge(streams);
+});
+</code></pre>
+
+<p>同时，还需要把已有的文件删除，这里用到了<code>del</code>这个包</p>
+
+<pre><code class="language-javascript">const del = require(&#39;del&#39;);
+
+// [删除]发布目录额下的html文件
+gulp.task(&#39;del:html&#39;, () =&gt; del.sync([`${DIST_HTML_PATH}/*`]));
+</code></pre>
+
+<h3 id="toc_18">4.3. CSS部分</h3>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/6476654-ff7268e61e149d78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CSS部分处理流程"/></p>
+
+<p>CSS部分的处理流程中大部分与之前的操作大同小异，其中最主要的区别是在CSS中使用到<code>gulp-less</code>插件与<code>gulp-minify-css</code>插件分别对less文件进行预处理与压缩</p>
+
+<pre><code class="language-javascript">gulp.src(`${SRC_CSS_PATH}/**/*.less`) //多个文件以数组形式传入
+  .pipe(less())
+  .pipe(minifyCss())
+  .pipe(gulp.dest(&#39;dist/css&#39;)); 
+</code></pre>
+
+<p>最终CSS部分的处理任务如下：</p>
+
+<pre><code class="language-javascript">// [删除]发布目录下的css文件
+gulp.task(&#39;del:css&#39;, () =&gt; del.sync([`${DIST_CSS_PATH}/*`]));
+
+// [发布]css文件
+gulp.task(&#39;dist:css&#39;, function () {
+  gulp.src(`${SRC_CSS_PATH}/**/*.less`) 
+    .pipe(plugins.rename({
+        dirname: &#39;&#39;
+    }))
+    .pipe(less())
+    .pipe(minifyCss())
+    .pipe(gulp.dest(&#39;dist/css&#39;)); 
+});
+</code></pre>
+
+<h2 id="toc_19">4.4. 组合与管理这些任务</h2>
+
+<p>我们定义上面一系列的任务，但最终的目标是将这些任务组合起来，让他们变成一条指令（或某几条指令）。为了更好得组织任务依赖，控制任务流程，我们使用<code>run-sequence</code>来控制这些任务的执行。</p>
+
+<p>最常见的，首先是在开发时，希望输入<code>gulp</code>就可以进入开发模式，能够监听变化并自动刷新浏览器。</p>
+
+<pre><code class="language-javascript">// [监听]为所有入口文件对应的browserify对象添加update监听
+gulp.task(&#39;watch:js&#39;, () =&gt; {
+  bundleTasks.forEach(item =&gt; {
+    addBundleTaskListeners(item);
+  });
+});
+
+// [监听]更新CSS
+gulp.task(&#39;watch:css&#39;, () =&gt; {
+  gulp.watch([&#39;!**/gulpfile.js&#39;, &#39;src/**/*.css&#39;], () =&gt; {
+    runSequence(
+      &#39;del:css&#39;,
+      &#39;dist:css&#39;,
+      &#39;reload:browser&#39;
+    );
+  });
+  cb();
+});
+
+// [启动]browserSync
+gulp.task(&#39;start:browserSync&#39;, () =&gt; browserSync.init({
+  proxy: &#39;192.168.11.23&#39;,
+  notify: true
+}));
+
+// 刷新浏览器
+gulp.task(&#39;reload:browser&#39;, cb =&gt; {
+  browserSync.reload();
+  cb();
+});
+
+// [监听]html文件变化
+gulp.task(&#39;watch:html&#39;, cb =&gt; {
+  // 监听html变化，全量发布新html
+  gulp.watch([&#39;!**/gulpfile.js&#39;, &#39;src/**/*.html&#39;], () =&gt; {
+    runSequence(
+      &#39;del:html&#39;,
+       &#39;dist:html&#39;,
+      &#39;reload:browser&#39;
+    );
+  });
+  cb();
+});
+
+// 发布模式
+// build任务，进行项目资源发布
+gulp.task(&#39;build&#39;, cb =&gt; {
+  runSequence(
+    [&#39;del:html&#39;, &#39;del:js&#39;],
+    &#39;dist:html&#39;,
+    &#39;dist:js&#39;,
+    cb
+  );
+});
+
+// 开发模式
+// 执行发布，并进行监听
+gulp.task(&#39;default&#39;, cb =&gt; {
+  runSequence(
+    &#39;build&#39;,
+    &#39;start:browserSync&#39;,
+    [&#39;watch:js&#39;, &#39;watch:html&#39;, &#39;watch:css&#39;],
+    cb
+  );
+});
+</code></pre>
+
+<p>当然，常用的还有发布任务</p>
+
+<pre><code class="language-javascript">// 发布模式
+// 构建资源发布，并退出gulp进程
+gulp.task(&#39;dist&#39;, cb =&gt; {
+  gutil.env.env = gutil.env.env === undefined ? &#39;production&#39; : gutil.env.env;
+  runSequence(
+    &#39;build&#39;,
+    () =&gt; {
+      cb();
+      process.nextTick(process.exit);
+    }
+  );
+});
+</code></pre>
+
+<h2 id="toc_20">总结</h2>
+
+<p>文章里主要整理了我在项目中用到的一些解决方案与实践方法。其中也还存在一些不足，例如HTML与CSS的增量发布等，这些都是之后可以再进行优化的地方。</p>
+
+<p>完。</p>
+
+<hr/>
+
+<h2 id="toc_21">Happy Coding！</h2>
+
+<hr/>
+
+
+		</div>
+	
+
+  
+  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>

@@ -1,0 +1,706 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  js控制input框内光标位置（setSelectionRange详解） - AlienZHOU's blog
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="AlienZHOU's blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">AlienZHOU's blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; AlienZHOU's blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>PWA</label></li>
+
+          
+            <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+          
+            <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+          
+            <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+          
+            <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React</label></li>
+
+          
+            <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+          
+            <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>CSS</label></li>
+
+          
+            <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+          
+            <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+          
+            <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Server</label></li>
+
+          
+            <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Automation</label></li>
+
+          
+            <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>FE else</label></li>
+
+          
+            <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+          
+            <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+          
+            <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React</span></li>
+                        
+                          <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+                        
+                          <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>CSS</span></li>
+                        
+                          <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+                        
+                          <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+                        
+                          <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Server</span></li>
+                        
+                          <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Automation</span></li>
+                        
+                          <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>FE else</span></li>
+                        
+                          <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+                        
+                          <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+                        
+                          <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>js控制input框内光标位置（setSelectionRange详解）</h1>
+
+<h2 id="toc_0">问题描述</h2>
+
+<p>前段时间碰到一个需求：在表单中有一个字段叫金额，用户希望点击该输入框后（focus），能够自动为其金额数字后加上“万元”两个字。</p>
+
+<p>虽然这个需求可以通过其他的设计方式规避（例如在文本框后加入“万元”等），但是，既然碰到了问题，肯定还是希望能够研究一下技术解决方式。</p>
+
+<p>对这个需求进行抽象，其实需要完成的任务就是：通过js来控制输入框内光标的位置。要完成这个任务，需要介绍一个input元素的方法：<br/>
+<code>HTMLInputElement.setSelectionRange()</code></p>
+
+<h2 id="toc_1">setSelectionRange</h2>
+
+<h3 id="toc_2">介绍</h3>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/setSelectionRange">在MDN上可以找到setSelectionRange()的官方介绍。</a>其官方解释如下：</p>
+
+<blockquote>
+<p>The HTMLInputElement.setSelectionRange() method sets the start and end positions of the current text selection in an <input> element.</p>
+</blockquote>
+
+<p>翻译过来就是：首先，setSelectionRange()方法是作用在input元素上的，其次，这个方法可以为当前元素内的文本设置备选中范围（selection）。简单来说，就是可以通过设置起始于终止位置，来选中一段文本中的一部分。值得一提的是，在新版中，该方法还接受一个可选参数，这个参数指定的选择的方向。</p>
+
+<h3 id="toc_3">使用方式</h3>
+
+<p>其使用方式如下：</p>
+
+<pre><code class="language-javascript">inputElement.setSelectionRange(selectionStart, selectionEnd, [optional] selectionDirection);
+</code></pre>
+
+<ul>
+<li><strong>selectionStart</strong>：第一个被选中的字符的序号（index），从0开始。</li>
+<li><strong>selectionEnd</strong>：被选中的最后一个字符的前一个。换句换说，不包括index为selectionEnd的字符。</li>
+<li><strong>selectionDirection</strong>：选择的方向。可选值为forward、backward或none。</li>
+</ul>
+
+<p>来做一个简单的实例（<a href="http://codepen.io/AlienZHOU/full/amzByz/">在线浏览</a>），当选中一个文本框时，文本框内的文字将会被选中。可以使用点击（click）输入框的方式，也可以使用tab切换焦点的方式，其效果如下：<br/>
+<img src="http://upload-images.jianshu.io/upload_images/6476654-5c5b883ece246b51?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果图"/><br/>
+实现代码如下<br/>
+<strong>备注：本文中事件监听未使用兼容写法，读者可自行补全</strong></p>
+
+<pre><code class="language-java">&lt;form&gt;
+  &lt;label&gt;这个input在focus时，内部文本会被选中&lt;/label&gt;
+  &lt;input id=&quot;test&quot; placeholder=&quot;万元&quot; value=&quot;这是一段测试文本&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<pre><code class="language-css">body {
+  background-color: #f6f6f6;
+}
+
+form {
+  padding: 30px;
+}
+
+input {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: #333333;
+  border: 1px solid #555555;
+  border-radius: 5px;
+}
+</code></pre>
+
+<pre><code class="language-javascript">document.getElementById(&#39;test&#39;).addEventListener(&#39;focus&#39;, function() {
+  changeCursorPos(&#39;test&#39;);
+});
+
+function changeCursorPos(inputId, pos) {
+  var inpObj = document.getElementById(inputId);
+  if (inpObj.setSelectionRange) {
+    inpObj.setSelectionRange(0, inpObj.value.length);
+  }
+}
+</code></pre>
+
+<p>其中最重要的部分是</p>
+
+<pre><code class="language-javascript">inpObj.setSelectionRange(0, inpObj.value.length);
+</code></pre>
+
+<p>这段代码会从第一个字符开始，到最后一个字符结束，选中输入框内的所有内容。</p>
+
+<h3 id="toc_4">兼容性</h3>
+
+<p>那么，这个方法的兼容性怎么样呢？</p>
+
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th style="text-align: center">Chrome</th>
+<th style="text-align: center">Edge</th>
+<th style="text-align: center">Firefox(Gecko)</th>
+<th style="text-align: center">Internet Explorer</th>
+<th style="text-align: center">Opera</th>
+<th style="text-align: center">Safari</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Basic support</td>
+<td style="text-align: center">1.0</td>
+<td style="text-align: center">(Yes)</td>
+<td style="text-align: center">1.0 (1.7 or earlier)</td>
+<td style="text-align: center">9</td>
+<td style="text-align: center">8.0</td>
+<td style="text-align: center">(Yes)</td>
+</tr>
+<tr>
+<td>selectionDirection</td>
+<td style="text-align: center">15</td>
+<td style="text-align: center">(Yes)</td>
+<td style="text-align: center">8.0 (8.0)</td>
+<td style="text-align: center">?</td>
+<td style="text-align: center">?</td>
+<td style="text-align: center">(Yes)</td>
+</tr>
+</tbody>
+</table>
+
+<p>可以看到，对于基本的功能，主流浏览器的常用版本（及以上）都有着较好的支持，而selectionDirection作为附加功能，虽然兼容性一般，但是不会影响对于该方法的使用。因此，可以在一定的场景下可以放心使用<code>setSelectionRange()</code>。</p>
+
+<h2 id="toc_5">控制光标位置</h2>
+
+<h3 id="toc_6">初步测试</h3>
+
+<p>以上介绍了inputElement.setSelectionRange()的含义与使用方式，然而，我的目标需求是控制输入框内的光标位置，而不是选中输入框内的部分文本。所以，上面介绍的这些和我的目标需求有关系么？<br/>
+有。<br/>
+回到上一部分的实例代码，我们可以将关键代码进行一定的修改</p>
+
+<pre><code class="language-javascript">inpObj.setSelectionRange(0, inpObj.value.length-1);//修改了selectionEnd的值
+</code></pre>
+
+<p>修改之后的结果如下<br/>
+<img src="http://upload-images.jianshu.io/upload_images/6476654-444ef081d4722b1d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="这里写图片描述"/><br/>
+可以明显看到，选中文本区域改变了。那么更进一步问自己一个问题，此时的光标实际停留的位置在哪——“文”字后面。因此，不难发现，代码成功将本该处于文本末端（&quot;本&quot;字后面）的光标，移动至了其前一个字符“文”的后方。通过设置不同的selection，js能够成功将光标设置在不同的字符后方（其实是selection选区的后方）。<br/>
+有了这个结论，可以进一步猜想，如果将选区的范围设置为0，那么则不会有文字被选中，同时，还可以控制光标的所处位置。显然，这个就是能够满足我需求的点。<br/>
+为了测试这个功能，我写了一个<a href="http://codepen.io/AlienZHOU/full/QKwGJz/">简单的例子</a>。</p>
+
+<p>代码如下</p>
+
+<pre><code class="language-html">&lt;form&gt;
+  &lt;label&gt;这个input在focus时，光标会移动至文本的开头处&lt;/label&gt;&lt;input id=&quot;test&quot; placeholder=&quot;万元&quot; value=&quot;这是一段测试文本&quot;&gt;
+&lt;/form&gt;
+
+</code></pre>
+
+<pre><code class="language-css">body {
+  background-color: #f6f6f6;
+}
+
+form {
+  padding: 30px;
+}
+
+input {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: #333333;
+  border: 1px solid #555555;
+  border-radius: 5px;
+}
+</code></pre>
+
+<pre><code class="language-javascript">document.getElementById(&#39;test&#39;).addEventListener(&#39;focus&#39;, function() {
+  changeCursorPos(&#39;test&#39;)
+});
+
+function changeCursorPos(inputId, pos) {
+  var inpObj = document.getElementById(inputId);
+  if (inpObj.setSelectionRange) {
+    inpObj.setSelectionRange(0, 0);
+  }
+}
+</code></pre>
+
+<p>测试浏览器firefox（chrome请使用tab来切换焦点，具体原因后半部分会进一步解释）。实现结果与预期一致，光标被定位在了文本的最前方。</p>
+
+<h3 id="toc_7">实现</h3>
+
+<pre><code class="language-html">&lt;form&gt;
+  &lt;label&gt;自动添加“万元”单位的input&lt;/label&gt;
+  &lt;input id=&quot;money&quot; name=&quot;money&quot; placeholder=&quot;万元&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<pre><code class="language-css">body {
+  background-color: #f6f6f6;
+}
+
+form {
+  padding: 30px;
+}
+
+input {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  font-size: 15px;
+  color: #333333;
+  border: 1px solid #555555;
+  border-radius: 5px;
+}
+</code></pre>
+
+<pre><code class="language-javascript">document.getElementById(&#39;money&#39;).addEventListener(&#39;focus&#39;, function(e) {
+  e.preventDefault();
+  var val = this.value,
+    len = val.length;
+  if (val.indexOf(&#39;万元&#39;) !== -1) {
+    pos = len - 2;
+    changeCursorPos(&#39;money&#39;, pos);
+  } else {
+    $(this).val(val + &#39;万元&#39;);
+    pos = len;
+    changeCursorPos(&#39;money&#39;, pos);
+  }
+});
+
+function changeCursorPos(inputId, pos) {
+  var inpObj = document.getElementById(inputId);
+  if (inpObj.setSelectionRange) {
+    inpObj.setSelectionRange(pos, pos);
+  } else {
+    console.log(&#39;不兼容该方法&#39;);
+  }
+}
+</code></pre>
+
+<h2 id="toc_8">BUG fix</h2>
+
+<p>理论上来说，我已经完成了目标需求，在firefox下点击输入框或用tab、chrome下使用tab都可以实现功能。但是，我在上面也提到了，chrome中，只能使用tab，如果你用点击输入框的方式进行测试，会发现，这个方法失效了，光标仍然处于文本的末尾。<br/>
+造成这个问题的原因是chrome存在的一个bug：<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=32865">setSelectionRange() for input/textarea during onFocus fails when mouse clicks</a><br/>
+这个bug似乎是由于chrome中默认的事件处理顺序引起的，有人提到</p>
+
+<blockquote>
+<p>WebKit and Blink handle tasks for mousedown in the following order:<br/>
+ 1. Focus<br/>
+ 2. Selection<br/>
+The order looks reversed in other browsers</p>
+</blockquote>
+
+<p>chrome默认的selection操作将会覆盖focus中的js操作代码。为了解决这个问题，第一个想到的就是阻止浏览器默认行为</p>
+
+<pre><code class="language-javascript">e.prevenDefault();
+//return false;
+</code></pre>
+
+<p>然而，尝试之后发现，阻止浏览器默认行为在这个问题上并不生效。需要寻求其他方法。</p>
+
+<h3 id="toc_9">最初的解决方法</h3>
+
+<p>解决这个问题的第一个思路就是，将<code>changeCursorPos()</code>这个方法的启动时间延迟，最好能够在浏览器默认行为之后。这个实现非阻塞有异曲同工之处，因此，可以使用定时器setTimeout来改变其在队列中的顺序</p>
+
+<pre><code class="language-javascript">setTimeout(function(){
+    changeCursorPos(&#39;money&#39;, pos);
+}, 0);
+</code></pre>
+
+<p>针对这个改动，只需要将原js代码中的</p>
+
+<pre><code class="language-javascript">changeCursorPos(&#39;money&#39;, pos);
+</code></pre>
+
+<p>全部替换为</p>
+
+<pre><code class="language-javascript">setTimeout(function(){
+    changeCursorPos(&#39;money&#39;, pos);
+}, 0);
+</code></pre>
+
+<p>其效果可以<a href="http://codepen.io/AlienZHOU/full/ALjOXK/">在线观看</a></p>
+
+<p>然而，我在测试时发现，这个方法存在以下两个重要问题：</p>
+
+<ul>
+<li>效果较差。光标会先处于文本尾部，在跳至文本开头，对用户显示不友好。</li>
+<li>失效。更重要的问题是，即使使用setTimeout也不能保证将changeCursorPos操作最后执行，可以发现，在测试中，时常会出现其失效的情况。</li>
+</ul>
+
+<h3 id="toc_10">解决失效问题</h3>
+
+<p>要解决失效问题，其实就是要保证将changeCursorPos的执行顺序添加至最后。需要了解，在鼠标点击与tab切换时，这两个操作之间的区别。</p>
+
+<p>在tab切换时，相当于调用了<code>inputElement.focus()</code>，或者准确地说，在使用<code>setSelectionRange()</code>时两者的操作结果相同。而当使用鼠标点击选择输入框时，不仅会触发<code>focus</code>监听，还会触发一个<code>click</code>监听，而且通过测试可以发现，<code>click</code>事件触发晚于<code>focus</code>事件。</p>
+
+<p>因此，如果在<code>click</code>监听中也添加<code>changeCursorPos</code>操作，就可以保证该操作不会被chrome的默认行为覆盖掉。</p>
+
+<p>html与css不变，js代码如下</p>
+
+<pre><code class="language-javascript">//为input添加一个click监听，保证changeCursorPos在chrome默认focus事件之后执行
+document.getElementById(&#39;money&#39;).addEventListener(&#39;click&#39;, function(e) {
+  var val = this.value;
+  var len = val.length;
+  if (val.indexOf(&#39;万元&#39;) !== -1) {
+    pos = len - 2;
+    setTimeout(function() {
+      changeCursorPos(&#39;money&#39;, pos);
+    }, 0);
+  }
+  else {
+    $(this).val(val + &#39;万元&#39;);
+    pos = len;
+    setTimeout(function() {
+      changeCursorPos(&#39;money&#39;, pos);
+    }, 0);
+  }
+});
+
+//保留focus监听，确保tab的正确使用
+document.getElementById(&#39;money&#39;).addEventListener(&#39;focus&#39;, function(e) {
+  var val = this.value;
+  var len = val.length;
+  if (val.indexOf(&#39;万元&#39;) !== -1) {
+    pos = len - 2;
+    setTimeout(function() {
+      changeCursorPos(&#39;money&#39;, pos);
+    }, 0);
+  } else {
+    $(this).val(val + &#39;万元&#39;);
+    pos = len;
+    setTimeout(function() {
+      changeCursorPos(&#39;money&#39;, pos);
+    }, 0);
+  }
+});
+
+function changeCursorPos(inputId, pos) {
+  var inpObj = document.getElementById(inputId);
+  if (inpObj.setSelectionRange) {
+    inpObj.setSelectionRange(pos, pos);
+  } else {
+    console.log(&#39;不兼容该方法&#39;);
+  }
+}
+</code></pre>
+
+<p><a href="http://codepen.io/AlienZHOU/full/kkYgkP/">点击查看实例</a></p>
+
+<p>然而，再来看看之前碰到的两个问题：</p>
+
+<blockquote>
+<ul>
+<li>效果较差。光标会先处于文本尾部，在跳至文本开头，对用户显示不友好。</li>
+<li>失效。更重要的问题是，即使使用setTimeout也不能保证将changeCursorPos操作最后执行，可以发现，在测试中，时常会出现其失效的情况。</li>
+</ul>
+</blockquote>
+
+<p>可见，上一部分代码已经解决了失效的问题，保证了功能的实现。然而，这个方案还不完美，其效果差的问题仍然没有解决。因此，还需要找一个更完美的实现方案。</p>
+
+<h3 id="toc_11">最终的解决方案</h3>
+
+<p>最终的解决方案的思路如下：</p>
+
+<ol>
+<li>通过文档的按键监听来判断是使用tab操作还是鼠标点击操作，并设置标志位</li>
+<li>当触发focus监听时，判断操作方式，如果focus事件的来源为tab操作则转执行changeCursorPos，否则使其失去焦点</li>
+<li>在click监听中手动触发focus事件，并将设置标志，模拟tab行为</li>
+</ol>
+
+<p>代码如下</p>
+
+<pre><code class="language-html">&lt;form&gt;
+  &lt;label&gt;解决chrome中点击input的bug的方案&lt;/label&gt;
+  &lt;input id=&quot;exception&quot; placeholder=&quot;exception&quot;&gt;
+  &lt;input id=&quot;money&quot; name=&quot;money&quot; placeholder=&quot;万元&quot;&gt;
+&lt;/form&gt;
+</code></pre>
+
+<pre><code class="language-css">body {
+  background-color: #f6f6f6;
+}
+
+form {
+  padding: 30px;
+}
+
+input {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 15px;
+    color: #333333;
+    border: 1px solid #555555;
+    border-radius: 5px;
+  }
+</code></pre>
+
+<pre><code class="language-javascript">var tab = false;
+document.addEventListener(&#39;keydown&#39;, function(e) {
+  if (e.keyCode == 9) {
+    tab = true;
+  }
+});
+document.getElementById(&#39;exception&#39;).addEventListener(&#39;focus&#39;, function() {
+  tab = false;
+});
+document.getElementById(&#39;money&#39;).addEventListener(&#39;click&#39;, function() {
+  tab = true;
+  this.focus();
+});
+
+document.getElementById(&#39;money&#39;).addEventListener(&#39;focus&#39;, function() {
+  if (tab) {
+    var val = this.value,
+      len = val.length;
+    if (val.indexOf(&#39;万元&#39;) !== -1) {
+      pos = len - 2;
+      setTimeout(function() {
+        changeCursorPos(&#39;money&#39;, pos);
+      }, 0);
+    } else {
+      $(this).val(val + &#39;万元&#39;);
+      pos = len;
+      setTimeout(function() {
+        changeCursorPos(&#39;money&#39;, pos);
+      }, 0);
+    }
+  } else {
+    this.blur();
+  }
+  tab = false;
+});
+
+function changeCursorPos(inputId, pos) {
+  var inpObj = document.getElementById(inputId);
+  if (inpObj.setSelectionRange) {
+    inpObj.setSelectionRange(pos, pos);
+  } else {
+    console.log(&#39;不兼容该方法&#39;);
+  }
+}
+</code></pre>
+
+<p><a href="http://codepen.io/AlienZHOU/full/wWKgwM/">在线演示</a></p>
+
+<p>可以看到，在演示代码中，使用了<code>tab</code>变量作为标志，代码复用性较低，不太好，在实际项目中可以使用一些闭包或模块方式来进行处理，做成一个更加通用的功能。此处抛砖引玉，主要是展示实现的思路。</p>
+
+<h2 id="toc_12">总结</h2>
+
+<p><code>setSelectionRange()</code>方法可以帮助我们很容易的选中文本中的某一部分内容。同时，活用该方法也可以实现设置光标位置的功能。然而，chrome中存在的一个小bug导致该功能在鼠标点击时失效。文中研究了修复该bug的一些方法。然而作为抛砖引用，还是期待更多简便与解决方案。</p>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15236396803035.html"  title="Previous Post: 【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS">&laquo; 【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15236392559880.html" 
+	        title="Next Post: 基于react技术栈的单页应用(SPA)搭建_快速入门实践">基于react技术栈的单页应用(SPA)搭建_快速入门实践 &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15236405992551.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
