@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  【PWA学习与实践】(4) 解决FireBase login验证失败问题 - AlienZHOU's blog
+  Reading - AlienZHOU's blog
   
   </title>
  <meta name="description" content="">
@@ -245,168 +245,182 @@
             </div>
             <div class="large-9 medium-9 columns">
 
- <div class="markdown-body">
-<h1>【PWA学习与实践】(4) 解决FireBase login验证失败问题</h1>
+ 
 
-<p>本文是《PWA学习与实践》系列的第四篇。是我在测试其他demo时遇到的一个问题，算是一篇TroubleShooting。</p>
 
-<p><img src="media/15235166926023/15235167217543.jpg" alt=""/></p>
+	
+		<div class="markdown-body">
+		<h1>推荐阅读 2018.06</h1>
 
-<p>PWA作为今年最火热的技术概念之一，对提升Web应用的安全、性能和体验有着很大的意义，非常值得我们去了解与学习。</p>
+		<h2 id="toc_0">Week 1</h2>
 
-<p>本系列文章《PWA学习与实践》会逐步拆解PWA背后的各项技术，通过实例代码来讲解这些技术的应用方式。也正是因为PWA中技术点众多、知识细碎，因此我在学习过程中，进行了整理，并产出了《PWA学习与实践》系列文章，希望能带大家全面了解PWA中的各项技术。对PWA感兴趣的朋友欢迎关注。</p>
+<h4 id="toc_1"><a href="https://blog.sessionstack.com/how-javascript-works-the-rendering-engine-and-tips-to-optimize-its-performance-7b95553baeda">1、How JavaScript works: the rendering engine and tips to optimize its performance</a></h4>
 
-<h2 id="toc_0">引言</h2>
+<p>介绍了浏览器中的重要组成部分：渲染引擎。并且提出了优化rendering的一些建议</p>
 
-<p>在前一篇文章《让你的WebApp离线可用》中，我们使用Service Worker来做缓存与离线支持。是有一个重要的问题：<strong>Service Worker必须要在HTTPS协议下才能运行（或者localhost）</strong>。当然，对于一些只有前端资源（不涉及后端服务）的demo，我们完全可以将这些前端（静态资源）托管在一个HTTPS服务下，使得Service Worker可以使用。我选择了google的<a href="https://firebase.google.com/">FireBase</a>来托管demo（其实github page也是个不错的选择）。</p>
+<h5 id="toc_2">JavaScript</h5>
 
-<p>使用FireBase非常简单，只需要<code>firebase login</code> --&gt;<code>firebase init</code>--&gt;<code>firebase deploy</code>即可。但是在<code>firebase login</code>的过程中，遇到了一些问题。这篇文章主要总结了我在<code>firebase login</code>遇到的问题及解决方式：<br/>
-1. 无法获取authorization code<br/>
-2. <code>Authentication Error: Your credentials are no longer valid.</code></p>
+<ul>
+<li><p>Avoid setTimeout or setInterval for visual updates. These will invoke the callback at some point in the frame, possible right at the end. </p></li>
+<li><p>Move long-running JavaScript computations to Web Workers as we havepreviously discussed.</p></li>
+<li><p>Use micro-tasks to introduce DOM changes over several frames.</p></li>
+</ul>
 
-<p>有需要的朋友可以继续看。</p>
+<h5 id="toc_3">CSS</h5>
 
-<p>首先，如果你对firebase完全不了解，下面会有一段非常简短的介绍。</p>
+<ul>
+<li><p>Reduce the complexity of your selectors. </p></li>
+<li><p>Reduce the number of elements on which style calculation must happen.</p></li>
+</ul>
 
-<h2 id="toc_1">什么是FireBase</h2>
+<h5 id="toc_4">Layout</h5>
 
-<p>前段时间学习PWA，在跟着官方教程完成demo后，想要在手机上测试一下效果。然而，遇到的一个问题就是：PWA需要HTTPS协议（或者使用localhost）。</p>
+<ul>
+<li><p>Reduce the number of layouts whenever possible.</p></li>
+<li><p>Use flexbox over older layout models whenever possible. It works faster and can create a huge performance advantage for your app.</p></li>
+<li><p>Avoid forced synchronous layouts.</p></li>
+</ul>
 
-<p>这就需要我们有一个HTTPS的服务，并在其上面部署我们本地写好的demo。而官方demo的最后，推荐使用firebase来托管你的代码。</p>
+<h5 id="toc_5">Paint</h5>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f75977a?w=700&amp;h=394&amp;f=png&amp;s=66460" alt="FireBase的各种功能与服务"/></p>
+<ul>
+<li><p>Changing any property other than transforms or opacity triggers a paint.</p></li>
+<li><p>If you trigger a layout, you will also trigger a paint, since changing the geometry results in a visual change of the element.</p></li>
+<li><p>Reduce paint areas through layer promotion and orchestration of animations.</p></li>
+</ul>
 
-<p>在FireBase的众多使用场景中，Develop -&gt; Hosting（托管）就是我需要用到的了。然而，在执行<code>firebase login</code>（账号登录）过程中，却遇到了一些问题。</p>
+<h4 id="toc_6"><a href="https://zhuanlan.zhihu.com/p/34656263">2、JS Linter 进化史</a></h4>
 
-<h2 id="toc_2">问题一：在浏览器登录账号后，无反应（无法获取authorization code）</h2>
+<p>JSLint --&gt; JSHint --&gt; ESLint. 其他还有jscs，tslint</p>
 
-<p>最开始，我在CLI中输入<code>firebase login</code>，选择<code>y</code>后，CLI会需要一个authorization code；而浏览器会打开并提示你进行登录。</p>
+<h4 id="toc_7"><a href="https://mp.weixin.qq.com/s/gVLXJO0IXol4q_ademXMWg">3、了解下 DDoS攻击方式</a></h4>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f8a3d0a?w=1171&amp;h=158&amp;f=png&amp;s=26957" alt=""/></p>
+<p>文章简单介绍了一些常见的DDos攻击方式。主要包括了：</p>
 
-<p>这里我用google账户进行授权登录。然而，在授权之后，却迟迟没有响应（无法得到authorization code）。这时候，我发现浏览器显示，似乎是在等待<code>localhost</code>进行响应。</p>
+<h5 id="toc_8">攻击带宽：以力取胜</h5>
 
-<p>解决这个问题的方法就是：在登录时，使用<code>firebase login --no-localhost</code>进行登录。</p>
+<ul>
+<li><p>ICMP Flood：ICMP（Internet控制报文协议）用于在IP主机、路由器之间传递控制消息，控制消息是指网络通不通、主机是否可达、路由是否可用等网络本身的消息，虽然并不传输用户数据，但是对于用户数据的传递起着重要的作用。</p></li>
+<li><p>NTP Flood：NTP是标准的基于UDP协议传输的网络时间同步协议，由于UDP协议的无连接性，方便伪造源地址。攻击者使用特殊的数据包，也就是IP地址指向作为反射器的服务器，源IP地址被伪造成攻击目标的IP，反射器接收到数据包时就被骗了，会将响应数据发送给被攻击目标，耗尽目标网络的带宽资源。因此，“问-答”方式的协议都可以被反射型攻击利用。</p></li>
+</ul>
 
-<p>重新使用<code>firebase login --no-localhost</code>登录。这里我选择了google账号进行登录，重复上面的过程：</p>
+<h5 id="toc_9">攻击系统/应用：以巧取胜</h5>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f8a3d0a?w=1171&amp;h=158&amp;f=png&amp;s=26957" alt=""/></p>
+<ul>
+<li><p>SYN Flood：SYN Flood 就是用户向服务器发送报文后突然死机或掉线，那么服务器在发出应答报文后就无法收到客户端的确认报文（第三次握手无法完成），这时服务器端一般会重试并等待一段时间后再丢弃这个未完成的连接。</p></li>
+<li><p>CC攻击：CC攻击是目前应用层攻击的主要手段之一，借助代理服务器生成指向目标系统的合法请求，实现伪装和DDoS。</p></li>
+<li><p>DNS Query Flood：攻击者请求解析的域名是随机生成或者是网络上根本不存在的域名，由于在本地无法查到对应的结果，服务器必须使用递归查询向上层域名服务器提交解析请求，引起连锁反应。解析过程给服务器带来很大的负载，每秒钟域名解析请求超过一定的数量就会造成DNS服务器解析域名超时。</p></li>
+</ul>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f994938?w=508&amp;h=563&amp;f=png&amp;s=28870" alt=""/></p>
+<h4 id="toc_10"><a href="https://juejin.im/post/5b0d0212f265da08da29e50f?utm_source=wechat#comment">4、为什么defineProperty不能检测到数组长度的“变化”</a></h4>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f6cd205?w=484&amp;h=685&amp;f=png&amp;s=83614" alt=""/></p>
+<p>核心点，数组的length属性不可配置。</p>
 
-<p>这次，你就会在浏览器中获得一串authorization code值：</p>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f8759e8?w=1240&amp;h=178&amp;f=png&amp;s=16044" alt="authorization code"/></p>
-
-<p>将它粘贴到CLI中即可。【问题一】解决！</p>
-
-<h2 id="toc_3">问题二：Error: Authentication Error: Your credentials are no longer valid.</h2>
-
-<p>然而，在CLI中输入authorization code之后，在等待了较长时间的验证后，CLI中报出了如下错误：</p>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd08f96d4ed?w=1240&amp;h=165&amp;f=png&amp;s=76650" alt=""/></p>
-
-<p>这是怎么回事呢？通过查阅一些资料发现，这很可能是你在电脑上使用“翻墙”工具所导致的。firebase-tool依赖的npm包（faye-websocket）中，未开启代理的相关设置，因此无法进行验证。</p>
-
-<p>解决这个问题的方法有两种：</p>
-
-<h3 id="toc_4">方法一：在路由器上设置代理，而非本机</h3>
-
-<p>有些文章指出，通过在路由器上设置代理，而非在本机开启代理，可以避免这个问题。不过由于一些原因，暂时还没有尝试这种方式，不过通过一些反馈来看，应该是一个有效的方法。</p>
-
-<h3 id="toc_5">方法二：(hack) 修改代码与相关环境变量</h3>
-
-<p>该方法较第一种方法来看，会稍微“硬”那么一些。具体的操作方式如下：</p>
-
-<ol>
-<li>设置环境变量<code>http_proxy</code>，我本机的代理使用的是1087端口。<code>export http_proxy=http://localhost:1087</code> </li>
-<li>修改faye-websocket，开启代理配置。faye-websocket是firebase依赖的一个WebSocket库，需要为其client.js添加如下配置：</li>
-</ol>
-
-<pre><code class="language-javascript">var Client = function(_url, protocols, options) {
-    options = options || {};
-    // 添加proxy配置
-    options.proxy = {
-        origin:  &#39;http://localhost:1087&#39;,
-    };
-    …
-}
+<pre><code class="language-JavaScript">enumberable: false
+configurable: false
+writable: true
 </code></pre>
 
-<p>如果你是全局安装的firebase-tools，你可以通过如下方法找到client.js</p>
+<h4 id="toc_11"><a href="https://tech.meituan.com/Data_Security_System_Construction.html">5、互联网企业数据安全体系建设</a></h4>
 
-<pre><code>NODE_PATH=`npm prefix -g`
-// client.js的位置
-$NODE_PATH/lib/node_modules/firebase-tools/node_modules/firebase/node_modules/faye-websocket/lib/faye/websocket/client.js
-</code></pre>
+<p>数据安全概览</p>
 
-<ol>
-<li><p>设置环境变量NODE_TLS_REJECT_UNAUTHORIZED。<code>export NODE_TLS_REJECT_UNAUTHORIZED=0</code></p></li>
-<li><p>重新登录，<code>firebase login --no-localhost</code>，重复之前的操作。你会发现，登录成功！</p></li>
-</ol>
+<p><img src="media/15288017709756/15288022824738.jpg" alt=""/></p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/10/162afdd0b8f77b15?w=1177&amp;h=219&amp;f=png&amp;s=44679" alt="image.png"/></p>
+<h4 id="toc_12"><a href="https://juejin.im/post/5b166d1ee51d4506d5366982">6、合并HTTP请求 vs 并行HTTP请求，到底谁更快？</a></h4>
 
-<p>【问题二】解决！</p>
+<p>雅虎在2006年提出的26条优化建议中包括了减少请求（直接行为就是资源合并）和拆分资源两项，作者就是在探讨这两项稍有背离原则的使用场景。文中包含了一些浏览器与TCP/IP细节的讨论，以及一定的测试对比，虽然内容与实验方法还是比较简陋，但是对读者有一个启发：凡事并无绝对，<strong>理解优化背后的原理远比学习优化手段要重要</strong>。</p>
 
-<p>p.s. 针对这个问题，github上也有一个issue：<a href="https://github.com/firebase/firebase-tools/issues/155">Unable to deploy behind a proxy</a>。</p>
+<h4 id="toc_13"><a href="https://juejin.im/post/5b17de31f265da6e397b70f4">7、WWDC 中提到的浏览器 Fingerprinting 有多可怕？👍</a></h4>
 
-<p>此外，如果你使用了代理，推荐使用全局代理的方式，使你的CLI也使用代理。</p>
+<p>像是通过指纹、DNA来标识每个人类个体，我们也可以通过一些IP地址、系统信息、JavaScript行为、Flash与Java插件、字体、Canvas、WebGL等来唯一标识设备的浏览器</p>
 
-<h2 id="toc_6">写在最后</h2>
+<p>github repo: <a href="https://github.com/Valve/fingerprintjs2">https://github.com/Valve/fingerprintjs2</a></p>
 
-<p>最后，还是回到我开发PWA时的需求。文章最开始提到了，我是为了在移动端测试PWA demo的效果，所以使用FireBase来托管资源。当然，除了FireBase，还有下面两个办法：</p>
+<h4 id="toc_14"><a href="http://raganwald.com/2018/05/20/we-dont-need-no-stinking-recursion.html?utm_source=mybridge&amp;utm_medium=blog&amp;utm_campaign=read_more">8、Recursion? We don&#39;t need no stinking recursion!👍</a></h4>
+
+<p>递归是程序设计中非常常见的一种形式，文中介绍了如何一些将递归改为循环模式的技巧</p>
 
 <ol>
-<li><p>使用github page。由于github全站都是运行在HTTPS下，因此在github page上托管的静态站点可以使用Service Worker；</p></li>
-<li><p>使用localhost/127.0.0.1。了解PWA的话，你会知道除了HTTPS之外，也可以使用localhost（这一设计是为了方便本机调试）。</p></li>
+<li>hide the recursion with iterators</li>
+<li>abstract the recursion with higher-order recursive functions</li>
+<li>convert recursion to iteration with tail calls</li>
+<li>convert tail-recursive functions into loops</li>
+<li>implement multirec with our own stack</li>
+<li>implementing depth-first iterators with our own stack</li>
+<li>implementing breadth-first iterators with a queue</li>
 </ol>
 
-<p>本文是《PWA学习与实践》系列中的第四篇。这篇文章并没有探讨PWA中实际的技术，而是记录了我在开发、调试P过程与遇到的问题。可能有朋友也会遇到类似问题，因此记录下来和大家分享。</p>
+<h4 id="toc_15"><a href="https://hackernoon.com/the-7-biggest-lessons-ive-learned-by-building-a-twitter-bot-59fee84a9ed9">9、The 7 Biggest Lessons I’ve Learned By Building A Twitter Bot</a></h4>
 
-<p>在下一篇文章中，我们还是会回到PWA背后的技术，来了解一下，<strong>如何使用Push API来实现后端服务向客户端进行消息推送</strong>。</p>
+<ol>
+<li>Don’t try to save time by skipping Typescript</li>
+<li>Async /await is great until it isn’t &amp; exception handling can be tough</li>
+<li>Logging is the key</li>
+<li>Going vanilla on the frontend without a framework can be refreshing</li>
+<li>Embrace the CLI and build your own tools</li>
+<li>“Now” is a great platform for building bots — node vs Docker</li>
+<li>Not all APIs were created equal — GitHub vs Twitter</li>
+</ol>
+
+<h4 id="toc_16"><a href="https://medium.freecodecamp.org/how-to-setup-a-powerful-api-with-nodejs-graphql-mongodb-hapi-and-swagger-e251ac189649">10、How to set-up a powerful API with Nodejs, GraphQL, MongoDB, Hapi, and Swagger</a></h4>
+
+<p>文章介绍了如何使用一些技术框架来搭建一个GraphQL类的简单服务。</p>
+
+<h4 id="toc_17"><a href="https://techblog.toutiao.com/2018/06/05/ru-he-jing-que-tong-ji-ye-mian-ting-liu-shi-chang/">11、如何精确统计页面停留时长</a></h4>
+
+<p>确定页面停留时长、活动时间，其实就是统计页面路由的跳转、页面可见性变化。可以把页面生命周期抽象为三个动作：进入、活跃状态切换与离开。</p>
+
+<p>对于常规页面的 首次加载、页面关闭、刷新 等操作都可以通过 window.onload 和 window.onbeforeunload 事件来监听页面进入和离开，浏览器前进后退可以通过 pageshow 和 pagehide 处理。</p>
+
+<p>对于单页应用内部的跳转可以转化为两个问题：</p>
+
+<ol>
+<li>监听路由变化</li>
+<li>判断变化的URL是否为不同页面</li>
+</ol>
+
+<h2 id="toc_18">Week 2</h2>
+
+<h4 id="toc_19"><a href="https://juejin.im/post/5b189712f265da6e235488c1">1、视频播放--踩坑小计</a></h4>
+
+<p>简单介绍了HTML video相关的兼容性问题，主要包括了自动播放、全屏与非全屏播放、事件触发与监听以及播放控件隐藏的解决方案。</p>
+
+<h4 id="toc_20"><a href="https://css-tricks.com/combining-the-powers-of-sem-and-bio-for-improving-css/">2、Combining the Powers of SEM and BIO for Improving CSS👍</a></h4>
+
+<p>作者总结了一套CSS设计、开发与维护的方法论。</p>
+
+<h5 id="toc_21">SEM</h5>
+
+<ul>
+<li>Scalable</li>
+<li>Extensible</li>
+<li>Maintainable</li>
+</ul>
+
+<h5 id="toc_22">BIO</h5>
+
+<ul>
+<li>BEM</li>
+<li>ITCSS</li>
+<li>OOCSS</li>
+</ul>
 
 
-</div>
+		</div>
+	
 
-<br /><br />
-<hr />
+ 
+	
 
-<div class="row clearfix">
-  <div class="large-6 columns">
-	<div class="text-left" style="padding:15px 0px;">
-		
-	        <a href="15282529256902.html"  title="Previous Post: 推荐阅读 2018.03">&laquo; 推荐阅读 2018.03</a>
-	    
-	</div>
-  </div>
-  <div class="large-6 columns">
-	<div class="text-right" style="padding:15px 0px;">
-		
-	        <a href="15235151669706.html" 
-	        title="Next Post: 【PWA学习与实践】(3) 让你的WebApp离线可用">【PWA学习与实践】(3) 让你的WebApp离线可用 &raquo;</a>
-	    
-	</div>
-  </div>
-</div>
+ 
+	
 
-<div class="row">
-<div style="padding:0px 0.93em;" class="share-comments">
+ 
+	
 
-</div>
-</div>
-<script type="text/javascript">
-	$(function(){
-		var currentURL = '15235166926023.html';
-		$('#side-nav a').each(function(){
-			if($(this).attr('href') == currentURL){
-				$(this).parent().addClass('active');
-			}
-		});
-	});
-</script>  
+  
+  
 </div></div>
 
 

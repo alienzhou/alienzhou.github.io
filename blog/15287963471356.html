@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
     
-  【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native” - AlienZHOU's blog
+  推荐阅读 2018.05 - AlienZHOU's blog
   
   </title>
  <meta name="description" content="">
@@ -246,214 +246,122 @@
             <div class="large-9 medium-9 columns">
 
  <div class="markdown-body">
-<h1>【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</h1>
+<h1>推荐阅读 2018.05</h1>
 
-<p>本文是《PWA学习与实践》系列的第二篇文章。</p>
+<h2 id="toc_0">Week 1</h2>
 
-<p><img src="media/15235140795593/15235145461655.jpg" alt=""/></p>
+<h4 id="toc_1">1、函数节流和函数去抖</h4>
 
-<p>PWA作为今年最火热的技术概念之一，对提升Web应用的安全、性能和体验有着很大的意义，非常值得我们去了解与学习。</p>
+<ul>
+<li><p><a href="https://github.com/hanzichi/underscore-analysis/issues/20">应用场景</a></p></li>
+<li><p><a href="https://github.com/hanzichi/underscore-analysis/issues/21">underscore实现</a></p></li>
+</ul>
 
-<p>本系列文章《PWA学习与实践》会逐步拆解PWA背后的各项技术，通过实例代码来讲解这些技术的应用方式。也正是因为PWA中技术点众多、知识细碎，因此我在学习过程中，进行了整理，并产出了《PWA学习与实践》系列文章，希望能带大家全面了解PWA中的各项技术。对PWA感兴趣的朋友欢迎关注。</p>
+<h4 id="toc_2"><a href="https://www.zeolearn.com/magazine/different-types-of-observers-supported-by-modern-browsers">2、Different Types Of Observers Supported By Modern Browsers</a></h4>
+
+<p>介绍了四种观察者对象</p>
+
+<ul>
+<li>Intersection Observer dom元素交叉</li>
+<li>Mutation Observer dom元素修改</li>
+<li>Resize Observer dom元素大小变化</li>
+<li>Performance Observer 性能监控</li>
+</ul>
+
+<h4 id="toc_3"><a href="https://www.zcfy.cc/article/scroll-to-the-future">3、滑向未来（现代 JavaScript 与 CSS 滚动实现指南）👍</a></h4>
+
+<p>原文：<a href="https://evilmartians.com/chronicles/scroll-to-the-future-modern-javascript-css-scrolling-implementations">https://evilmartians.com/chronicles/scroll-to-the-future-modern-javascript-css-scrolling-implementations</a></p>
+
+<p>文章介绍了在现代浏览器中，关于页面滚动的一系列问题与实现方式，对于构建一个渐进式地、高性能地解决页面滚动相关问题非常有帮助。</p>
+
+<h4 id="toc_4"><a href="https://medium.freecodecamp.org/avoiding-the-async-await-hell-c77a0fb71c4c">4、How to escape async/await hell</a></h4>
+
+<p>大家都说async和await是异步的终极解决方案。然而文章指出了两种使用async和await处理异步的问题。其实问题本身不在于async和await，而在于使用者对其的理解与应用方式。即时使用“终极方案”，也要避免写出“不地道”的语句。</p>
+
+<h4 id="toc_5"><a href="https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md">5、EventListenerOptions - passive event listener</a></h4>
+
+<p>介绍了touch事件是如何影响页面滚动性能，并且建议使用passive event listener来缓解滚动性能问题。</p>
+
+<h4 id="toc_6"><a href="https://www.w3.org/TR/resource-hints/">6、Resource Hints - W3C Working Draft 15 January 2018</a></h4>
+
+<h4 id="toc_7"><a href="https://www.w3.org/TR/preload/">7、Preload - W3C Candidate Recommendation 26 October 2017</a></h4>
+
+<h2 id="toc_8">Week 2</h2>
+
+<h4 id="toc_9"><a href="https://css-tricks.com/where-lines-break-is-complicated-heres-all-the-related-css-and-html/">1、CSS中最全的换行处理方式</a></h4>
+
+<pre><code class="language-CSS">word-break: break-all / break-word / keep-all
+overflow-wrap: break-word
+hyphens: manual / auto
+line-break: loose / strict / anywhere
+text-wrap: balance
+&lt;wbr&gt;
+</code></pre>
+
+<h4 id="toc_10"><a href="https://medium.com/welldone-software/an-overview-of-javascript-testing-in-2018-f68950900bc3">2、An Overview of JavaScript Testing in 2018</a></h4>
+
+<p>一篇关于javascript测试的比较全面与详细的综述文章</p>
+
+<h4 id="toc_11"><a href="https://medium.com/webpack/link-rel-prefetch-preload-in-webpack-51a52358f84c">3、<link rel=”prefetch/preload”> in webpack</a></h4>
+
+<p>简单介绍了prefetch与preload。同时，介绍了如何在webpack中，使用动态import时开启prefetch或preload</p>
 
 <blockquote>
-<p>本文中的代码都可以在<a href="https://github.com/alienzhou/learning-pwa/tree/manifest">learning-pwa的manifest分支</a>上找到（<code>git clone</code>后注意切换到manifest分支）。</p>
+<p>Use import(/* webpackPrefetch: true */ &quot;...&quot;) for prefetching</p>
 </blockquote>
 
-<h2 id="toc_0">1. 引言</h2>
+<h4 id="toc_12"><a href="https://hackernoon.com/two-years-of-functional-programming-in-javascript-lessons-learned-1851667c726">4、Two Years of Functional Programming in JavaScript: Lessons Learned</a></h4>
 
-<p>我们知道，在chrome（等一些现代浏览器）中，你可以将访问的网站添加到桌面，这样就会在桌面生成一个类似“快捷方式”的图标，当你点击该图标时，便可以快速访问该网站（Web App）。我们以第一篇文章中的demo为例，其添加到桌面后以及重新打开时的状态如下：</p>
+<h4 id="toc_13"><a href="https://blog.sessionstack.com/how-does-javascript-actually-work-part-1-b0bacc073cf">5、How JavaScript works: an overview of the engine, the runtime, and the call stack</a></h4>
 
-<p><img src="media/15235140795593/15235151163521.jpg" alt="普通Web App被添加到桌面后的展示形式"/></p>
+<p>简单介绍了js引擎的情况，以及调用栈 (call stack)</p>
 
-<p>然而，对于PWA来说，有一些重要的特性：</p>
+<h4 id="toc_14"><a href="https://blog.sessionstack.com/how-javascript-works-inside-the-v8-engine-5-tips-on-how-to-write-optimized-code-ac089e62b12e">6、How JavaScript works: inside the V8 engine + 5 tips on how to write optimized code</a></h4>
+
+<p>主要是以V8为例来介绍js引擎的内部工作原理。V8内部的两种compiler——full-codegen and Crankshaft（5.9以后换成了Ignition and TurboFan）。V8内部使用inline、hidden class、inline caching等技术来优化js。基于这些优化实现，作者提出了5个代码优化的小建议：</p>
 
 <ul>
-<li>Web App可以被添加到桌面并有它自己的应用图标；</li>
-<li>同时，从桌面开启时，会和原生app一样有它自己的“开屏图”；</li>
-<li>更进一步的，这个Web App在的样子几乎和原生应用一样——没有浏览器的地址栏、工具条，似乎和Native App一样运行在一个独立的容器中。</li>
+<li>order of object properties</li>
+<li>avoid dynamic properties</li>
+<li>executes the same method repeatedly</li>
+<li>avoid sparse arrays where keys are not incremental numbers</li>
+<li>tagged values</li>
 </ul>
 
-<p>就像下面这样：</p>
+<h4 id="toc_15"><a href="https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec">7、How JavaScript works: memory management + how to handle 4 common memory leaks</a></h4>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/7/1629fd2a529adc58?w=750&amp;h=482&amp;f=png&amp;s=187366" alt="PWA被添加到桌面后的展示形式"/></p>
+<p>虽然js不像C需要开发人员手动管理内存，但是了解内存管理相关知识可以助于我们避免一些错误，写出更好的代码。本文介绍了memory的生命周期，并且详细介绍了常用的两种GC策略：</p>
 
-<p>接下来，我们会基于该系列——《PWA技术学习与实践》的前一篇《2018，开始你的PWA学习之旅》 中所提及的一个普通Web App的demo来进行改造，来实现PWA的这一效果。或者直接从github clone <a href="https://github.com/alienzhou/learning-pwa/tree/master">learning-pwa</a>这个仓库也可以。切换到manifest分支，即可看到本文的最后成果。</p>
+<p>Reference-counting和Mark-and-sweep algorithm（V8所使用的）。</p>
 
-<h2 id="toc_1">2. Web App Manifest</h2>
+<p><img src="media/15287963471356/15288015344551.jpg" alt=""/></p>
 
-<p>Manifest是一个JSON格式的文件，你可以把它理解为一个指定了Web App桌面图标、名称、开屏图标、运行模式等一系列资源的一个清单。</p>
-
-<blockquote>
-<p>manifest 的目的是将Web应用程序安装到设备的主屏幕，为用户提供更快的访问和更丰富的体验。 —— MDN</p>
-</blockquote>
-
-<p>我们来看一下，learning-pwa中的<a href="https://github.com/alienzhou/learning-pwa/blob/manifest/public/manifest.json">manifest.json</a>文件内容</p>
-
-<pre><code>{
-    &quot;name&quot;: &quot;图书搜索&quot;,
-    &quot;short_name&quot;: &quot;书查&quot;,
-    &quot;start_url&quot;: &quot;/&quot;,
-    &quot;display&quot;: &quot;standalone&quot;,
-    &quot;background_color&quot;: &quot;#333&quot;,
-    &quot;description&quot;: &quot;一个搜索图书的小WebAPP（基于豆瓣开放接口）&quot;,
-    &quot;orientation&quot;: &quot;portrait-primary&quot;,
-    &quot;theme_color&quot;: &quot;#5eace0&quot;,
-    &quot;icons&quot;: [{
-        &quot;src&quot;: &quot;img/icons/book-32.png&quot;,
-        &quot;sizes&quot;: &quot;32x32&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }, {
-        &quot;src&quot;: &quot;img/icons/book-72.png&quot;,
-        &quot;sizes&quot;: &quot;72x72&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }, {
-        &quot;src&quot;: &quot;img/icons/book-128.png&quot;,
-        &quot;sizes&quot;: &quot;128x128&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }, {
-        &quot;src&quot;: &quot;img/icons/book-144.png&quot;,
-        &quot;sizes&quot;: &quot;144x144&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }, {
-        &quot;src&quot;: &quot;img/icons/book-192.png&quot;,
-        &quot;sizes&quot;: &quot;192x192&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }, {
-        &quot;src&quot;: &quot;img/icons/book-256.png&quot;,
-        &quot;sizes&quot;: &quot;256x256&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }, {
-        &quot;src&quot;: &quot;img/icons/book-512.png&quot;,
-        &quot;sizes&quot;: &quot;512x512&quot;,
-        &quot;type&quot;: &quot;image/png&quot;
-    }]
-}
-</code></pre>
-
-<p>可以看出，上面的JSON配置文件非常直观，通过声明各个属性的值，即可改造我们的Web App。那么下面就针对每个具体值进行简单的介绍。</p>
-
-<h3 id="toc_2">2.1. name, short_name</h3>
-
-<p>指定了Web App的名称。<code>short_name</code>其实是该应用的一个简称。一般来说，当没有足够空间展示应用的<code>name</code>时，系统就会使用<code>short_name</code>。可以看到本文的例子中，图书搜索这个应用在桌面上展示的名称就是<code>short_name</code>书查。</p>
-
-<h3 id="toc_3">2.2. start_url</h3>
-
-<p>这个属性指定了用户打开该Web App时加载的URL。相对URL会相对于manifest。这里我们指定了<code>start_url</code>为<code>/</code>，访问根目录。</p>
-
-<h3 id="toc_4">2.3. display</h3>
-
-<p><code>display</code>控制了应用的显示模式，它有四个值可以选择：<code>fullscreen</code>、<code>standalone</code>、<code>minimal-ui</code>和<code>browser</code>。</p>
+<p>在js中经常会出现的四种内存泄露问题：</p>
 
 <ul>
-<li><code>fullscreen</code>：全屏显示，会尽可能将所有的显示区域都占满；</li>
-<li><code>standalone</code>：独立应用模式，这种模式下打开的应用有自己的启动图标，并且不会有浏览器的地址栏。因此看起来更像一个Native App；</li>
-<li><code>minimal-ui</code>：与<code>standalone</code>相比，该模式会多出地址栏；</li>
-<li><code>browser</code>：一般来说，会和正常使用浏览器打开样式一致。</li>
+<li>Global variables</li>
+<li>Timers or callbacks that are forgotten</li>
+<li>Closures</li>
+<li>Out of DOM references</li>
 </ul>
 
-<p>让我们来看下这四种模式的差异：</p>
+<h2 id="toc_16">Week 3</h2>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/7/1629fd2a529dbe50?w=750&amp;h=400&amp;f=png&amp;s=20062" alt="display四种模式的差异"/></p>
+<h4 id="toc_17"><a href="https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5">1、How JavaScript works: Event loop and the rise of Async programming + 5 ways to better coding with async/await</a></h4>
 
-<p>当然，不同的系统所表现出的具体样式也不完全一样。就像示例中的虚拟按键在<code>fullscreen</code>模式下会默认隐藏。</p>
+<p>入门级的event loop介绍文章</p>
 
-<h3 id="toc_5">2.4. orientation</h3>
+<h4 id="toc_18"><a href="https://blog.sessionstack.com/how-javascript-works-the-building-blocks-of-web-workers-5-cases-when-you-should-use-them-a547c0757f6a">2、How JavaScript works: The building blocks of Web Workers + 5 cases when you should use them</a></h4>
 
-<p>控制Web App的方向。设置某些值会具有类似锁屏的效果（禁止旋转），例如例子中的<code>portrait-primary</code>。具体的值包括：<code>any, natural, landscape, landscape-primary, landscape-secondary, portrait, portrait-primary, portrait-secondary</code>。</p>
+<p>使用Web Worker来进行一些CPU密集型的操作，异步处理那些阻塞的long task。一些常用的场景包括：Ray tracing、Encryption、Prefetch data、PWA、Spell checker、CSV parse…</p>
 
-<h3 id="toc_6">2.5. icons， background_color</h3>
+<h4 id="toc_19"><a href="https://www.ibm.com/developerworks/cn/web/wa-lo-comet/">3、Comet：基于 HTTP 长连接的“服务器推”技术</a></h4>
 
-<p><code>icons</code>用来指定应用的桌面图标。icons本身是一个数组，每个元素包含三个属性：<br/>
-- sizes：图标的大小。通过指定大小，系统会选取最合适的图标展示在相应位置上。<br/>
-- src：图标的文件路径。注意相对路径是相对于manifest。<br/>
-- type：图标的图片类型。</p>
-
-<p>需要指出的是，我一直提的“开屏图”其实是背景颜色+图标的展示模式（并不会设置一张所谓的开屏图）。<code>background_color</code>是在应用的样式资源为加载完毕前的默认背景，因此会展示在开屏界面。<code>background_color</code>加上我们刚才定义的<code>icons</code>就组成了Web App打开时的“开屏图”。</p>
-
-<h3 id="toc_7">2.6. theme_color</h3>
-
-<p>定义应用程序的默认主题颜色。 这有时会影响操作系统显示应用程序的方式（例如，在Android的任务切换器上，主题颜色包围应用程序）。此外，还可以在meta标签中设置theme_color：<code>&lt;meta name=&quot;theme-color&quot; content=&quot;#5eace0&quot;/&gt;</code></p>
-
-<h3 id="toc_8">2.7. description</h3>
-
-<p>这个字段的含义非常简单，就是一段对该应用的描述。</p>
-
-<h2 id="toc_9">3. 使用Manifest</h2>
-
-<p>创建好manifest文件后，下一步就是需要知道如何能让我们的Web App使用它——非常简单，只需要在head中添加一个link标签：</p>
-
-<pre><code class="language-html">&lt;!-- 在index.html中添加以下meta标签 --&gt;
-&lt;link rel=&quot;manifest&quot; href=&quot;/manifest.json&quot;&gt;
-</code></pre>
-
-<p>这样，在android上我们使用chrome将应用添加到桌面，就会拥有文章开头处的PWA效果。你可在这里验证manifest.json的内容：<a href="https://manifest-validator.appspot.com/">Web Manifest Validator</a></p>
-
-<p>如果你看到这里，那么恭喜你，已经知道如何让我们的Web App看起来更像一个独立的Native App。是不是非常简单？</p>
-
-<h2 id="toc_10">4. iOS, Windows?</h2>
-
-<p>上面的一切看似美好，然而真的如此么？</p>
-
-<p>到目前为止，我们的工作都非常顺利：创建manifest.json，添加meta标签，然后把我们的Web App添加到桌面。然而，如果我们在iPhone上访问我们的站点，然后“添加到主屏幕”，你会发现——一切都失效了！是的，你没有看错，一切都回到了原样。</p>
-
-<p><img src="https://user-gold-cdn.xitu.io/2018/4/7/1629fd2a52bb59a0?w=1240&amp;h=476&amp;f=png&amp;s=131349" alt="manifest的兼容性"/></p>
-
-<p>如果你看过<a href="https://caniuse.com/#search=manifest">caniuse</a>上manifest的兼容性，那会令你更加头疼。但是，也不必太过忧伤，在iOS与windows上，我们有其他的方式</p>
-
-<h2 id="toc_11">5. iOS（safari）中的处理方式</h2>
-
-<p>safari虽然不支持Web App Manifest，但是它有自己的一些head标签来定义相应的资源与展示形式：</p>
+<p>介绍了如何使用comet技术来实现服务器推。comet技术包括了：</p>
 
 <ul>
-<li><code>apple-touch-icon</code>：桌面图标，通过在head中添加<code>&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;your_icon.png&quot;&gt;</code>即可。其中还可以添加sizes属性，来指示系统使用在各类平台（iphone、ipad…）中使用最合适的图标</li>
-<li><code>apple-mobile-web-app-title</code>：应用的标题。注意，这里需要使用meta标签<code>&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;AppTitle&quot;&gt;</code></li>
-<li><code>apple-mobile-web-app-capable</code>：类似于manifest中的display的功能，通过设置为yes可以进入standalone模式，同样也是meta标签<code>&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;</code></li>
-<li><code>apple-mobile-web-app-status-bar-style</code>：这会改变iOS移动设备的状态栏的样式，并且只有在standalone模式中才会有效果。<code>&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black&quot;&gt;</code>，不过在iPhoneX上black会导致状态栏不显示任何东西。</li>
-</ul>
-
-<p>下面是learning-pwa项目中的相关设置</p>
-
-<pre><code class="language-html">&lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot;&gt;
-&lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;default&quot;&gt;
-&lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;图书搜索&quot;&gt;
-&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;img/icons/book-256.png&quot;&gt;
-</code></pre>
-
-<h2 id="toc_12">6. IE中的处理方式</h2>
-
-<p>与Safari类似，IE中也有自己的meta标签来指示相应的资源。其中比较重要的有：<br/>
-- <code>application-name</code>：指明了app的名称<br/>
-- <code>msapplication-TileColor</code>：指明了“tile”的背景颜色<br/>
-- <code>msapplication-xxxlogo</code>：不同大小的“tile”所使用的图标，包括这几种：<code>msapplication-square70x70logo, msapplication-square150x150logo, msapplication-wide310x150logo, msapplication-square310x310logo</code></p>
-
-<p>下面是learning-pwa项目中的相关设置，其中图标的设置为了方便就复用了已有的图标文件</p>
-
-<pre><code class="language-html">&lt;meta name=&quot;application-name&quot; content=&quot;图书搜索&quot; /&gt;
-&lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#222&quot;&gt;
-&lt;meta name=&quot;msapplication-square70x70logo&quot; content=&quot;img/icons/book-72.png&quot; /&gt;
-&lt;meta name=&quot;msapplication-square150x150logo&quot; content=&quot;img/icons/book-144.png&quot; /&gt;
-&lt;meta name=&quot;msapplication-square310x310logo&quot; content=&quot;img/icons/book-256.png&quot; /&gt;
-</code></pre>
-
-<h2 id="toc_13">写在最后</h2>
-
-<p>本文主要探索如何让被添加到桌面的Web App具有更贴近Native App的使用体验（桌面图标、开屏页、shell…）。</p>
-
-<p>因此，我们使用了Web App Manifest。通过我们添加manifest文件，并在HTML中设置相应的meta标签来使用它即可；而在safari与ie中，可以通过一些特有的meta、link标签来实现。是不是很简单，很方便？这就使得我们能够以很低成本的改动我们Web App。这也就是PWA概念的理念之一：你可以渐进式地提高Web App的能力，同时在兼容性上，也会根据不同的浏览器的支持度提供渐进增强的能力。</p>
-
-<p>好了，这篇文章的内容就到这里了。希望你能够喜欢！同时，想要了解PWA背后的更多相关技术，欢迎关注《PWA学习与实践》后续文章。</p>
-
-<h2 id="toc_14">参考资料</h2>
-
-<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/Manifest">Web App Manifest（MDN）</a></li>
-<li><a href="https://developer.apple.com/library/content/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html">Configuring Web Applications（Safari）</a></li>
-<li><a href="https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/dev-guides/bg183312(v=vs.85)">Pinned site enhancements （Internet Explorer）</a></li>
-<li><a href="https://caniuse.com/#search=manifest">caniuse manifest</a></li>
-<li><a href="https://manifest-validator.appspot.com/">Web Manifest Validator</a></li>
-<li><a href="https://developers.google.com/web/tools/lighthouse/audits/address-bar">Address Bar Matches Brand Colors</a></li>
-<li><a href="https://github.com/alienzhou/learning-pwa/tree/manifest">demo代码地址：learning-pwa/tree/manifest</a></li>
+<li>基于ajax的长轮询，“拉”模式</li>
+<li>基于iframe的流模式</li>
 </ul>
 
 
@@ -466,15 +374,15 @@
   <div class="large-6 columns">
 	<div class="text-left" style="padding:15px 0px;">
 		
-	        <a href="15235151669706.html"  title="Previous Post: 【PWA学习与实践】(3) 让你的WebApp离线可用">&laquo; 【PWA学习与实践】(3) 让你的WebApp离线可用</a>
+	        <a href="15288017709756.html"  title="Previous Post: 推荐阅读 2018.06">&laquo; 推荐阅读 2018.06</a>
 	    
 	</div>
   </div>
   <div class="large-6 columns">
 	<div class="text-right" style="padding:15px 0px;">
 		
-	        <a href="15235138633619.html" 
-	        title="Next Post: 【PWA学习与实践】(1) 2018，开始你的PWA学习之旅">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅 &raquo;</a>
+	        <a href="15283399559020.html" 
+	        title="Next Post: 推荐阅读 2018.04">推荐阅读 2018.04 &raquo;</a>
 	    
 	</div>
   </div>
@@ -487,7 +395,7 @@
 </div>
 <script type="text/javascript">
 	$(function(){
-		var currentURL = '15235140795593.html';
+		var currentURL = '15287963471356.html';
 		$('#side-nav a').each(function(){
 			if($(this).attr('href') == currentURL){
 				$(this).parent().addClass('active');
