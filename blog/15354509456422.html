@@ -351,7 +351,16 @@ import {Banner, List} from &#39;runtime:ui/layout/component&#39;;
 
 <p>最后，拿到非编译期依赖，由于浏览器现在还不支持ESM的import语法，因此需要将它变为在前端运行时我们自定义的模块依赖语法。</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/8/18/1654c154b3778163?w=626&amp;h=1454&amp;f=png&amp;s=70125" alt=""/></p>
+<pre><code class="language-flow">st=&gt;start: 开始
+op1=&gt;operation: 读取源码
+op2=&gt;operation: 获取模块导入语法
+op3=&gt;operation: 语法转换
+cond=&gt;condition: 是否非编译期依赖
+e=&gt;end: 结束
+st-&gt;op1-&gt;op2-&gt;cond
+cond(no)-&gt;e
+cond(yes)-&gt;op3-&gt;e
+</code></pre>
 
 <h2 id="toc_3">3. 使用babel对源码进行分析</h2>
 
