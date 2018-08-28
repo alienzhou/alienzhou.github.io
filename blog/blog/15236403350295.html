@@ -1,0 +1,669 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  JavaScript异步编程__“回调地狱”的一些解决方案 - AlienZHOU's blog
+  
+  </title>
+ <meta name="description" content="">
+ <link href="atom.xml" rel="alternate" title="AlienZHOU's blog" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+    <script src="asset/highlightjs/highlight.pack.js"></script>
+    <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+<div id="header">
+    <h1><a href="index.html">AlienZHOU's blog</a></h1>
+</div>
+
+</nav>
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; AlienZHOU's blog</span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+      <li><a href="index.html">Home</a></li>
+      
+        <li class="divider"></li>
+        <li><label>PWA</label></li>
+
+          
+            <li><a title="【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验" href="15354508213008.html">【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</a></li>
+          
+            <li><a title="【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案" href="15288038664515.html">【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</a></li>
+          
+            <li><a title="【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync" href="15288038009038.html">【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync</a></li>
+          
+            <li><a title="【PWA学习与实践】(7)使用Notification API来进行消息提醒" href="15288036503920.html">【PWA学习与实践】(7)使用Notification API来进行消息提醒</a></li>
+          
+            <li><a title="【PWA学习与实践】(6) 在Chrome中调试你的PWA" href="15288035758780.html">【PWA学习与实践】(6) 在Chrome中调试你的PWA</a></li>
+          
+            <li><a title="【PWA学习与实践】(5)在Web中进行服务端消息推送" href="15288030176091.html">【PWA学习与实践】(5)在Web中进行服务端消息推送</a></li>
+          
+            <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+          
+            <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+          
+            <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+          
+            <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>React</label></li>
+
+          
+            <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+          
+            <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>CSS</label></li>
+
+          
+            <li><a title="CSS布局学习指南[译]" href="15301745888974.html">CSS布局学习指南[译]</a></li>
+          
+            <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+          
+            <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+          
+            <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Server</label></li>
+
+          
+            <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Automation</label></li>
+
+          
+            <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>FE else</label></li>
+
+          
+            <li><a title="各类“服务器推”技术原理与实例（Polling/COMET/SSE/WebSocket）" href="15288039493853.html">各类“服务器推”技术原理与实例（Polling/COMET/SSE/WebSocket）</a></li>
+          
+            <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+          
+            <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+          
+            <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Reading</label></li>
+
+          
+            <li><a title="推荐阅读 2018.08" href="15333560595579.html">推荐阅读 2018.08</a></li>
+          
+            <li><a title="推荐阅读 2018.07" href="15307688152882.html">推荐阅读 2018.07</a></li>
+          
+            <li><a title="推荐阅读 2018.06" href="15288017709756.html">推荐阅读 2018.06</a></li>
+          
+            <li><a title="推荐阅读 2018.05" href="15287963471356.html">推荐阅读 2018.05</a></li>
+          
+            <li><a title="推荐阅读 2018.04" href="15283399559020.html">推荐阅读 2018.04</a></li>
+          
+            <li><a title="推荐阅读 2018.03" href="15282529256902.html">推荐阅读 2018.03</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>Performace</label></li>
+
+          
+            <li><a title="【性能优化实践】优化打包策略提升页面加载速度" href="15288037747207.html">【性能优化实践】优化打包策略提升页面加载速度</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>webpack</label></li>
+
+          
+            <li><a title="【webpack进阶】使用babel避免webpack编译运行时模块依赖" href="15354509456422.html">【webpack进阶】使用babel避免webpack编译运行时模块依赖</a></li>
+          
+            <li><a title="【webpack进阶】前端运行时的模块化设计与实现" href="15353386669734.html">【webpack进阶】前端运行时的模块化设计与实现</a></li>
+          
+
+      
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+        <section id="main-content" role="main" class="scroll-container">
+
+          <div class="row">
+            <div class="large-3 medium-3 columns">
+              <div class="hide-for-small">
+                <div class="sidebar">
+                <nav>
+                  <ul id="side-nav" class="side-nav">
+
+                    
+                      <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验" href="15354508213008.html">【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案" href="15288038664515.html">【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync" href="15288038009038.html">【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(7)使用Notification API来进行消息提醒" href="15288036503920.html">【PWA学习与实践】(7)使用Notification API来进行消息提醒</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(6) 在Chrome中调试你的PWA" href="15288035758780.html">【PWA学习与实践】(6) 在Chrome中调试你的PWA</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(5)在Web中进行服务端消息推送" href="15288030176091.html">【PWA学习与实践】(5)在Web中进行服务端消息推送</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(4) 解决FireBase login验证失败问题" href="15235166926023.html">【PWA学习与实践】(4) 解决FireBase login验证失败问题</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(3) 让你的WebApp离线可用" href="15235151669706.html">【PWA学习与实践】(3) 让你的WebApp离线可用</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”" href="15235140795593.html">【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”</a></li>
+                        
+                          <li><a title="【PWA学习与实践】(1) 2018，开始你的PWA学习之旅" href="15235138633619.html">【PWA学习与实践】(1) 2018，开始你的PWA学习之旅</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>React</span></li>
+                        
+                          <li><a title="基于react技术栈的单页应用(SPA)搭建_快速入门实践" href="15236392559880.html">基于react技术栈的单页应用(SPA)搭建_快速入门实践</a></li>
+                        
+                          <li><a title="在react-router4中进行代码拆分（基于webpack）" href="15235187668595.html">在react-router4中进行代码拆分（基于webpack）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>CSS</span></li>
+                        
+                          <li><a title="CSS布局学习指南[译]" href="15301745888974.html">CSS布局学习指南[译]</a></li>
+                        
+                          <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
+                        
+                          <li><a title="【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS" href="15236396803035.html">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS</a></li>
+                        
+                          <li><a title="【CSS模块化】(1) webpack之Local Scope" href="15236395841604.html">【CSS模块化】(1) webpack之Local Scope</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Server</span></li>
+                        
+                          <li><a title="【MongoDB高可用】复制集Replica Set使用简介" href="15236400113573.html">【MongoDB高可用】复制集Replica Set使用简介</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Automation</span></li>
+                        
+                          <li><a title="Gulp.js实践详解__基于Gulp的多页面应用实践指南" href="15236401468681.html">Gulp.js实践详解__基于Gulp的多页面应用实践指南</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>FE else</span></li>
+                        
+                          <li><a title="各类“服务器推”技术原理与实例（Polling/COMET/SSE/WebSocket）" href="15288039493853.html">各类“服务器推”技术原理与实例（Polling/COMET/SSE/WebSocket）</a></li>
+                        
+                          <li><a title="浏览器同源策略与ajax跨域方法汇总" href="15236404711802.html">浏览器同源策略与ajax跨域方法汇总</a></li>
+                        
+                          <li><a title="JavaScript异步编程__“回调地狱”的一些解决方案" href="15236403350295.html">JavaScript异步编程__“回调地狱”的一些解决方案</a></li>
+                        
+                          <li><a title="js控制input框内光标位置（setSelectionRange详解）" href="15236405992551.html">js控制input框内光标位置（setSelectionRange详解）</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Reading</span></li>
+                        
+                          <li><a title="推荐阅读 2018.08" href="15333560595579.html">推荐阅读 2018.08</a></li>
+                        
+                          <li><a title="推荐阅读 2018.07" href="15307688152882.html">推荐阅读 2018.07</a></li>
+                        
+                          <li><a title="推荐阅读 2018.06" href="15288017709756.html">推荐阅读 2018.06</a></li>
+                        
+                          <li><a title="推荐阅读 2018.05" href="15287963471356.html">推荐阅读 2018.05</a></li>
+                        
+                          <li><a title="推荐阅读 2018.04" href="15283399559020.html">推荐阅读 2018.04</a></li>
+                        
+                          <li><a title="推荐阅读 2018.03" href="15282529256902.html">推荐阅读 2018.03</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>Performace</span></li>
+                        
+                          <li><a title="【性能优化实践】优化打包策略提升页面加载速度" href="15288037747207.html">【性能优化实践】优化打包策略提升页面加载速度</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>webpack</span></li>
+                        
+                          <li><a title="【webpack进阶】使用babel避免webpack编译运行时模块依赖" href="15354509456422.html">【webpack进阶】使用babel避免webpack编译运行时模块依赖</a></li>
+                        
+                          <li><a title="【webpack进阶】前端运行时的模块化设计与实现" href="15353386669734.html">【webpack进阶】前端运行时的模块化设计与实现</a></li>
+                        
+
+                    
+                  </ul>
+                </nav>
+                </div>
+              </div>
+            </div>
+            <div class="large-9 medium-9 columns">
+
+ <div class="markdown-body">
+<h1>JavaScript异步编程__“回调地狱”的一些解决方案</h1>
+
+<blockquote>
+<p>异步编程在JavaScript中非常重要。过多的异步编程也带了回调嵌套的问题，本文会提供一些解决“回调地狱”的方法。</p>
+</blockquote>
+
+<pre><code class="language-javascript">setTimeout(function () {
+    console.log(&#39;延时触发&#39;);
+}, 2000);
+
+fs.readFile(&#39;./sample.txt&#39;, &#39;utf-8&#39;, function (err, res) {
+    console.log(res);
+});
+</code></pre>
+
+<p>上面就是典型的回调函数，不论是在浏览器中，还是在node中，JavaScript本身是单线程，因此，为了应对一些单线程带来的问题，异步编程成为了JavaScript中非常重要的一部分。</p>
+
+<p>不论是浏览器中最为常见的ajax、事件监听，还是node中文件读取、网络编程、数据库等操作，都离不开异步编程。在异步编程中，许多操作都会放在回调函数（callback）中。同步与异步的混杂、过多的回调嵌套都会使得代码变得难以理解与维护，这也是常受人诟病的地方。</p>
+
+<p>先看下面这段代码</p>
+
+<pre><code class="language-javascript">fs.readFile(&#39;./sample.txt&#39;, &#39;utf-8&#39;, (err, content) =&gt; {
+    let keyword = content.substring(0, 5);
+    db.find(`select * from sample where kw = ${keyword}`, (err, res) =&gt; {
+        get(`/sampleget?count=${res.length}`, data =&gt; {
+           console.log(data);
+        });
+    });
+});
+</code></pre>
+
+<p>首先我们读取的一个文件中的关键字<code>keyword</code>，然后根据该<code>keyword</code>进行数据库查询，最后依据查询结果请求数据。</p>
+
+<p>其中包含了三个异步操作：</p>
+
+<ul>
+<li>文件读取：fs.readFile</li>
+<li>数据库查询：db.find</li>
+<li>http请求：get</li>
+</ul>
+
+<p>可以看到，我们没增加一个异步请求，就会多添加一层回调函数的嵌套，这段代码中三个异步函数的嵌套已经开始使一段本可以语言明确的代码编程不易阅读与维护了。</p>
+
+<p>抽象出来这种代码会变成下面这样：</p>
+
+<pre><code class="language-javascript">asyncFunc1(opt, (...args1) =&gt; {
+    asyncFunc2(opt, (...args2) =&gt; {
+        asyncFunc3(opt, (...args3) =&gt; {
+            asyncFunc4(opt, (...args4) =&gt; {
+                // some operation
+            });
+        });
+    });
+});
+</code></pre>
+
+<p>左侧明显出现了一个三角形的缩进区域，过多的回调也就让我们陷入“回调地狱”。接下来会介绍一些方法来规避回调地狱。</p>
+
+<h2 id="toc_0">一、拆解function</h2>
+
+<p>回调嵌套所带来的一个重要问题就是代码不易阅读与维护。因为普遍来说，过多的缩进（嵌套）会极大的影响代码的可读性。基于这一点，可以进行一个最简单的优化——将各步拆解为单个的<code>function</code></p>
+
+<pre><code class="language-javascript">function getData(count) {
+    get(`/sampleget?count=${count}`, data =&gt; {
+        console.log(data);
+    });
+}
+
+function queryDB(kw) {
+    db.find(`select * from sample where kw = ${kw}`, (err, res) =&gt; {
+        getData(res.length);
+    });
+}
+
+function readFile(filepath) {
+    fs.readFile(filepath, &#39;utf-8&#39;, (err, content) =&gt; {
+        let keyword = content.substring(0, 5);
+        queryDB(keyword);
+    });
+}
+
+readFile(&#39;./sample.txt&#39;);
+</code></pre>
+
+<p>可以看到，通过上面的改写方式，代码清晰了许多。该方法非常简单，具有一定的效果，但是缺少通用性。</p>
+
+<h2 id="toc_1">二、事件发布/监听模式</h2>
+
+<p>如果在浏览器中写过事件监听<code>addEventListener</code>，那么你对这种事件发布/监听的模式一定不陌生。</p>
+
+<p>借鉴这种思想，一方面，我们可以监听某一事件，当事件发生时，进行相应回调操作；另一方面，当某些操作完成后，通过发布事件触发回调。这样就可以将原本捆绑在一起的代码解耦。</p>
+
+<pre><code class="language-javascript">const events = require(&#39;events&#39;);
+const eventEmitter = new events.EventEmitter();
+
+eventEmitter.on(&#39;db&#39;, (err, kw) =&gt; {
+    db.find(`select * from sample where kw = ${kw}`, (err, res) =&gt; {
+        eventEmitter(&#39;get&#39;, res.length);
+    });
+});
+
+eventEmitter.on(&#39;get&#39;, (err, count) =&gt; {
+    get(`/sampleget?count=${count}`, data =&gt; {
+        console.log(data);
+    });
+});
+
+fs.readFile(&#39;./sample.txt&#39;, &#39;utf-8&#39;, (err, content) =&gt; {
+    let keyword = content.substring(0, 5);
+    eventEmitter. emit(&#39;db&#39;, keyword);
+});
+</code></pre>
+
+<p>使用这种模式的实现需要一个事件发布/监听的库。上面代码中使用node原生的<code>events</code>模块，当然你可以使用任何你喜欢的库。</p>
+
+<h2 id="toc_2">三、Promise</h2>
+
+<p><code>Promise</code>是一种异步解决方案，最早由社区提出并实现，后来写进了es6规范。</p>
+
+<p>目前一些主流的浏览器已经原生实现了<code>Promise</code>的API，可以在<a href="https://caniuse.com/#search=promise">Can I use</a>里查看浏览器的支持情况。当然，如果想要做浏览器的兼容，可以考虑使用一些<code>Promise</code>的实现库，例如<a href="https://github.com/petkaantonov/bluebird">bluebird</a>、 <a href="https://github.com/kriskowal/q">Q</a>等。下面以bluebird为例：</p>
+
+<p>首先，我们需要将异步方法改写为<code>Promise</code>，对于符合node规范的回调函数（第一个参数必须是Error），可以使用bluebird的<code>promisify</code>方法。该方法接收一个标准的异步方法并返回一个<code>Promise</code>对象。</p>
+
+<pre><code class="language-javascript">const bluebird = require(&#39;bluebird&#39;);
+const fs = require(&quot;fs&quot;);
+const readFile = bluebird.promisify(fs.readFile);
+</code></pre>
+
+<p>这样，<code>readFile</code>就变成了一个<code>Promise</code>对象。</p>
+
+<p>但是，有的异步方法无法进行转换，或者我们需要使用原生<code>Promise</code>，这就需要我们手动进行一些改造。下面提供一种改造的方法。</p>
+
+<p>以<code>fs.readFile</code>为例，借助原生<code>Promise</code>来改造该方法：</p>
+
+<pre><code class="language-javascript">const readFile = function (filepath) {
+    let resolve,
+        reject;
+    let promise = new Promise((_resolve, _reject) =&gt; {
+        resolve = _resolve;
+        reject = _reject;
+    });
+    let deferred = {
+        resolve,
+        reject,
+        promise
+    };
+    fs.readFile(filepath, &#39;utf-8&#39;, function (err, ...args) {
+        if (err) {
+            deferred.reject(err);
+        }
+        else {
+            deferred.resolve(...args);
+        }
+    });
+    return deferred.promise;
+}
+</code></pre>
+
+<p>我们在方法中创建了一个<code>Promise</code>对象，并在异步回调中根据不同的情况使用<code>reject</code>与<code>resolve</code>来改变<code>Promise</code>对象的状态。该方法返回这个<code>Promise</code>对象。其他的一些异步方法也可以参照这种方式进行改造。</p>
+
+<p>假设通过改造，<code>readFile</code>、<code>queryDB</code>与<code>getData</code>方法均会返回一个<code>Promise</code>对象。代码就变为了：</p>
+
+<pre><code class="language-javascript">readFile(&#39;./sample.txt&#39;).then(content =&gt; {
+    let keyword = content.substring(0, 5);
+    return queryDB(keyword);
+}).then(res =&gt; {
+    return getData(res.length);
+}).then(data =&gt; {
+    console.log(data);
+}).catch(err =&gt; {
+    console.warn(err);
+});
+</code></pre>
+
+<p>可以看到，之前的嵌套操作编程了通过<code>then</code>连接的链式操作。代码的整洁度上有了一个较大的提高。</p>
+
+<h2 id="toc_3">四、generator</h2>
+
+<p><code>generator</code>是es6中的一个新的语法。在<code>function</code>关键字后添加*即可将函数变为<code>generator</code>。</p>
+
+<pre><code class="language-javascript">const gen = function* () {
+    yield 1;
+    yield 2;
+    return 3;
+}
+</code></pre>
+
+<p>执行<code>generator</code>将会返回一个遍历器对象，用于遍历<code>generator</code>内部的状态。</p>
+
+<pre><code class="language-javascript">let g = gen();
+g.next(); // { value: 1, done: false }
+g.next(); // { value: 2, done: false }
+g.next(); // { value: 3, done: true }
+g.next(); // { value: undefined, done: true }
+</code></pre>
+
+<p>可以看到，<code>generator</code>函数有一个最大的特点，可以在内部执行的过程中交出程序的控制权，<code>yield</code>相当于起到了一个暂停的作用；而当一定情况下，外部又将控制权再移交回来。</p>
+
+<p>想象一下，我们用<code>generator</code>来封装代码，在异步任务处使用<code>yield</code>关键词，此时<code>generator</code>会将程序执行权交给其他代码，而在异步任务完成后，调用<code>next</code>方法来恢复<code>yield</code>下方代码的执行。以readFile为例，大致流程如下：</p>
+
+<pre><code class="language-javascript">// 我们的主任务——显示关键字
+// 使用yield暂时中断下方代码执行
+// yield后面为promise对象
+const showKeyword = function* (filepath) {
+    console.log(&#39;开始读取&#39;);
+    let keyword = yield readFile(filepath);
+    console.log(`关键字为${filepath}`);
+}
+
+// generator的流程控制
+let gen = showKeyword();
+let res = gen.next();
+res.value.then(res =&gt; gen.next(res));
+</code></pre>
+
+<p>在主任务部分，原本<code>readFile</code>异步的部分变成了类似同步的写法，代码变得非常清晰。而在下半部分，则是对于什么时候需要移交回控制权给<code>generator</code>的流程控制。</p>
+
+<p>然而，我们需要手动控制<code>generator</code>的流程，如果能够自动执行<code>generator</code>——在需要的时候自动移交控制权，那么会更加具有实用性。</p>
+
+<p>为此，我们可以使用 <a href="https://github.com/tj/co">co</a> 这个库。它可以是省去我们对于<code>generator</code>流程控制的代码</p>
+
+<pre><code class="language-javascript">const co = reuqire(&#39;co&#39;);
+// 我们的主任务——显示关键字
+// 使用yield暂时中断下方代码执行
+// yield后面为promise对象
+const showKeyword = function* (filepath) {
+    console.log(&#39;开始读取&#39;);
+    let keyword = yield readFile(filepath);
+    console.log(`关键字为${filepath}`);
+}
+
+// 使用co
+co(showKeyword);
+</code></pre>
+
+<p>其中，<code>yeild</code>关键字后面需要是<code>functio</code>, <code>promise</code>, <code>generator</code>, <code>array</code>或<code>object</code>。可以改写文章一开始的例子：</p>
+
+<pre><code class="language-javascript">const co = reuqire(&#39;co&#39;);
+
+const task = function* (filepath) {
+   let keyword = yield readFile(filepath);
+   let count = yield queryDB(keyword);
+   let data = yield getData(res.length);
+   console.log(data);
+});
+
+co(task, &#39;./sample.txt&#39;);
+</code></pre>
+
+<h2 id="toc_4">五、async/await</h2>
+
+<p>可以看到，上面的方法虽然都在一定程度上解决了异步编程中回调带来的问题。然而<br/>
+- function拆分的方式其实仅仅只是拆分代码块，时常会不利于后续维护；<br/>
+- 事件发布/监听方式模糊了异步方法之间的流程关系；<br/>
+- <code>Promise</code>虽然使得多个嵌套的异步调用能够通过链式的API进行操作，但是过多的<code>then</code>也增加了代码的冗余，也对阅读代码中各阶段的异步任务产生了一定干扰；<br/>
+- 通过<code>generator</code>虽然能提供较好的语法结构，但是毕竟<code>generator</code>与<code>yield</code>的语境用在这里多少还有些不太贴切。</p>
+
+<p>因此，这里再介绍一个方法，它就是es7中的async/await。</p>
+
+<p>简单介绍一下async/await。基本上，任何一个函数都可以成为async函数，以下都是合法的书写形式：</p>
+
+<pre><code class="language-javascript">async function foo () {};
+const foo = async function () {};
+const foo = async () =&gt; {};
+</code></pre>
+
+<p>在<code>async</code>函数中可以使用<code>await</code>语句。<code>await</code>后一般是一个<code>Promise</code>对象。</p>
+
+<pre><code class="language-javascript">async function foo () {
+    console.log(&#39;开始&#39;);
+    let res = await post(data);
+    console.log(`post已完成，结果为：${res}`);
+};
+</code></pre>
+
+<p>当上面的函数执行到<code>await</code>时，可以简单理解为，函数挂起，等待<code>await</code>后的<code>Promise</code>返回，再执行下面的语句。</p>
+
+<p>值得注意的是，这段异步操作的代码，看起来就像是“同步操作”。这就大大方便了异步代码的编写与阅读。下面改写我们的例子。</p>
+
+<pre><code class="language-javascript">const printData = async function (filepath) {
+   let keyword = await readFile(filepath);
+   let count = await queryDB(keyword);
+   let data = await getData(res.length);
+   console.log(data);
+});
+
+printData(&#39;./sample.txt&#39;);
+</code></pre>
+
+<p>可以看到，代码简洁清晰，异步代码也具有了“同步”代码的结构。</p>
+
+<p>注意，其中<code>readFile</code>、<code>queryDB</code>与<code>getData</code>方法都需要返回一个<code>Promise</code>对象。这可以通过在第三部分<code>Promise</code>里提供的方式进行改写。</p>
+
+<h2 id="toc_5">后记</h2>
+
+<p>异步编程作为JavaScript中的一部分，具有非常重要的位置，它帮助我们避免同步代码带来的线程阻塞的同时，也为编码与阅读带来了一定的困难。过多的回调嵌套很容易会让我们陷入“回调地狱”中，使代码变成一团乱麻。为了解决“回调地狱”，我们可以使用文中所述的这五种常用方法：</p>
+
+<ul>
+<li>function拆解</li>
+<li>事件发布/订阅模式</li>
+<li>Promise</li>
+<li>Generator</li>
+<li>async / await</li>
+</ul>
+
+<p>理解各类方法的原理与实现方式，了解其中利弊，可以帮助我们更好得进行异步编程。</p>
+
+<hr/>
+
+<h2 id="toc_6">Happy Coding！</h2>
+
+<hr/>
+
+
+</div>
+
+<br /><br />
+<hr />
+
+<div class="row clearfix">
+  <div class="large-6 columns">
+	<div class="text-left" style="padding:15px 0px;">
+		
+	        <a href="15236404711802.html"  title="Previous Post: 浏览器同源策略与ajax跨域方法汇总">&laquo; 浏览器同源策略与ajax跨域方法汇总</a>
+	    
+	</div>
+  </div>
+  <div class="large-6 columns">
+	<div class="text-right" style="padding:15px 0px;">
+		
+	        <a href="15236396803035.html" 
+	        title="Next Post: 【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS">【CSS模块化】(2) BEM命名方法论——使用BEM-constructor构建CSS &raquo;</a>
+	    
+	</div>
+  </div>
+</div>
+
+<div class="row">
+<div style="padding:0px 0.93em;" class="share-comments">
+
+</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var currentURL = '15236403350295.html';
+		$('#side-nav a').each(function(){
+			if($(this).attr('href') == currentURL){
+				$(this).parent().addClass('active');
+			}
+		});
+	});
+</script>  
+</div></div>
+
+
+<div class="page-bottom">
+  <div class="row">
+  <hr />
+  <div class="small-9 columns">
+  <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+  <div class="small-3 columns">
+  <p class="copyright text-right"><a href="#header">TOP</a></p>
+  </div>
+   
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+    
+    
+    <script src="asset/js/foundation.min.js"></script>
+    <script src="asset/js/foundation/foundation.offcanvas.js"></script>
+    <script>
+      $(document).foundation();
+
+     
+    </script>
+    
+
+
+  </body>
+</html>
