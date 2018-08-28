@@ -47,6 +47,8 @@
         <li><label>PWA</label></li>
 
           
+            <li><a title="【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验" href="15354508213008.html">【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</a></li>
+          
             <li><a title="【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案" href="15288038664515.html">【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</a></li>
           
             <li><a title="【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync" href="15288038009038.html">【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync</a></li>
@@ -80,6 +82,8 @@
         <li class="divider"></li>
         <li><label>CSS</label></li>
 
+          
+            <li><a title="CSS布局学习指南[译]" href="15301745888974.html">CSS布局学习指南[译]</a></li>
           
             <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
           
@@ -123,6 +127,10 @@
         <li><label>Reading</label></li>
 
           
+            <li><a title="推荐阅读 2018.08" href="15333560595579.html">推荐阅读 2018.08</a></li>
+          
+            <li><a title="推荐阅读 2018.07" href="15307688152882.html">推荐阅读 2018.07</a></li>
+          
             <li><a title="推荐阅读 2018.06" href="15288017709756.html">推荐阅读 2018.06</a></li>
           
             <li><a title="推荐阅读 2018.05" href="15287963471356.html">推荐阅读 2018.05</a></li>
@@ -138,6 +146,16 @@
 
           
             <li><a title="【性能优化实践】优化打包策略提升页面加载速度" href="15288037747207.html">【性能优化实践】优化打包策略提升页面加载速度</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>webpack</label></li>
+
+          
+            <li><a title="【webpack进阶】使用babel避免webpack编译运行时模块依赖" href="15354509456422.html">【webpack进阶】使用babel避免webpack编译运行时模块依赖</a></li>
+          
+            <li><a title="【webpack进阶】前端运行时的模块化设计与实现" href="15353386669734.html">【webpack进阶】前端运行时的模块化设计与实现</a></li>
           
 
       
@@ -157,6 +175,8 @@
 
                     
                       <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验" href="15354508213008.html">【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</a></li>
                         
                           <li><a title="【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案" href="15288038664515.html">【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</a></li>
                         
@@ -187,6 +207,8 @@
 
                     
                       <li class="side-title"><span>CSS</span></li>
+                        
+                          <li><a title="CSS布局学习指南[译]" href="15301745888974.html">CSS布局学习指南[译]</a></li>
                         
                           <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
                         
@@ -222,6 +244,10 @@
                     
                       <li class="side-title"><span>Reading</span></li>
                         
+                          <li><a title="推荐阅读 2018.08" href="15333560595579.html">推荐阅读 2018.08</a></li>
+                        
+                          <li><a title="推荐阅读 2018.07" href="15307688152882.html">推荐阅读 2018.07</a></li>
+                        
                           <li><a title="推荐阅读 2018.06" href="15288017709756.html">推荐阅读 2018.06</a></li>
                         
                           <li><a title="推荐阅读 2018.05" href="15287963471356.html">推荐阅读 2018.05</a></li>
@@ -238,6 +264,14 @@
                         
 
                     
+                      <li class="side-title"><span>webpack</span></li>
+                        
+                          <li><a title="【webpack进阶】使用babel避免webpack编译运行时模块依赖" href="15354509456422.html">【webpack进阶】使用babel避免webpack编译运行时模块依赖</a></li>
+                        
+                          <li><a title="【webpack进阶】前端运行时的模块化设计与实现" href="15353386669734.html">【webpack进阶】前端运行时的模块化设计与实现</a></li>
+                        
+
+                    
                   </ul>
                 </nav>
                 </div>
@@ -250,311 +284,320 @@
 
 	
 		<div class="markdown-body">
-		<h1>【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</h1>
+		<h1>【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</h1>
 
-		<p>本文是《PWA学习与实践》系列的第九篇文章。</p>
+		<p>本文是<a href="https://juejin.im/user/59ad5377518825244d206d2d/posts">《PWA学习与实践》</a>系列的第十篇文章。也许你还没有听说过或不了解Resource Hint，但是通过本文，你会快速学习到这一件<strong>页面加载性能利器</strong>。本系列相关demo的代码都可以在<a href="https://github.com/alienzhou/learning-pwa">github repo</a>中找到。</p>
 
-<p>PWA作为时下最火热的技术概念之一，对提升Web应用的安全、性能和体验有着很大的意义，非常值得我们去了解与学习。</p>
-
-<p>本系列文章《PWA学习与实践》会逐步拆解PWA背后的各项技术，通过实例代码来讲解这些技术的应用方式。也正是因为PWA中技术点众多、知识细碎，因此我在学习过程中，进行了整理，并产出了《PWA学习与实践》系列文章，希望能带大家全面了解PWA中的各项技术。对PWA感兴趣的朋友欢迎关注。</p>
+<p>PWA作为时下最火热的技术概念之一，对提升Web应用的安全、性能和体验有着很大的意义，非常值得我们去了解与学习。对PWA感兴趣的朋友欢迎关注《PWA学习与实践》系列文章。</p>
 
 <h2 id="toc_0">引言</h2>
 
-<p>在前八篇文章中，我已经介绍了一些PWA中的常见技术与使用方式。虽然我们已经学习了很多相关知识，但是，还是有很多问题在实践时才会暴露出来。这篇文章是一篇TroubleShooting，总结了我近期在PWA实践过程中遇到了一些问题，以及这些问题的解决方案。希望能帮助一些遇到类似问题的朋友。</p>
+<p>我们知道，在没有缓存的情况下，无论是HTML、javascript还是一些API数据，页面的每一个请求都需要从客户端发起后经由服务端返回。在这种情况下，我们每一次涉及远程请求的交互（打开一个页面、查询列表数据、动态加载js脚本等）都会有网络延迟。如果我们能够预测或指定页面预先进行一些网络操作，例如DNS解析或者预加载资源，那么当我们在之后的操作中涉及到这部分资源时，加载会更迅速，交互也会更加流畅。</p>
 
-<h2 id="toc_1">1. Service Worker Scope</h2>
+<p>当然，目前已经有一些技术手段来帮助我们实现资源的预加载，例如常见的使用XMLHttpRequest来获取资源并进行缓存。然而，这些技术都是应用层面的，并非Web标准，某些需求也无法准确实现。同时，在性能方面也存在着问题。好在目前已有相关的Web标准（Resource Hint）涉及到这一部分，通过它，可以在浏览器原生层面实现这些功能，同时提供性能保证。下面我们来了解一下Resource Hint相关技术。</p>
 
-<blockquote>
-<p>注意Service Worker注册时的作用范围（scope）</p>
-</blockquote>
+<h2 id="toc_1">1. Resource Hint</h2>
 
-<h3 id="toc_2">1.1. 遇到的问题</h3>
+<p>Resource Hint是一系列相关标准，来告诉浏览器哪些源（origin）下的资源我们的Web App想要获取，哪些资源在之后的操作或浏览时需要被使用，以便让浏览器能够进行一些预先连接或预先加载等操作。Resource Hint有DNS Prefetch、Preconnect、Prefetch和Prerender这四种。</p>
 
-<p>我在页面<code>/home</code>下注册了Service Worker：</p>
+<h3 id="toc_2">1.1. DNS Prefetch</h3>
 
-<pre><code class="language-javascript">navigator.serviceWorker.register(&#39;/static/home/js/sw.js&#39;)
+<p>当我们在注重前端性能优化时，可能会忽略了DNS解析。然而DNS的解析也是有耗时的。在Chrome的Timing Breakdown Phase中，第三阶段就是DNS查询。DNS Prefetch就是帮助我们告知浏览器，某个源下的资源在之后会要被获取，这样浏览器就会（Should）尽早解析它。</p>
+
+<p>Resource Hint主要通过使用<code>link</code>标签。<code>rel</code>属性确定类型，<code>href</code>属性则指定相应的源或资源URL。DNS Prefetch可以像下面这样使用：</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//yourwebsite.com&quot;&gt;
 </code></pre>
 
-<p>通过在<code>.then()</code>中调用<code>console.log()</code>可以发现Service Worker其实注册成功了，但是在页面中却不生效。这是为什么呢？</p>
+<h3 id="toc_3">1.2. Preconnect</h3>
 
-<h3 id="toc_3">1.2. 产生的原因</h3>
+<p>我们知道，建立连接不仅需要DNS查询，还需要进行TCP协议握手，有些还会有TLS/SSL协议，这些都会导致连接的耗时。因此，使用Preconnect可以帮助你告诉浏览器：“我有一些资源会用到某个源，可以帮我预先建立连接。”</p>
 
-<p>我在前几篇介绍Service Worker的文章中没有过多强调Scope的概念：</p>
-
-<blockquote>
-<p>scope: A USVString representing a URL that defines a service worker&#39;s registration scope; what range of URLs a service worker can control. This is usually a relative URL. The default value is the URL you&#39;d get if you resolved &#39;./&#39; using the service worker script&#39;s location as the base.</p>
-</blockquote>
-
-<p>Scope规定了Service Worker的作用（URL）范围。例如，一个注册在<code>https://www.sample.com/list</code>路径下的Service Worker，其作用的范围只能是它本身与它的子路径：</p>
+<p>根据规范，当你使用Preconnect时，浏览器大致做了如下处理：</p>
 
 <ul>
-<li><code>https://www.sample.com/list</code></li>
-<li><code>https://www.sample.com/list/book</code></li>
-<li><code>https://www.sample.com/list/book/comic</code></li>
+<li>首先，解析Preconnect的URL</li>
+<li>其次，根据当前link元素中的属性进行cors的设置</li>
+<li>默认先将credential设为true；如果cors为Anonymous并且存在跨域，则将credential置为false</li>
+<li>最后进行连接</li>
 </ul>
 
-<p>而在<code>https://www.sample.com</code>、<code>https://www.sample.com/book</code>这些路径下则是无效的。</p>
+<p>使用Preconnect只需要将<code>rel</code>属性设为<code>preconnect</code>即可：</p>
 
-<p>同时，scope的默认值为<code>./</code>（注意，这里所有的相对路径不是相对于页面，而是相对于sw.js脚本的）。因此，<code>navigator.serviceWorker.register(&#39;/static/home/js/sw.js&#39;)</code>代码中的scope实际上是<code>/static/home/js</code>，Service Worker也就注册在了<code>/static/home/js</code>路径下，显然无法在<code>/home</code>下生效。</p>
-
-<p>这种情况非常常见：我们会把<code>sw.js</code>这样的文件放置在项目的静态目录下（例如文中的<code>/static/home/js</code>），而并非页面路径下。显然，要解决这个问题需要设置相应的scope。</p>
-
-<p>然而，另一个问题出现了。如果你直接将scope设置为<code>/home</code>：</p>
-
-<pre><code class="language-javascript">navigator.serviceWorker.register(&#39;/static/home/js/sw.js&#39;, {scope: &#39;/home&#39;})
+<pre><code class="language-html">&lt;link rel=&quot;preconnect&quot; href=&quot;//yourwebsite.com&quot;&gt;
 </code></pre>
 
-<p>在chrome控制台会看到如下的错误提示：</p>
+<p>当然，你也可以设置CORS</p>
 
-<pre><code>Uncaught (in promise) DOMException: Failed to register a ServiceWorker: The path of the provided scope (&#39;/home&#39;) is not under the max scope allowed (&#39;/static/home/js/&#39;). 
-Adjust the scope, move the Service Worker script, or use the Service-Worker-Allowed HTTP header to allow the scope.
+<pre><code class="language-html">&lt;link rel=&quot;preconnect&quot; href=&quot;//yourwebsite.com&quot; crossorigin&gt;
 </code></pre>
 
-<p>StackOverflow上对此的解释是：</p>
+<p>需要注意的是，标准并没有硬性规定浏览器一定要（而是SHOULD）完成整个连接过程，浏览器可以视情况完成部分工作。</p>
+
+<h3 id="toc_4">1.3. Prefetch</h3>
+
+<p>你可以把Prefetch理解为资源预获取。一般来说，可以用Prefetch来指定在紧接着之后的操作或浏览中需要使用到的资源，让浏览器提前获取。由于仅仅是提前获取资源，因此浏览器不会对资源进行预处理，并且像CSS样式表、JavaScript脚本这样的资源是不会自动执行并应用于当前文档的。</p>
+
+<p>需要注意的是，和DNS Prefetch、Preconnect使用不太一样的地方是，Prefetch有一个<code>as</code>的可选属性，用来指定获取资源的类型。由于不同的资源类型会具有不同的优先级、<a href="https://www.w3.org/TR/CSP3/">CSP</a>、请求头等，因此该属性很重要。下表列出了一些常用资源的<code>as</code>属性值：</p>
+
+<table>
+<thead>
+<tr>
+<th>资源使用者</th>
+<th>写法</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>&lt;audio&gt;</code></td>
+<td><code>&lt;link rel=preload as=audio href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;video&gt;</code></td>
+<td><code>&lt;link rel=preload as=video href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;track&gt;</code></td>
+<td><code>&lt;link rel=preload as=track href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;script&gt;</code>, Worker&#39;s importScripts</td>
+<td><code>&lt;link rel=preload as=script href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;link rel=stylesheet&gt;</code>, CSS @import</td>
+<td><code>&lt;link rel=preload as=style href=...&gt;</code></td>
+</tr>
+<tr>
+<td>CSS @font-face</td>
+<td><code>&lt;link rel=preload as=font href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;img&gt;</code>, <code>&lt;picture&gt;</code>, srcset, imageset</td>
+<td><code>&lt;link rel=preload as=image href=...&gt;</code></td>
+</tr>
+<tr>
+<td>SVG&#39;s <code>&lt;image&gt;</code>, CSS *-image</td>
+<td><code>&lt;link rel=preload as=image href=...&gt;</code></td>
+</tr>
+<tr>
+<td>XHR, fetch</td>
+<td><code>&lt;link rel=preload as=fetch crossorigin href=...&gt;</code></td>
+</tr>
+<tr>
+<td>Worker, SharedWorker</td>
+<td><code>&lt;link rel=preload as=worker href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;embed&gt;</code></td>
+<td><code>&lt;link rel=preload as=embed href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;object&gt;</code></td>
+<td><code>&lt;link rel=preload as=object href=...&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;iframe&gt;</code>, <code>&lt;frame&gt;</code></td>
+<td><code>&lt;link rel=preload as=document href=...&gt;</code></td>
+</tr>
+<tr>
+<td>HTML</td>
+<td><code>&lt;link rel=preload as=html href=...&gt;</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>可以看到，Prefetch的可选资源类型非常丰富，除了我们常用的<code>script</code>和<code>style</code>，甚至还包括XHR、video、img等，基本涵盖了Web中的各类资源。为了解决Prefetch中某些资源（例如XHR）的跨域问题，可以为其应用CORS属性。一个基本的Prefetch写法也很简单：</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;prefetch&quot; href=&quot;/my.little.script.js&quot; as=&quot;script&quot;&gt;
+</code></pre>
+
+<h3 id="toc_5">1.4. Prerender</h3>
+
+<p>上一部分我们讲了Prefetch，而Prerender则是Prefetch的更进一步。可以粗略地理解为“预处理”（预执行）。</p>
+
+<p>通过Prerender“预处理”的资源，浏览器都会作为HTML进行处理。浏览器除了会去获取资源，还可能会预处理（MAY preprocess）该资源，而该HTML页面依赖的其他资源，像<code>&lt;script&gt;</code>、<code>&lt;style&gt;</code>等页面所需资源也可能会被处理。但是预处理会由于浏览器或当前机器、网络情况的不同而被不同程度地推迟。例如，会根据CPU、GPU和内存的使用情况，以及请求操作的幂等性而选择不同的策略或阻止该操作。</p>
+
+<p>注意，由于这些预处理操作的不可控性，当你只是需要能够预先获取部分资源来加速后续可能出现的网络请求时，建议使用Prefetch。当使用Prerender时，为了保证兼容性，目标页面可以监听<code>visibilitychange</code>事件并使用<code>document.visibilityState</code>来判断页面状态。</p>
 
 <blockquote>
-<p>Service workers can only intercept requests originating in the scope of the current directory that the service worker script is located in and its subdirectories.</p>
+<p>When prerendering a document the user agent MUST set the document&#39;s visibilityState value to prerender. —— W3C Working Draft</p>
 </blockquote>
 
-<p>简单来说，Service Worker只允许注册在Service Worker脚本所处的路径及其子路径下。显然，我上面的代码触碰到了这个规则。那怎么办呢？</p>
+<p>Prerender的使用方式非常简单，与DNS Prefetch和Preconnect类似，指定<code>rel</code>属性为<code>prerender</code>：</p>
 
-<h3 id="toc_4">1.3. 解决方案</h3>
-
-<p>解决这个问题的方式主要有两种。</p>
-
-<h4 id="toc_5">方法一：修改路由，让sw.js的访问路径处于合适的位置</h4>
-
-<pre><code class="language-javascript">router.get(&#39;/sw.js&#39;, function (req, res) {
-    res.sendFile(path.join(__dirname, &#39;../../static/kspay-home/static/js/sw/&#39;, &#39;sw.js&#39;));
-});
+<pre><code class="language-html">&lt;link rel=&quot;prerender&quot; href=&quot;//yourwebsite.com/nextpage.html&quot;&gt;
 </code></pre>
 
-<p>以上是一个express中简单的路由。通过路由设置，我们将Service Worker脚本路径置于根目录下，这样就可以设置scope为<code>/home</code>而不会违反其规则了：</p>
+<h2 id="toc_6">2. Resource Hint的具体使用方式</h2>
 
-<pre><code class="language-javascript">navigator.serviceWorker
-    .register(&#39;/static/home/js/sw.js&#39;, {
-        scope: &#39;/home&#39;
-    })
+<p>在上面的部分里，我主要介绍了DNS Prefetch、Preconnect、Prefetch和Prerender这四种RHL（Resource Hint Link），并且简单介绍了如何在<code>link</code>中使用它们。然而除了直接在HTML中加入对应<code>link</code>标签外，还可以通过其他几种方式触发浏览器的Resource Hint。为了更加直观，下面我们还是以<a href="https://github.com/alienzhou/learning-pwa/tree/resource-hint">图书搜索这个demo</a>为例来看看可以通过哪些方法来使用Resource Hint。</p>
+
+<blockquote>
+<p>假设已经为该demo添加详情页<code>nextpage.html</code>及其依赖的<code>nextpage.js</code>，当点击列表中的图书时会进行跳转。</p>
+</blockquote>
+
+<h3 id="toc_7">2.1. 文档head中的link元素</h3>
+
+<p>这是Resource Hint最常用的一种方式，我们上面介绍的各种示例也就是使用的这种方式。例如想要指定Prefetch <code>nextpage.js</code>脚本可以这么写：</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;prefetch&quot; href=&quot;./nextpage.js&quot; as=&quot;script&quot;&gt;
 </code></pre>
 
-<h4 id="toc_6">方法二：添加<code>Service-Worker-Allowed</code>响应头</h4>
+<h3 id="toc_8">2.2. HTTP Link头字段</h3>
 
-<p>scope的规范有时候过于严格了。因此，浏览器也提供了一种方式来使我们可以越过这种限制。方法就是设置<code>Service-Worker-Allowed</code>响应头。</p>
+<p>可以通过<a href="https://tools.ietf.org/html/rfc5988">Link HTTP header</a>来使用Resource Hint。Link HTTP header和<code>link</code>元素是等价的。</p>
 
-<p>以express中的静态服务中间件serve-static为例，<a href="https://github.com/expressjs/serve-static#options">进行相应配置</a>：</p>
+<blockquote>
+<p>The Link entity-header field provides a means for serialising one or more links in HTTP headers. It is semantically equivalent to the <LINK> element in HTML, as well as the atom:link feed-level element in Atom. —— RFC5988</p>
+</blockquote>
 
-<pre><code class="language-javascript">options: {
-    maxAge: 0,
-    setHeaders: function (res, path, stat) {
-        // 添加Service-Worker-Allowed，扩展service worker的scope
-        if (/\/sw\/.+\.js/.test(path)) {
-            res.set({
-                &#39;Content-Type&#39;: &#39;application/javascript&#39;,
-                &#39;Service-Worker-Allowed&#39;: &#39;/home&#39;
-            });
+<p><a href="https://tools.ietf.org/html/rfc5988#page-7"><code>Link</code>主要由两部分组成</a>——<code>URI-Reference</code>和<code>link-param</code>。<code>URI-Reference</code>相当于<code>link</code>元素中的<code>href</code>属性；<code>link-param</code>则包括了<code>rel</code>、<code>title</code>、<code>type</code>等一系列元素属性，使用<code>;</code>分割。因此可以在响应头中添加以下部分：</p>
+
+<pre><code class="language-text">Link: &lt;/nextpage.js&gt;; rel=&quot;prefetch&quot;; as=&quot;script&quot;
+</code></pre>
+
+<p><a href="https://github.com/alienzhou/learning-pwa/tree/resource-hint">我们的demo</a>使用了koa-static这个中间件，只要做如下修改即可：</p>
+
+<pre><code class="language-javascript">// app.js
+app.use(serve(__dirname + &#39;/public&#39;, {
+    maxage: 1000 * 60 * 60,
+    setHeaders: (res, path, stats) =&gt; {
+        if (/index.html/.test(path)) {
+            res.setHeader(&#39;Link&#39;, &#39;&lt;/nextpage.js&gt;; rel=&quot;prefetch&quot;; as=&quot;script&quot;&#39;);
         }
     }
-}
+}));
 </code></pre>
 
-<h2 id="toc_7">2. CORS</h2>
+<p>你会发现，在访问<code>index.html</code>时，浏览器就会向服务器请求<code>nextpage.js</code>这个页面本身并“不需要”用到的资源。</p>
+
+<h3 id="toc_9">2.3. 向文档动态添加link元素</h3>
+
+<p><code>link</code>元素也支持我们通过js动态向文档添加。对于动态添加的RHL，浏览器也会对其应用Resource Hint策略。添加<code>link</code>的方式和添加普通dom元素一致。</p>
+
+<pre><code class="language-js">var hint = document.createElement(&#39;link&#39;);
+hint.rel = &#39;prefetch&#39;;
+hint.as = &#39;script&#39;;
+hint.href = &#39;/nextpage.js&#39;;
+document.head.appendChild(hint);
+</code></pre>
+
+<h3 id="toc_10">2.4. 改变已有link元素的href属性</h3>
+
+<p>当你改变页面中原有RHL的<code>href</code>属性（或者prefetch时的<code>as</code>属性）时，会立即触发对新资源的Resource Hint。例如在如下代码执行后</p>
+
+<pre><code class="language-js">var hint = document.querySelector(&#39;[rel=&quot;prefetch&quot;]&#39;);
+hint.href = &#39;./the.other.nextpage.js&#39;;
+</code></pre>
+
+<p>浏览器相当于接收到了新的Resource Hint“指示”，并在合适的时机向服务端请求<code>the.other.nextpage.js</code>这个资源。注意，当你修改<code>as</code>属性时，也会触发Resource Hint。</p>
+
+<p>注意，如果你想通过修改已有<code>link</code>元素预获取<code>nextpage.html</code>这个资源，然后像下面这样写会触发两次请求。</p>
+
+<pre><code class="language-js">var hint = document.querySelector(&#39;[rel=&quot;prefetch&quot;]&#39;);
+hint.as = &#39;html&#39;; // 触发第一次请求，再次请求./nextpage.js
+hint.href = &#39;./nextpage.html&#39;; // 请求./nextpage.html
+</code></pre>
+
+<h2 id="toc_11">2. Preload</h2>
+
+<p>既然提到了Resource Hint，那么不得不介绍一下与其类似的Preload。在遇到需要Preload的资源时，浏览器会 <strong>立刻</strong> 进行预获取，并将结果放在内存中，资源的获取不会影响页面parse与load事件的触发。直到再次遇到该资源的使用标签时，才会执行。</p>
 
 <blockquote>
-<p>跨域资源的缓存报错</p>
+<p>(Preload) Initiating an early fetch and separating fetching from resource execution.</p>
 </blockquote>
 
-<h3 id="toc_8">2.1. 遇到的问题</h3>
+<p>例如下面这个HTML片段：</p>
 
-<p>在《【PWA学习与实践】(3) 让你的WebApp离线可用》中我介绍了如何用Service Worker进行缓存以实现离线功能。其中，为了提高体验，我们会在Service Worker安装时缓存静态文件，实现这一功能的部分代码如下：</p>
-
-<pre><code class="language-javascript">// 监听install事件，安装完成后，进行文件缓存
-self.addEventListener(&#39;install&#39;, e =&gt; {
-    var cacheOpenPromise = caches.open(cacheName).then(function (cache) {
-        return cache.addAll(cacheFiles);
-    });
-    e.waitUntil(cacheOpenPromise);
-});
+<pre><code class="language-html">&lt;head&gt;
+    &lt;link rel=&quot;preload&quot; href=&quot;./nextpage.js&quot; as=&quot;script&quot;&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;./current.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;./nextpage.js&quot;&gt;&lt;/script&gt;
+&lt;head&gt;
 </code></pre>
 
-<p><code>cacheFiles</code>就是需要缓存的静态文件列表。然而Service Worker运行后，在application tab中发现<code>cacheFiles</code>的静态资源并未被缓存下来。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/23/164c687371151554?w=1337&amp;h=583&amp;f=gif&amp;s=1585124" alt=""/></p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/26/1639b2f3954721b0?w=620&amp;h=200&amp;f=png&amp;s=18505" alt=""/></p>
+<p>浏览器首先会去获取<code>nextpage.js</code>，然后获取并执行<code>current.js</code>，最后，遇到使用<code>nextpage.js</code>资源的<code>script</code>标签时，将已经获取的<code>nextpage.js</code>执行。由于我们会将<code>script</code>标签置于body底部来保证性能，因此可以考虑在head标签中添加这些资源的Preload来加速页面的加载与渲染。</p>
 
-<h3 id="toc_9">2.2. 产生的原因</h3>
+<p>更进一步，我们还可以监听Preload的情况，并触发自定以操作</p>
 
-<p>切换到Console可以看到类似如下的报错信息：</p>
+<pre><code class="language-html">&lt;script&gt;
+  function preloadFinished(e) { ... }
+  function preloadError(e)  { ... }
+&lt;/script&gt;
+&lt;!-- listen for load and error events --&gt;
+&lt;link rel=&quot;preload&quot; href=&quot;app.js&quot; as=&quot;script&quot; onload=&quot;preloadFinished()&quot; onerror=&quot;preloadError()&quot;&gt;
+</code></pre>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/26/1639b385aac7ce3c?w=757&amp;h=69&amp;f=png&amp;s=32044" alt=""/></p>
-
-<p>前端同学对这个问题非常熟悉：<strong>跨域问题</strong>。</p>
-
-<p>为了使我们的页面能够顺利加载CDN等外站资源，浏览器在<code>script</code>、<code>link</code>、<code>img</code>等标签上放松了跨域限制。这使得我们在页面中通过<code>script</code>标签来加载javascript脚本是不会导致跨域问题的（经典的jsonp就是以此为基础实现的）。</p>
-
-<p>然而在Service Worker中使用<code>cache.addAll()</code>则会通过类似fetch请求的方式来获取资源（类似在页面中使用XHR请求外站脚本），是会受到跨域资源策略限制而无法缓存到本地的。</p>
-
-<p>在实际生产环境中，为了缩短请求的响应时间与、减轻服务器压力，通常我们都会将javascript、css、image这些静态资源通过CDN进行分发，或者将其放置在一些独立的静态服务集群中。所以线上的静态资源基本都是“跨站资源”。</p>
-
-<h3 id="toc_10">2.3. 解决方案</h3>
-
-<p>该问题其实不算是Service Worker中的特定问题，解决方式和处理一般的跨域问题类似，可以设置<code>Access-Control-Allow-Origin</code>响应头来解决。</p>
+<p>正如在引言中所提到的，在过去如果我们想预加载一些资源都会用一些应用层面的技术手段，但往往会遇到两个问题：</p>
 
 <ul>
-<li>如果使用CDN，可以在CDN服务中进行配置。一般的CDN服务是会支持配置HTTP响应头的；</li>
-<li>如果使用自己搭建的静态服务器集群，可以对服务器进行相应配置。这里有一个<a href="https://github.com/h5bp/server-configs">仓库</a>包含ngix、apache、iis等常用服务器的配置，可以参考。</li>
+<li>我们需要先获取资源，然后在适当时执行，但两者并不易于分离</li>
+<li>无论哪种技术实现，都会带来一定的性能与体验损伤</li>
 </ul>
 
-<h2 id="toc_11">3. iOS standalone 模式</h2>
+<p>Preload（包括前文提到的Prefetch等RHL）给我们带来的价值就是从浏览器层面很好地将资源的加载与执行分离了，并在浏览器层面来保证良好的性能体验。</p>
+
+<p>看到这里，也许你会疑惑，都是会预获取资源，都是资源的获取与执行分离，那么Preload与Prefetch有什么区别呢？</p>
+
+<p>这是它最容易与Prefetch混淆的地方。在标准里有这么一段话解释两者区别：</p>
 
 <blockquote>
-<p>iOS standalone模式下的特殊处理</p>
+<p>The application can use the preload keyword to initiate <u><strong>early, high-priority, and non-render-blocking</strong></u> fetch of a CSS resource that can then be applied by the application at appropriate time</p>
 </blockquote>
 
-<h3 id="toc_12">3.1. 遇到的问题</h3>
+<p>与Prefetch相比，Preload会<a href="https://www.w3.org/TR/preload/#x2.link-type-preload">强制浏览器立即获取资源，并且该请求具有较高的优先级</a>（mandatory and high-priority），因此建议对一些<strong>当前页面会马上用到</strong>资源使用Preload；相对的，Prefetch的资源获取则是可选与较低优先级的，其是否获取完全取决于浏览器的决定，适用于预获取<strong>将来可能会用到</strong>的资源。</p>
 
-<p>今年年初Apple宣布在iOS safari 11.3中支持Service Worker，这对PWA的推广起到了重要的作用，让我们可以“跨平台”来实现PWA技术。</p>
+<p>为了节省不必要的带宽消耗，如果Preload的资源在3s内没有被使用，Chrome控制台会出现类似下图的警告。这时你就需要仔细思考，该资源是否有必要Preload了。</p>
 
-<p>虽然，iOS safari不支持manifest配置来实现添加到桌面，但是我在《【PWA学习与实践】(2) 使用Manifest，让你的WebApp更“Native”》中介绍了如何用safari自有的meta标签来实现standalone模式。</p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/7/23/164c675aabb374df?w=1536&amp;h=98&amp;f=png&amp;s=52630" alt=""/></p>
 
-<p>不过，问题就出在了standalone模式上。抛开iOS safari standalone模式现有的一些其他小bug（包括状态栏的显示、白屏、重复添加等），iOS safari standalone模式有一个无法回避的重大问题。其源于iOS与android的一个重要区别：</p>
+<p>更多Preload与Prefetch的细节差异可以看这里 —— <a href="https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf">Preload, Prefetch And Priorities in Chrome</a>。</p>
 
-<p>iOS没有后退键，而一般android机都有。</p>
+<h2 id="toc_12">3. 写在最后</h2>
 
-<p>在iOS上使用standalone模式添加的应用，由于没有浏览器的工具栏，所以无法进行后退。例如我打开首页，然后点击首页课程列表中的一门课程后，浏览器跳转到课程页，由于iOS没有后退键，所以你无法再回到首页，除非杀死“应用”重新启动。</p>
+<p>本文介绍了如何使用Resource Hint（以及Preload）来提升页面加载性能与体验，简单来说：</p>
 
-<h3 id="toc_13">3.2. 产生的原因</h3>
+<ul>
+<li>DNS Prefetch 可以帮助我们进行DNS预查询；</li>
+<li>Preconnect 可以帮助我们进行预连接，例如在一些重定向技术中，可以让浏览器和最终目标源更早建立连接；</li>
+<li>Prefetch 可以帮助我们预先获取所需资源（并且不用担心该资源会被执行），例如我们可以根据用户行为猜测其下一步操作，然后动态预获取所需资源；</li>
+<li>Prerender 则会更进一步，不仅获取资源，还会预加载（执行）部分资源，因此如果我们Prerender下一个页面，打开该页面时会让用户感觉非常流畅；</li>
+<li>Preload 则像是 Prefetch的升级版，会强制立即高优获取资源，非常适合Preload（尽早获取）一些关键渲染路径中的资源。</li>
+</ul>
 
-<p>正如上面所提到的，由于iOS没有后退键，而standalone模式会隐藏浏览器工具条和导航条，因此，在iOS中使用保存到桌面的WebApp，就像是一次不能回头的旅行……</p>
-
-<h3 id="toc_14">3.3. 解决方案</h3>
-
-<p>显然，这种体验是无法接受的。目前我采用的解决方案非常简单，在打开页面时进行判断，如果是iOS中的standalone模式，则在页面右上角显示一个“返回”小图标。点击图标返回上一个页面。</p>
-
-<p>iOS中有一个专门的属性来判断是否为standalone模式：</p>
-
-<pre><code class="language-javascript">if (&#39;standalone&#39; in window.navigator &amp;&amp; window.navigator.standalone) {
-    // standalone模式进行特殊处理，例如展示返回按钮
-    backBtn.show();
-}
-</code></pre>
-
-<p>使用history API即可实现按钮的后退功能：</p>
-
-<pre><code class="language-javascript">backBtn.addEventListener(&#39;click&#39;, function () {
-    window.history.back();
-});
-</code></pre>
-
-<h2 id="toc_15">4. 图片策略</h2>
+<p>虽然，大部分PWA相关资料中并不会提及Resource Hint，但是正如我在<a href="https://juejin.im/post/5ac8a67c5188255c5668b0b8">第一篇文章</a>中提到的</p>
 
 <blockquote>
-<p>解决PWA离线资源中非缓存图片资源的展示</p>
+<p>PWA本身其实是一个概念集合，它不是指某一项技术，而是通过一系列的Web技术与Web标准来优化Web App的安全、性能和体验。</p>
 </blockquote>
 
-<h3 id="toc_16">4.1. 遇到的问题</h3>
+<p>Resource Hint显然符合这一点。</p>
 
-<p>在实际使用中，为了满足一定的离线功能，我缓存了一些变化频率极小的API数据，例如个人中心里的列表信息。而列表中包含了较多的图片。为了节省了用户的存储空间，对于图片资源我并未选择缓存。</p>
+<p>我们不应该将PWA局限在Service Worker离线缓存、提醒通知这些常见的PWA内容中，希望读者也能开阔思维，理解PWA背后的概念与思想。因此，在后续文章中我也会介绍前端存储(sessionStorage/localStorage/indexDB)、HTTP/2.0以及PWA进展等相关内容。</p>
 
-<p>这导致了一个问题：离线情况下，虽然用户能正常看到列表信息，但是其中的图片部分都是类似下面这种“图裂了”的情况，体验不太好。</p>
+<p>在下一篇里，我们会一起来学习Google开源的PWA离线工具集 —— workbox。通过workbox，我们可以学习<u><strong>各类离线策略</strong></u>，并且了解一些生产环境中需要考虑的问题。部分开源PWA解决方案也是基于workbox进行封装的。</p>
 
-<p><img src="https://user-gold-cdn.xitu.io/2018/5/25/16397f563295ef0e?w=1422&amp;h=470&amp;f=png&amp;s=27924" alt=""/></p>
-
-<h3 id="toc_17">4.2. 产生的原因</h3>
-
-<p>原因上面已经解释了，离线状态下无法请求到图片资源，所以在一些浏览器中就会表现出这种“图挂了”的状态。</p>
-
-<h3 id="toc_18">4.3. 解决方案</h3>
-
-<p>解决这个体验问题的大致思路如下：</p>
-
-<ol>
-<li>首先，需要在本地缓存占位图资源</li>
-<li>其次，在获取图片时判断是否出现错误</li>
-<li>最后，在错误时使用占位图进行替换</li>
-</ol>
-
-<p>由于只是缓存占位图，而占位图一般较为固定，只会有有限的几种尺寸样式，因此不会产生太多缓存空间的占用。占位图的缓存完全可以在缓存静态资源时一起进行。</p>
-
-<p>而图片获取出错（可能是网络原因，也可能是URL错误）时，进行占位图的替换有两种简单的方式：</p>
-
-<p><strong>方法一：在fetch事件中监听图片资源，出错时使用占位图</strong></p>
-
-<pre><code class="language-javascript">self.addEventListener(&#39;fetch&#39;, e =&gt; {
-    if (/\.png|jpeg|jpg|gif/i.test(e.request.url)) {
-        e.respondWith(
-            fetch(e.request).then(response =&gt; {
-                return response;
-            }).catch(err =&gt; {
-                // 请求错误时使用占位图
-                return caches.match(placeholderPic).then(cache =&gt; cache);
-            })
-        );
-        return;
-    }
-</code></pre>
-
-<p><strong>方法二：通过img标签的onerror属性来请求占位图</strong></p>
-
-<p>先将img标签改为</p>
-
-<pre><code class="language-HTML">&lt;img class=&quot;list-cover&quot;
-    src=&quot;//your.sample.com/1234.png&quot;
-    alt=&quot;{{ item.desc }}&quot;
-    onerror=&quot;javascript:this.src=&#39;https://your.sample.com/placeholder.png&#39;&quot;/&gt;   
-</code></pre>
-
-<p><code>onerror</code>属性中指定的方法会在图片加载错误时替换<code>src</code>；同时我们将Service Worker中的代码进行调整：</p>
-
-<pre><code class="language-javascript">self.addEventListener(&#39;fetch&#39;, e =&gt; {
-    if (/\.png|jpeg|jpg|gif/i.test(e.request.url)) {
-        e.respondWith(
-            fetch(e.request).then(response =&gt; {
-                return response;
-            // 触发onerror后，img会再次请求图片placeholder.png
-            // 由于无网络连接，此fetch依然会出错
-            }).catch(err =&gt; {
-                // 由于我们事先缓存了placeholder.png，这里会返回缓存结果
-                return caches.match(e.request).then(cache =&gt; cache);
-            })
-        );
-        return;
-    }
-</code></pre>
-
-<h2 id="toc_19">5. 写在最后</h2>
-
-<p>本文总结了一些我在进行PWA升级实践中遇到的问题，希望对遇到类似问题的朋友能够有一些启发或帮助。</p>
-
-<p>在下一篇文章中，我会回到PWA相关技术，介绍Resource Hint，以及如何使用Resource Hint来提高页面的加载性能，提升用户体验。</p>
-
-<h2 id="toc_20">参考资料</h2>
-
-<h3 id="toc_21">Service Worker Scope</h3>
+<h2 id="toc_13">参考资料</h2>
 
 <ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/ServiceWorkerContainer/register#%E5%8F%82%E6%95%B0">Service Worker Scope (MDN)</a></li>
-<li><a href="https://stackoverflow.com/questions/35780397/understanding-service-worker-scope">Understanding Service Worker scope</a></li>
-<li><a href="https://stackoverflow.com/questions/49084718/how-exactly-add-service-worker-allowed-to-register-service-worker-scope-in-upp">How exactly add “Service-Worker-Allowed” to register service worker scope in upper folder</a></li>
-</ul>
-
-<h3 id="toc_22">CORS</h3>
-
-<ul>
-<li><a href="https://stackoverflow.com/questions/39109789/what-limitations-apply-to-opaque-responses">What limitations apply to opaque responses?
-</a></li>
-<li><a href="https://developers.google.com/web/tools/workbox/guides/handle-third-party-requests">Handle Third Party Requests</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes">CORS settings attributes</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS">Cross-Origin Resource Sharing (CORS)</a></li>
-<li><a href="https://github.com/h5bp/server-configs">Git Repo: server configs</a></li>
-</ul>
-
-<h3 id="toc_23">iOS standalone</h3>
-
-<ul>
-<li><a href="https://medium.com/@firt/dont-use-ios-web-app-meta-tag-irresponsibly-in-your-progressive-web-apps-85d70f4438cb">Don’t use iOS meta tags irresponsibly in your Progressive Web Apps</a></li>
+<li><a href="https://www.w3.org/TR/resource-hints/">Resource Hints W3C Working Draft 15 January 2018</a></li>
+<li><a href="https://www.w3.org/TR/preload/">Preload W3C Candidate Recommendation 26 October 2017</a></li>
+<li><a href="https://medium.com/reloading/preload-prefetch-and-priorities-in-chrome-776165961bbf">Preload, Prefetch And Priorities in Chrome</a></li>
+<li><a href="https://tools.ietf.org/html/rfc5988">Web Linking</a></li>
+<li><a href="https://www.w3.org/TR/page-visibility/">Page Visibility Level 2 W3C Proposed Recommendation 17 October 2017</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/urls-and-fetching.html#cors-settings-attributes">CORS settings attributes</a></li>
+<li><a href="https://www.w3.org/TR/CSP3/">Content Security Policy Level 3 W3C Working Draft, 13 September 2016</a></li>
 </ul>
 
 
 		</div>
+	
+
+ 
 	
 
  

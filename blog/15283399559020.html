@@ -47,6 +47,8 @@
         <li><label>PWA</label></li>
 
           
+            <li><a title="【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验" href="15354508213008.html">【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</a></li>
+          
             <li><a title="【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案" href="15288038664515.html">【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</a></li>
           
             <li><a title="【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync" href="15288038009038.html">【PWA学习与实践】(8)使用Service Worker进行后台同步 - Background Sync</a></li>
@@ -80,6 +82,8 @@
         <li class="divider"></li>
         <li><label>CSS</label></li>
 
+          
+            <li><a title="CSS布局学习指南[译]" href="15301745888974.html">CSS布局学习指南[译]</a></li>
           
             <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
           
@@ -123,6 +127,10 @@
         <li><label>Reading</label></li>
 
           
+            <li><a title="推荐阅读 2018.08" href="15333560595579.html">推荐阅读 2018.08</a></li>
+          
+            <li><a title="推荐阅读 2018.07" href="15307688152882.html">推荐阅读 2018.07</a></li>
+          
             <li><a title="推荐阅读 2018.06" href="15288017709756.html">推荐阅读 2018.06</a></li>
           
             <li><a title="推荐阅读 2018.05" href="15287963471356.html">推荐阅读 2018.05</a></li>
@@ -138,6 +146,16 @@
 
           
             <li><a title="【性能优化实践】优化打包策略提升页面加载速度" href="15288037747207.html">【性能优化实践】优化打包策略提升页面加载速度</a></li>
+          
+
+      
+        <li class="divider"></li>
+        <li><label>webpack</label></li>
+
+          
+            <li><a title="【webpack进阶】使用babel避免webpack编译运行时模块依赖" href="15354509456422.html">【webpack进阶】使用babel避免webpack编译运行时模块依赖</a></li>
+          
+            <li><a title="【webpack进阶】前端运行时的模块化设计与实现" href="15353386669734.html">【webpack进阶】前端运行时的模块化设计与实现</a></li>
           
 
       
@@ -157,6 +175,8 @@
 
                     
                       <li class="side-title"><span>PWA</span></li>
+                        
+                          <li><a title="【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验" href="15354508213008.html">【PWA学习与实践】(10)使用Resource Hint提升页面加载性能与体验</a></li>
                         
                           <li><a title="【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案" href="15288038664515.html">【PWA学习与实践】(9)生产环境中PWA实践的问题与解决方案</a></li>
                         
@@ -187,6 +207,8 @@
 
                     
                       <li class="side-title"><span>CSS</span></li>
+                        
+                          <li><a title="CSS布局学习指南[译]" href="15301745888974.html">CSS布局学习指南[译]</a></li>
                         
                           <li><a title="【CSS模块化】(3) 使用💅styled-components来优化react组件开发" href="15236398426783.html">【CSS模块化】(3) 使用💅styled-components来优化react组件开发</a></li>
                         
@@ -222,6 +244,10 @@
                     
                       <li class="side-title"><span>Reading</span></li>
                         
+                          <li><a title="推荐阅读 2018.08" href="15333560595579.html">推荐阅读 2018.08</a></li>
+                        
+                          <li><a title="推荐阅读 2018.07" href="15307688152882.html">推荐阅读 2018.07</a></li>
+                        
                           <li><a title="推荐阅读 2018.06" href="15288017709756.html">推荐阅读 2018.06</a></li>
                         
                           <li><a title="推荐阅读 2018.05" href="15287963471356.html">推荐阅读 2018.05</a></li>
@@ -235,6 +261,14 @@
                       <li class="side-title"><span>Performace</span></li>
                         
                           <li><a title="【性能优化实践】优化打包策略提升页面加载速度" href="15288037747207.html">【性能优化实践】优化打包策略提升页面加载速度</a></li>
+                        
+
+                    
+                      <li class="side-title"><span>webpack</span></li>
+                        
+                          <li><a title="【webpack进阶】使用babel避免webpack编译运行时模块依赖" href="15354509456422.html">【webpack进阶】使用babel避免webpack编译运行时模块依赖</a></li>
+                        
+                          <li><a title="【webpack进阶】前端运行时的模块化设计与实现" href="15353386669734.html">【webpack进阶】前端运行时的模块化设计与实现</a></li>
                         
 
                     
@@ -296,7 +330,7 @@ memory cache --&gt; service worker cache --&gt; HTTP cache(disk cache) --&gt; Pu
 
 <h4 id="toc_8"><a href="https://developers.google.com/web/updates/2015/08/using-requestidlecallback">4、Using requestIdleCallback</a></h4>
 
-<p>一个非常强大的API——requestIdleCallback，它可以让你添加回调，浏览器会在合适的各个frame的最后调用你的回调，并提供deadline参数（didTimeout和timeRemaining方法），通过它你可以了解每个frame的最后还有多少空闲的事件，并安排你的任务。React 16似乎就使用了这个API来做前端计算任务的切分。</p>
+<p>一个非常强大的API——requestIdleCallback，它可以让你添加回调，浏览器会在合适的各个frame的最后调用你的回调，并提供deadline参数（didTimeout和timeRemaining方法），通过它你可以了解每个frame的最后还有多少空闲的事件，并安排你的任务。React 16就使用了这个API来做前端计算任务的切分与调度。</p>
 
 <h4 id="toc_9"><a href="https://medium.freecodecamp.org/here-are-three-upcoming-changes-to-javascript-that-youll-love-387bce1bfb0b">5、Here are three upcoming changes to JavaScript that you’ll love</a></h4>
 
@@ -319,7 +353,11 @@ memory cache --&gt; service worker cache --&gt; HTTP cache(disk cache) --&gt; Pu
 
 <h4 id="toc_12"><a href="https://medium.com/@cramforce/designing-very-large-javascript-applications-6e013a3291a3">8、Designing very large (JavaScript) applications👍</a></h4>
 
-<p>高屋建瓴，更多其实是在讲如何维护一个超大型项目（进行协作）。很有启发，非常适合每隔一段时间重温一下。（文章作者是AMP技术leader）</p>
+<p>高屋建瓴，在讲如何维护一个超大型项目（进行协作）。</p>
+
+<blockquote>
+<p>p.s. 文章作者是Google的技术专家，AMP技术leader）</p>
+</blockquote>
 
 <h4 id="toc_13"><a href="https://blog.sessionstack.com/how-javascript-works-deep-dive-into-websockets-and-http-2-with-sse-how-to-pick-the-right-path-584e6b8e3bf7">9、How JavaScript works: Deep dive into WebSockets and HTTP/2 with SSE + how to pick the right path</a></h4>
 
@@ -451,9 +489,27 @@ memory cache --&gt; service worker cache --&gt; HTTP cache(disk cache) --&gt; Pu
 
 <h4 id="toc_31"><a href="https://zhuanlan.zhihu.com/p/30078937">11、如何不择手段提升scroll事件的性能👍</a></h4>
 
-<p>文章以scroll监听这一会带来性能问题的经典案例为例子，介绍了如何提高运行时中浏览器的动画、render的性能。</p>
+<p>文章以scroll监听这一会带来性能问题的经典案例为例子，介绍了如何提高运行时中浏览器的动画、render的性能。同时文章内包含很多参考资料，非常适合进一步阅读。</p>
 
-<h4 id="toc_32"><a href="https://developers.google.com/web/tools/chrome-devtools/rendering-tools/">12、分析运行时性能</a></h4>
+<ol>
+<li>chrome devtool 是诊断页面滚动性能的有效工具</li>
+<li>提升滚动时性能，就是要达到fps高且稳</li>
+<li>具体可以从以下方面着手
+
+<ul>
+<li>使用web worker分离无页面渲染无关的逻辑计算</li>
+<li>触发监听事件时使用函数节流与函数去抖</li>
+<li>使用requestAnimationFrame与requestIdleCallback代替定时器</li>
+<li>避免强制重排</li>
+<li>提升合成层</li>
+</ul></li>
+</ol>
+
+<h4 id="toc_32"><a href="https://johnresig.com/blog/learning-from-twitter/">12、Learning from Twitter</a></h4>
+
+<p>jQuery作者就Twitter使用jQuery处理页面滚动时遇到的性能问题进行了解释。</p>
+
+<h4 id="toc_33"><a href="https://developers.google.com/web/tools/chrome-devtools/rendering-tools/">13、分析运行时性能</a></h4>
 
 <p>简述了JavaScript、Style、Layout、Paint和Composite中可能造成性能问题的地方，并提出了一些解决方案。算是对Render Performance的一个精简汇总。</p>
 
