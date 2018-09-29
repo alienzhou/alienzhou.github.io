@@ -49,8 +49,24 @@ body {
   padding-top: 20px;
   width: 100%;
   text-align: center;
-  color: #f2f2f2;
+  color: #ddd;
   text-transform: Capitalize;
+}
+.title span {
+  position: relative;
+}
+.title .github {
+  position: absolute;
+  top: 10px;
+  right: -45px;
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.title .github:hover {
+  opacity: 1;
 }
 .main {
   height: 100%;
