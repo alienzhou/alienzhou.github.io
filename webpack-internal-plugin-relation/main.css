@@ -64,12 +64,20 @@ body {
   height: 30px;
   width: 40px;
   position: relative;
+  cursor: pointer;
 }
 .tooltip div::after {
   font-size: 14px;
   position: absolute;
   top: 16px;
   left: 50px;
+  color: #888;
+}
+.tooltip div.active::after {
+  color: #eee;
+}
+.tooltip div:hover::after {
+  color: #F1DAF0;
 }
 .tooltip .contain::after {
   content: 'contain';
@@ -100,6 +108,7 @@ body {
   top: -4px;
   left: 20px;
   width: 200px;
+  color: #888;
 }
 .category .hook {
   margin-top: 15px;
@@ -144,6 +153,9 @@ body {
   height: 250px;
   width: 250px;
   overflow-y: auto;
+}
+.info-name {
+  word-wrap: break-word;
 }
 .info-title {
   border-left: 3px solid #444;
