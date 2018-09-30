@@ -83,28 +83,29 @@ body {
   cursor: pointer;
 }
 .tooltip div::after {
+  width: 100px;
   font-size: 14px;
   position: absolute;
   top: 16px;
   left: 50px;
-  color: #888;
+  color: #444;
 }
 .tooltip div.active::after {
-  color: #eee;
+  color: #888;
 }
 .tooltip div:hover::after {
-  color: #F1DAF0;
+  color: #eee;
 }
 .tooltip .contain::after {
-  content: 'contain';
+  content: '\300C\521B\5EFA\300D\5173\7CFB   ';
   font-size: 14px;
 }
 .tooltip .register::after {
-  content: 'register';
+  content: '\300C\6CE8\518C\300D\5173\7CFB   ';
   font-size: 14px;
 }
 .tooltip .call::after {
-  content: 'call';
+  content: '\300C\8C03\7528\300D\5173\7CFB   ';
   font-size: 14px;
 }
 .category {
@@ -130,10 +131,10 @@ body {
   margin-top: 15px;
 }
 .category .module::after {
-  content: 'javascript module';
+  content: '\6A21\5757/\5185\90E8\63D2\4EF6';
 }
 .category .hook::after {
-  content: 'webpack hook';
+  content: 'webpack\94A9\5B50';
 }
 .operation {
   position: fixed;
