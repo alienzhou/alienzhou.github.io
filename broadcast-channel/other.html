@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>other</title>
+</head>
+<body>
+    <div>Hey! I am the other page.</div>
+    <input id="js-input" placeholder="input message" />
+    <button id="js-btn">post message</button>
+    <button id="js-close">close channel</button>
+    <button id="js-open">open channel</button>
+    <script>
+        var bc;
+        function broadcast() {
+            bc = new BroadcastChannel('alienzhou');
+            bc.onmessage = function(e) {
+                console.log('index receive message', e);
+                var data = e.data;
+                var $div = document.createElement('div');
+                $div.textContent = data.from + ': ' + data.msg;
+                document.getElementById('js-container').appendChild($div);
+            };
+        }
+        broadcast();
+
+        document.getElementById('js-btn').addEventListener('click', function() {
+            var msg = document.getElementById('js-input').value;
+            bc.postMessage({from: 'other', msg});
+
+            var $div = document.createElement('div');
+            $div.textContent = 'me: ' + msg;
+            document.getElementById('js-container').appendChild($div);
+        });
+        document.getElementById('js-close').addEventListener('click', function() {
+            bc.close();
+        });
+        document.getElementById('js-open').addEventListener('click', function() {
+            broadcast();
+        });
+    </script>
+    <section id="js-container"></section>
+</body>
+</html>
