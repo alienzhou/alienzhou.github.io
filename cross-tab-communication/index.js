@@ -173,7 +173,7 @@
             document.cookie = str.replace(reg, encodeURI(JSON.stringify({from: tab, msg: val})));
         }
         else {
-            document.cookie += 'alienzhou_ctc=' + encodeURI(JSON.stringify({from: tab, msg: val})) + ';';
+            document.cookie += '; alienzhou_ctc=' + encodeURI(JSON.stringify({from: tab, msg: val}));
         }
     });
 })();
