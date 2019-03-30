@@ -146,35 +146,29 @@
     const $input = $container.querySelector('input');
     const $btn = $container.querySelector('button');
     const $info = $container.querySelector('p');
-    let originVal = getCookie('ctc');
 
-    setInterval(function () {
-        const val = getCookie('ctc');
-        if (val !== originVal) {
-            originVal = val;
-            const data = JSON.parse(decodeURI(val));
-            if (document.getElementById('js-header').dataset.tab === data.from) {
-                return;
-            }
-            const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
-            console.log('[Storage I] receive message:', text);
-            $info.textContent = text;
-        }
-    }, 1000);
-
-    $btn.addEventListener('click', function () {
-        const tab = document.getElementById('js-header').dataset.tab;
-        const val = $input.value;
-        $input.value = '';
-        $info.textContent = '[send] ' + val;
-        const str = document.cookie;
-        const reg = /(?<=alienzhou_ctc=)([^;]+)(?=;|$)/;
-        if (reg.test(str)) {
-            document.cookie = str.replace(reg, encodeURI(JSON.stringify({from: tab, msg: val})));
-        }
-        else {
-            document.cookie += '; alienzhou_ctc=' + encodeURI(JSON.stringify({from: tab, msg: val}));
-        }
+    openStoreAndInit().then(function (db) {
+        setInterval(function () {
+            query(db).then(function (res) {
+                if (!res || !res.data || document.getElementById('js-header').dataset.tab === res.data.from) {
+                    return;
+                }
+                const data = res.data;
+                const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                console.log('[Storage I] receive message:', text);
+                $info.textContent = text;
+            });
+        }, 1000);
+        $btn.addEventListener('click', function () {
+            const tab = document.getElementById('js-header').dataset.tab;
+            const val = $input.value;
+            $input.value = '';
+            $info.textContent = '[send] ' + val;
+            saveData(db, {
+                from: tab,
+                msg: val
+            });
+        });
     });
 })();
 
