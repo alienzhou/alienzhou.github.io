@@ -178,17 +178,6 @@
     const $input = $container.querySelector('input');
     const $btn = $container.querySelector('button');
     const $info = $container.querySelector('p');
-    if (window.opener) {
-        window.opener.addEventListener('message', function (e) {
-            const data = e.data;
-            if (document.getElementById('js-header').dataset.tab === data.from) {
-                return;
-            }
-            const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
-            console.log('[Cross-document Messaging] receive message:', text);
-            $info.textContent = text;
-        });
-    }
     window.addEventListener('message', function (e) {
         const data = e.data;
         if (document.getElementById('js-header').dataset.tab === data.from) {
@@ -197,6 +186,16 @@
         const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
         console.log('[Cross-document Messaging] receive message:', text);
         $info.textContent = text;
+
+        // do not send message back
+        if (window.opener && data.fromOpenner) {
+            window.opener.postMessage(data);
+        }
+
+        // do not send message back
+        if (window.childWin && !data.fromOpenner) {
+            window.childWin.postMessage(data);
+        }
     });
 
     if (!window.childWin && !window.opener) {
@@ -213,16 +212,18 @@
         $info.textContent = '[send] ' + val;
 
         if (window.childWin) {
-            window.postMessage({
+            window.childWin.postMessage({
                 from: tab,
-                msg: val
+                msg: val,
+                fromOpenner: false
             });
         }
 
         if (window.opener) {
             window.opener.postMessage({
                 from: tab,
-                msg: val
+                msg: val,
+                fromOpenner: true
             });
         }
     });
