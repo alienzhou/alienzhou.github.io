@@ -13,7 +13,7 @@
         }
 
         a {
-            font-size: 18px;
+            font-size: 16px;
             color: rgb(83, 97, 221);
         }
 
@@ -22,9 +22,14 @@
             text-decoration: underline;
         }
 
-        footer {
-            padding-top: 50px;
-            text-align: right;
+        .link {
+            position: absolute;
+            right: 0;
+            bottom: 80px;
+        }
+
+        main {
+            position: relative;
         }
 
         main::after {
@@ -37,11 +42,18 @@
         }
 
         h1 {
-            line-height: 36px;
-            font-size: 36px;
+            line-height: 30px;
+            font-size: 30px;
             border-left: 4px solid rgb(83, 97, 221);
-            padding-left: 10px;
-            margin: 35px 0;
+            padding-left: 15px;
+            margin: 25px 0 5px 0;
+        }
+
+        h2 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+            font-weight: 100;
+            color: #999;
         }
 
         section {
@@ -50,8 +62,18 @@
             border-radius: 5px;
             width: 480px;
             float: left;
-            margin: 0 20px 20px 0;
+            margin: 0 20px 10px 0;
             padding: 0 20px;
+        }
+
+        section:hover {
+            border: 1px solid rgb(83, 97, 221);
+        }
+
+        section p {
+            height: 20px;
+            font-size: 12px;
+            color: #333;
         }
 
         section:nth-child(2n) {
@@ -60,12 +82,13 @@
 
         section h2 {
             margin: 10px 0 0;
-            font-size: 20px;
+            font-size: 18px;
             color: #333;
+            font-weight: 400;
         }
 
         section h3 {
-            margin: 0 0 5px 0;
+            margin: 0 0 10px 0;
             font-size: 14px;
             color: #999;
             font-weight: 100;
@@ -98,6 +121,28 @@
             width: 100px;
         }
 
+        section.disabled {
+            opacity: .6;
+        }
+
+        section.disabled:hover {
+            border-color: #ddd;
+            cursor: not-allowed;
+        }
+
+        section.disabled button {
+            background: #999;
+        }
+
+        section.disabled button:hover {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        section.disabled input:hover {
+            cursor: not-allowed;
+        }
+
         section button:hover {
             background: rgb(102, 114, 224);
         }
@@ -124,30 +169,27 @@
 </head>
 <body>
     <h1 id="js-header"></h1>
+    <h2>This page shows the ways to share or sync messages between tabs which have the same origin.</h2>
     <script>
         let title = '';
         if (/new/.test(document.location.search)) {
             let num = parseInt(window.localStorage.getItem('count'), 10) + 1;
             title = 'No.' + num + ' - A New Tab (Cross Tabs Communication)';
             window.localStorage.setItem('count', num);
+            document.getElementById('js-header').setAttribute('data-tab', num);
+            document.title = title;
         }
         else {
             title = 'Cross Tabs Communication';
             window.localStorage.setItem('count', 1);
+            document.getElementById('js-header').setAttribute('data-tab', 1);
         }
         document.getElementById('js-header').textContent = title;
     </script>
     <main>
         <section id="broadcast-channel">
             <h2>Broadcast Channel</h2>
-            <h2>&nbsp;</h2>
-            <input placeholder="input message" />
-            <button type="button">Send Message</button>
-            <p></p>
-        </section>
-        <section id="post-message">
-            <h2>Cross-document Messaging</h2>
-            <h3>postMessage</h3>
+            <h3>&nbsp;</h3>
             <input placeholder="input message" />
             <button type="button">Send Message</button>
             <p></p>
@@ -161,99 +203,301 @@
         </section>
         <section id="shared-worker">
             <h2>Shared Worker</h2>
-            <h2>&nbsp;</h2>
+            <h3>&nbsp;</h3>
             <input placeholder="input message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
-        <section id="storage1">
-            <h2>Storage I</h2>
-            <h3>localStorage / sessionStorage</h3>
+        <section id="local-storage">
+            <h2>Local Storage </h2>
+            <h3>localStorage</h3>
             <input placeholder="input message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
         <section id="storage2">
-            <h2>Storage II</h2>
-            <h3>Indexed DB / cookie</h3>
+            <h2>Other Storage</h2>
+            <h3>cookie / Indexed DB</h3>
             <input placeholder="input message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
-        <section id="websocket">
-            <h2>Window Reference</h2>
-            <h3>window.open / window.opener</h3>
-            <input placeholder="input message" disabled />
-            <button type="button" disabled>No Example</button>
+        <section id="post-message">
+            <h2>Cross-document Messaging</h2>
+            <h3>window.open / window.opener (postMessage between two windows)</h3>
+            <input placeholder="input message" />
+            <button type="button">Send Message</button>
             <p></p>
         </section>
-        <section id="websocket">
+        <section class="disabled" id="websocket">
             <h2>Server Push</h2>
             <h3>WebSocket / SSE / Long Polling</h3>
             <input placeholder="input message" disabled />
             <button type="button" disabled>No Example</button>
             <p></p>
         </section>
+        <a class="link" id="js-link" href="javascript:void(0);" target="_blank">Open a new tab (same origin) >></a>
     </main>
-    <footer>
-        <a href="./index.html?new=1" target="_blank">Open a new tab (same origin) >></a>
-    </footer>
     <script>
-
+        document.getElementById('js-link').addEventListener('click', function () {
+            window.childWin = window.open('./?new=1');
+            const $container = document.getElementById('post-message');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
+            $container.querySelector('input').removeAttribute('disabled');
+            $container.querySelector('button').removeAttribute('disabled');
+            $container.classList.remove('disabled');
+            $container.querySelector('h2').textContent = $container.querySelector('h2').textContent.replace(' (no open)', '');
+        });
+    </script>
+    <script>
         // BroadcastChannel
         (function () {
             const bc = new BroadcastChannel('AlienZHOU');
+            const $container = document.getElementById('broadcast-channel');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
             bc.onmessage = function (e) {
                 const data = e.data;
-                console.log('[BroadcastChannel] receive message:', data);
-                var $div = document.createElement('div');
-                $div.textContent = data.from + ': ' + data.msg;
-                document.getElementById('js-container').appendChild($div);
+                const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                console.log('[BroadcastChannel] receive message:', text);
+                $info.textContent = text;
             };
             bc.onmessageerror = function (e) {
                 console.log(e);
             };
 
-            document.getElementById('broadcast-channel').addEventListener('click', function () {
-                var msg = document.getElementById('js-input').value;
-                bc.postMessage({ from: 'index', msg });
-
-                var $div = document.createElement('div');
-                $div.textContent = 'me: ' + msg;
-                document.getElementById('js-container').appendChild($div);
+            $btn.addEventListener('click', function () {
+                const tab = document.getElementById('js-header').dataset.tab;
+                const val = $input.value;
+                $input.value = '';
+                $info.textContent = '[send] ' + val;
+                bc.postMessage({
+                    from: tab,
+                    msg: val
+                });
             });
         })();
 
-        var bc;
-        function broadcast() {
-            bc = new BroadcastChannel('alienzhou');
-            bc.onmessage = function (e) {
-                console.log('index receive message', e);
-                var data = e.data;
-                var $div = document.createElement('div');
-                $div.textContent = data.from + ': ' + data.msg;
-                document.getElementById('js-container').appendChild($div);
-            };
-            bc.onmessageerror = function (e) {
-                console.log(e);
-            };
-        }
-        broadcast();
+        // Service Worker
+        (function () {
+            const $container = document.getElementById('service-worker');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('./sw.js').then(function () {
+                    console.log('Service Worker 注册成功');
+                });
+                navigator.serviceWorker.addEventListener('message', function (e) {
+                    const data = e.data;
+                    if (document.getElementById('js-header').dataset.tab === data.from) {
+                        return;
+                    }
+                    const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                    console.log('[Service Worker] receive message:', text);
+                    $info.textContent = text;
+                });
+            }
 
-        document.getElementById('js-btn').addEventListener('click', function () {
-            var msg = document.getElementById('js-input').value;
-            bc.postMessage({ from: 'index', msg });
+            $btn.addEventListener('click', function () {
+                const tab = document.getElementById('js-header').dataset.tab;
+                const val = $input.value;
+                $input.value = '';
+                $info.textContent = '[send] ' + val;
+                navigator.serviceWorker.controller.postMessage({
+                    from: tab,
+                    msg: val
+                });
+            });
+        })();
 
-            var $div = document.createElement('div');
-            $div.textContent = 'me: ' + msg;
-            document.getElementById('js-container').appendChild($div);
-        });
-        document.getElementById('js-close').addEventListener('click', function () {
-            bc.close();
-        });
-        document.getElementById('js-open').addEventListener('click', function () {
-            broadcast();
-        });
+        // Local Storage
+        (function () {
+            const $container = document.getElementById('local-storage');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'ctc-msg') {
+                    const data = JSON.parse(e.newValue);
+                    const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                    console.log('[Storage I] receive message:', text);
+                    $info.textContent = text;
+                }
+            })
+
+            $btn.addEventListener('click', function () {
+                const tab = document.getElementById('js-header').dataset.tab;
+                const val = $input.value;
+                $input.value = '';
+                $info.textContent = '[send] ' + val;
+                // must have some differences to fire 'storage' event
+                // so use timestamp
+                localStorage.setItem('ctc-msg', JSON.stringify({
+                    from: tab,
+                    msg: val,
+                    st: +(new Date)
+                }));
+            });
+        })();
+
+        // Shared Worker
+        (function () {
+            if (typeof SharedWorker === 'undefined') {
+                return;
+            }
+            const sharedWorker = new SharedWorker('./shared.js', 'ctc');
+            const $container = document.getElementById('shared-worker');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
+
+            setInterval(function () {
+                sharedWorker.port.postMessage({get: true});
+            }, 1000);
+
+            sharedWorker.port.addEventListener('message', (e) => {
+                const data = e.data;
+                if (document.getElementById('js-header').dataset.tab === data.from) {
+                    return;
+                }
+                const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                console.log('[Shared Worker] receive message:', text);
+                $info.textContent = text;
+            }, false);
+            sharedWorker.port.start();
+
+            $btn.addEventListener('click', function () {
+                const tab = document.getElementById('js-header').dataset.tab;
+                const val = $input.value;
+                $input.value = '';
+                $info.textContent = '[send] ' + val;
+                sharedWorker.port.postMessage({
+                    from: tab,
+                    msg: val
+                });
+            });
+        })();
+
+        // Storage: cookie
+        (function () {
+            function getCookie(cookieName) {
+                const strCookie = document.cookie;
+                const arrCookie = strCookie.split('; ');
+                for(let i = 0; i < arrCookie.length; i++) {
+                    let arr = arrCookie[i].split('=');
+                    if(cookieName == arr[0]){
+                        return arr[1];
+                    }
+                }
+                return '';
+            }
+            function getCookie(cookieName) {
+                const strCookie = document.cookie;
+                const arrCookie = strCookie.split('; ');
+                for(let i = 0; i < arrCookie.length; i++) {
+                    let arr = arrCookie[i].split('=');
+                    if(cookieName == arr[0]){
+                        return arr[1];
+                    }
+                }
+                return '';
+            }
+
+            const $container = document.getElementById('storage2');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
+            let originVal = getCookie('ctc');
+
+            setInterval(function () {
+                const val = getCookie('ctc');
+                if (val !== originVal) {
+                    originVal = val;
+                    const data = JSON.parse(decodeURI(val));
+                    if (document.getElementById('js-header').dataset.tab === data.from) {
+                        return;
+                    }
+                    const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                    console.log('[Storage I] receive message:', text);
+                    $info.textContent = text;
+                }
+            }, 1000);
+
+            $btn.addEventListener('click', function () {
+                const tab = document.getElementById('js-header').dataset.tab;
+                const val = $input.value;
+                $input.value = '';
+                $info.textContent = '[send] ' + val;
+                const str = document.cookie;
+                const reg = /(?<=ctc=)([^;]+)(?=;|$)/;
+                if (reg.test(str)) {
+                    document.cookie = str.replace(reg, encodeURI(JSON.stringify({from: tab, msg: val})));
+                }
+                else {
+                    document.cookie += 'ctc=' + encodeURI(JSON.stringify({from: tab, msg: val}));
+                }
+            });
+        })();
+
+        // Cross-document Messaging
+        (function () {
+            const $container = document.getElementById('post-message');
+            const $input = $container.querySelector('input');
+            const $btn = $container.querySelector('button');
+            const $info = $container.querySelector('p');
+            if (window.opener) {
+                window.opener.addEventListener('message', function (e) {
+                    const data = e.data;
+                    if (document.getElementById('js-header').dataset.tab === data.from) {
+                        return;
+                    }
+                    const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                    console.log('[Cross-document Messaging] receive message:', text);
+                    $info.textContent = text;
+                });
+            }
+            window.addEventListener('message', function (e) {
+                const data = e.data;
+                if (document.getElementById('js-header').dataset.tab === data.from) {
+                    return;
+                }
+                const text = '[receive] ' + data.msg + ' —— tab ' + data.from;
+                console.log('[Cross-document Messaging] receive message:', text);
+                $info.textContent = text;
+            });
+
+            if (!window.childWin && !window.opener) {
+                $input.setAttribute('disabled', true);
+                $btn.setAttribute('disabled', true);
+                $container.classList.add('disabled');
+                $container.querySelector('h2').textContent = $container.querySelector('h2').textContent + ' (no open)';
+            }
+
+            $btn.addEventListener('click', function () {
+                const tab = document.getElementById('js-header').dataset.tab;
+                const val = $input.value;
+                $input.value = '';
+                $info.textContent = '[send] ' + val;
+
+                if (window.childWin) {
+                    window.postMessage({
+                        from: tab,
+                        msg: val
+                    });
+                }
+
+                if (window.opener) {
+                    window.opener.postMessage({
+                        from: tab,
+                        msg: val
+                    });
+                }
+            });
+        })();
     </script>
 </body>
 
