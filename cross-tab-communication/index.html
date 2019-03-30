@@ -200,6 +200,30 @@
     </footer>
     <script>
 
+        // BroadcastChannel
+        (function () {
+            const bc = new BroadcastChannel('AlienZHOU');
+            bc.onmessage = function (e) {
+                const data = e.data;
+                console.log('[BroadcastChannel] receive message:', data);
+                var $div = document.createElement('div');
+                $div.textContent = data.from + ': ' + data.msg;
+                document.getElementById('js-container').appendChild($div);
+            };
+            bc.onmessageerror = function (e) {
+                console.log(e);
+            };
+
+            document.getElementById('broadcast-channel').addEventListener('click', function () {
+                var msg = document.getElementById('js-input').value;
+                bc.postMessage({ from: 'index', msg });
+
+                var $div = document.createElement('div');
+                $div.textContent = 'me: ' + msg;
+                document.getElementById('js-container').appendChild($div);
+            });
+        })();
+
         var bc;
         function broadcast() {
             bc = new BroadcastChannel('alienzhou');
