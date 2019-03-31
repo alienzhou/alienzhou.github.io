@@ -1,4 +1,4 @@
-// Cross-document Messaging
+// window.open
 (function () {
     let childWins = [];
     document.getElementById('js-link').addEventListener('click', function () {
