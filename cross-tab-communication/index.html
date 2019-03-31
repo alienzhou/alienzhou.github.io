@@ -190,69 +190,61 @@
         <section id="broadcast-channel">
             <h2>Broadcast Channel</h2>
             <h3>&nbsp;</h3>
-            <input placeholder="input message" />
+            <input placeholder="Input Message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
         <section id="service-worker">
             <h2>Service Worker</h2>
             <h3>&nbsp;</h3>
-            <input placeholder="input message" />
-            <button type="button">Send Message</button>
-            <p></p>
-        </section>
-        <section id="shared-worker">
-            <h2>Shared Worker</h2>
-            <h3>&nbsp;</h3>
-            <input placeholder="input message" />
+            <input placeholder="Input Message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
         <section id="local-storage">
             <h2>Local Storage </h2>
             <h3>localStorage</h3>
-            <input placeholder="input message" />
+            <input placeholder="Input Message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
-        <section id="storage2">
+        <section id="shared-worker">
+            <h2>Shared Worker</h2>
+            <h3>&nbsp;</h3>
+            <input placeholder="Input Message" />
+            <button type="button">Send Message</button>
+            <p></p>
+        </section>
+        <section class="disabled" id="storage2">
             <h2>Other Storages</h2>
             <h3>Indexed DB / cookie</h3>
-            <input placeholder="input message" />
-            <button type="button">Send Message</button>
+            <input placeholder="Input Message" disabled />
+            <button type="button" disabled>Send Message</button>
             <p></p>
         </section>
         <section id="post-message">
-            <h2>Cross-document Messaging</h2>
-            <h3>window.open / window.opener (without full connectivity)</h3>
-            <input placeholder="input message" />
+            <h2>open & opener</h2>
+            <h3>window.open / window.opener (Cross-document Messaging)</h3>
+            <input placeholder="Input Message" />
             <button type="button">Send Message</button>
             <p></p>
         </section>
         <section class="disabled" id="websocket">
             <h2>Server Push</h2>
             <h3>WebSocket / SSE / Long Polling</h3>
-            <input placeholder="input message" disabled />
+            <input placeholder="Input Message" disabled />
             <button type="button" disabled>No Example</button>
             <p></p>
         </section>
         <a class="link" id="js-link" href="javascript:void(0);" target="_blank">Open a new tab (same origin) >></a>
     </main>
-    <script>
-        document.getElementById('js-link').addEventListener('click', function () {
-            window.childWin = window.open('./?new=1');
-            const $container = document.getElementById('post-message');
-            const $input = $container.querySelector('input');
-            const $btn = $container.querySelector('button');
-            const $info = $container.querySelector('p');
-            $container.querySelector('input').removeAttribute('disabled');
-            $container.querySelector('button').removeAttribute('disabled');
-            $container.classList.remove('disabled');
-            $container.querySelector('h2').textContent = $container.querySelector('h2').textContent.replace(' (no open)', '');
-        });
-    </script>
-    <script src="./indexedDB.js"></script>
-    <script src="./index.js"></script>
+    <script src="./util.db.js"></script>
+    <script src="./broadcast.channel.js"></script>
+    <script src="./service.worker.js"></script>
+    <script src="./local.storage.js"></script>
+    <script src="./shared.worker.js"></script>
+    <script src="./indexed.db.js"></script>
+    <script src="./window.open.js"></script>
 </body>
 
 </html>
