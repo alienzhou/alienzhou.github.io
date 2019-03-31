@@ -1,28 +1,22 @@
 const STORE_NAME = 'ctc_aleinzhou';
 const INDEXDB_TAG = 'ctc_data';
-function openStoreAndInit() {
+function openStore() {
     const storeName = STORE_NAME;
     return new Promise(function (resolve, reject) {
         if (!('indexedDB' in window)) {
             reject('don\'t support indexedDB');
+            return
         }
         const request = indexedDB.open('CTC_DB', 1);
         request.onerror = function(e) {
             console.log('connect failed');
             reject(e);
-        }
+        };
         request.onsuccess = function (e) {
             console.log('connect succeed');
             const db = e.target.result;
-            const dbr = saveData(db, null);
-            dbr.onsuccess = function (e) {
-                resolve(db);
-            }
-            dbr.onerror = function (e) {
-                console.log('init failed', e);
-                reject(e);
-            }
-        }
+            resolve(db);
+        };
         request.onupgradeneeded = function (e) {
             console.log('upgrade db');
             const db = e.srcElement.result;
@@ -35,16 +29,25 @@ function openStoreAndInit() {
                     console.log('create index succeed');
                 }
             }
-        }
+        };
     });
 }
 
 function saveData(db, data) {
-    const tx = db.transaction(STORE_NAME, 'readwrite');
-    const store = tx.objectStore(STORE_NAME);
-    return store.put({
-        tag: INDEXDB_TAG,
-        data
+    return new Promise(function (resolve, reject) {
+        const tx = db.transaction(STORE_NAME, 'readwrite');
+        const store = tx.objectStore(STORE_NAME);
+        const request = store.put({
+            tag: INDEXDB_TAG,
+            data
+        });
+        request.onsuccess = function (e) {
+            resolve(db);
+        };
+        request.onerror = function (e) {
+            console.log('save failed', e);
+            reject(e);
+        };
     });
 }
 

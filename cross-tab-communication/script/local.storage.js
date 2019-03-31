@@ -11,7 +11,7 @@
             console.log('[Storage I] receive message:', text);
             $info.textContent = text;
         }
-    })
+    });
 
     $btn.addEventListener('click', function () {
         const tab = document.getElementById('js-header').dataset.tab;

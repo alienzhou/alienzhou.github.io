@@ -5,7 +5,7 @@
     const $btn = $container.querySelector('button');
     const $info = $container.querySelector('p');
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./util.sw.js').then(function () {
+        navigator.serviceWorker.register('../util.sw.js').then(function () {
             console.log('Service Worker 注册成功');
         });
         navigator.serviceWorker.addEventListener('message', function (e) {

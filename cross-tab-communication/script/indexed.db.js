@@ -5,7 +5,7 @@
     const $btn = $container.querySelector('button');
     const $info = $container.querySelector('p');
 
-    openStoreAndInit().then(function (db) {
+    openStore().then(db => saveData(db, null)).then(function (db) {
         const $container = document.getElementById('storage2');
         $container.querySelector('input').removeAttribute('disabled');
         $container.querySelector('button').removeAttribute('disabled');

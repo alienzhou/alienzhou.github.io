@@ -26,10 +26,12 @@
         $info.textContent = text;
 
         // do not send message back
-        if (window.opener && data.fromOpenner) {
+        if (window.opener && !window.opener.closed && data.fromOpenner) {
             window.opener.postMessage(data);
         }
 
+        // release reference when window closed
+        childWins = childWins.filter(w => !w.closed);
         // do not send message back
         if (childWins && !data.fromOpenner) {
             childWins.forEach(w => w.postMessage(data));
@@ -60,7 +62,7 @@
             }));
         }
 
-        if (window.opener) {
+        if (window.opener && !window.opener.closed) {
             window.opener.postMessage({
                 from: tab,
                 msg: val,
