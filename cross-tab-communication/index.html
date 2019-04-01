@@ -151,6 +151,13 @@
             outline: none;
         }
 
+        section p {
+            margin: 6px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
         .iframe {
             padding-top: 20px;
         }
@@ -163,6 +170,16 @@
             border: 1px dashed #f21421;
             width: 100%;
             height: 350px;
+        }
+        footer {
+            padding-top: 20px;
+            text-align: center;
+        }
+        footer a {
+            color: #bbb;
+            font-weight: 100;
+            text-decoration: underline;
+            cursor: pointer;
         }
     </style>
     <title>index</title>
@@ -238,6 +255,9 @@
         </section>
         <a class="link" id="js-link" href="javascript:void(0);" target="_blank">Open a new tab (same origin) >></a>
     </main>
+    <footer>
+        <a>Article in Chinese</a>
+    </footer>
     <script src="./util.db.js"></script>
     <script src="./script/broadcast.channel.js"></script>
     <script src="./script/service.worker.js"></script>

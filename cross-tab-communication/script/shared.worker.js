@@ -3,7 +3,7 @@
     if (typeof SharedWorker === 'undefined') {
         return;
     }
-    const sharedWorker = new SharedWorker('../util.shared.js', 'ctc');
+    const sharedWorker = new SharedWorker('./util.shared.js', 'ctc');
     const $container = document.getElementById('shared-worker');
     const $input = $container.querySelector('input');
     const $btn = $container.querySelector('button');
