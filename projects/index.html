@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>项目示例</title>
+    <style>
+        body {
+            background: #e7ebf5;
+            padding-top: 5%;
+        }
+        main {
+            box-sizing: border-box;
+            border-radius: 5px;
+            padding: 20px 30px 30px 30px;
+            background: #fff;
+            margin: 10px auto;
+            width: 600px;
+            max-width: 90%;
+            box-shadow: 20px 20px 60px #cad0ca, -20px -20px 60px #ffffff;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin: 20px auto 20px auto;
+            font-size: 35px;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        li {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        a {
+            font-size: 18px;
+            color: #547cea;
+        }
+        a::after {
+            content: ' >>';
+        }
+        a:hover {
+            cursor: pointer;
+            color: #0d44dd;
+            text-decoration: none;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 4'%3E%3Cpath fill='none' stroke='%230d44dd' d='M0 3.5c5 0 5-3 10-3s5 3 10 3 5-3 10-3 5 3 10 3'/%3E%3C/svg%3E") repeat-x 0 100%;
+            background-size: 20px auto;
+            animation: waveMove 1s infinite linear;
+        }
+        @keyframes waveMove {
+            from {
+                background-position: 0 100%;
+            }
+            to {
+                background-position:-20px 100%;
+            }
+        }
+        .icon {
+            padding-left: 30px;
+            background: url(data:image/png;base64,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);
+            background-repeat: no-repeat;
+            background-size: 24px 24px;
+            background-position: 0 center;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>项目与示例</h1>
+        <ul>
+            <li>
+                <span class="icon">
+                    <a target="_blank" href="/projects/webpack-internal-plugin-relation">可视化展示 webpack 内部钩子之间联系</a>
+                </span>
+            </li>
+            <li>
+                <span class="icon">
+                    <a target="_blank" href="/projects/frontend-tech-list">前端技术清单</a>
+                </span>
+            </li>
+            <li>
+                <span class="icon">
+                    <a target="_blank" href="/projects/fe-performance-journey">前端性能优化之旅</a>
+                </span>
+            </li>
+            <li>
+                <span class="icon">
+                    <a target="_blank" href="https://alienzhou.github.io/web-highlighter/">非耦合的前端文本高亮标记库</a>
+                </span>
+            </li>
+            <li>
+                <span class="icon">
+                    <a target="_blank" href="/projects/cross-tab-communication">多标签页消息同步 Demo</a>
+                </span>
+            </li>
+            <li>
+                <span class="icon">
+                    <a target="_blank" href="/projects/broadcast-channel">Broadcast API Demo</a>
+                </span>
+            </li>
+        </ul>
+    </main>
+</body>
+</html>
